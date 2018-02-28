@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 
+import './AddItem.css';
+
 export default class AddItem extends Component {
     render() {
         return (
@@ -22,6 +24,10 @@ export default class AddItem extends Component {
                     </select>
                     <label htmlFor="quantity">quantity</label>
                     <input id="quantity" />
+                    <div className="buttons-container">
+                        <button>SUBMIT</button>
+                        <button>CANCEL</button>    
+                    </div>
                 </div>
             </div>
         );

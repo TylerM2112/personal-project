@@ -1,0 +1,18 @@
+.add-home-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.add-item-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 30vw;
+    margin: auto auto;
+    padding-top: 100px;
+}
+
+.buttons-container{
+    padding: 20px;
+}
