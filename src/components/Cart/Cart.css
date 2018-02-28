@@ -1,0 +1,28 @@
+.cart-page-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+}
+.cart-content-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 80vw;
+    /* border: 2px red solid; */
+    margin: auto;
+}
+
+.total-container{
+    margin: auto;
+}
+
+.cart-image{
+    height: 150px;
+}
+
+.cart-item{
+    padding-top: 75px;
+    width: 15vw;
+}

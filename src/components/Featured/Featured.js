@@ -6,10 +6,10 @@ const Featured = () => {
         <div className="feature-div">
         <h1 className="featured-headline">FEATURED</h1>
         <div className="featured-container">   
-            <div className="featured-item">
-            <img src="./t-shirt.jpg" alt="tshirt" />
+        <div className="featured-item">
+                <img className="featured-image" src="./t-shirt.jpg" alt="tshirt" />
+                <span />
                 <p>Name:</p>
-                <p>Description:</p>
                 <p>Price:</p>
                 <select>
                     <option value="Small">Small</option>
@@ -20,10 +20,9 @@ const Featured = () => {
                 <button className="add-to-cart-button">ADD TO CART</button>
             </div>
             <div className="featured-item">
-                <img src="./t-shirt.jpg" alt="tshirt" />
+                <img className="featured-image" src="./t-shirt.jpg" alt="tshirt" />
                 <span />
                 <p>Name:</p>
-                <p>Description:</p>
                 <p>Price:</p>
                 <select>
                     <option value="Small">Small</option>
@@ -34,10 +33,9 @@ const Featured = () => {
                 <button className="add-to-cart-button">ADD TO CART</button>
             </div>
             <div className="featured-item">
-                <img src="./t-shirt.jpg" alt="tshirt" />
+                <img className="featured-image" src="./t-shirt.jpg" alt="tshirt" />
                 <span />
                 <p>Name:</p>
-                <p>Description:</p>
                 <p>Price:</p>
                 <select>
                     <option value="Small">Small</option>

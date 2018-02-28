@@ -18,11 +18,14 @@
     align-content: center;
 }
 
+.featured-image{
+    height: 200px;
+}
 
 .featured-item {
     display: flex;
     flex-direction: column;
-    height: 600px;
+    height: 500px;
     margin: 30px;    
     color: black;
     background-color: white;
