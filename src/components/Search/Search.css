@@ -1,8 +1,21 @@
 .search-landing-container{
     display: flex;
     flex-direction: column;
+
 }
 
 .search-filter-buttons{
     margin-top: 100px;
+}
+
+.search-product-div {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    margin: auto;
+}
+
+.search-results{
+    display: flex;
+    flex-direction: row;
 }
