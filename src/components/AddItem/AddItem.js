@@ -1,116 +1,144 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import axios from 'axios';
+import Dropzone from 'react-dropzone';
+import request from 'superagent';
+import { connect } from 'react-redux';
+import { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge, updateImage } from '../../redux/reducer';
 
 import './AddItem.css';
+const CLOUDINARY_UPLOAD_PRESET = 'yoitcpgp';
+const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/tylermiller/upload';
 
-export default class AddItem extends Component {
-    constructor() {
+
+class AddItem extends Component {
+    constructor(props) {
         super();
         this.state = {
-            name: '',
-            description: '',
-            price: 0,
-            manSmallSize: 0,
-            manMediumSize: 0,
-            manLargeSize: 0,
-            manXLargeSize: 0,
-            womanSmallSize: 0,
-            womanMediumSize: 0,
-            womanLargeSize: 0,
-            womanXLargeSize: 0,
+            uploadedFile: '',
+            uploadedFileCloudinaryURL: '',
         }
         this.submitItem = this.submitItem.bind(this);
     }
+
+    onImageDrop(files) { 
+        this.setState({
+            uploadedFile: files[0]
+        });
+        this.handleImageUpload(files[0]);
+    }
+    handleImageUpload(file) {
+        let upload = request.post(CLOUDINARY_UPLOAD_URL)
+                            .field('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                            .field('file', file);
     
+        upload.end((err, response) => {
+          if (err) {
+            console.error(err);
+          }
+    
+            if (response.body.secure_url !== '') {
+                this.props.updateImage(response.body.secure_url);
+              this.setState({
+                uploadedFileCloudinaryUrl: response.body.secure_url,
+            });
+          }
+        });
+      }
+
     submitItem() {
-        axios.post('/api/products', this.state).then(res => {
-            
-        }).catch(error => { 
+        axios.post('/api/products', this.props).then(res => {
+        }).catch(error => {
             console.log("submit error", error);
         })
     }
-    
 
     render() {
-        console.log(this.state)
+        console.log("LOOK", this.state.uploadedFileCloudinaryUrl);
+        const { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge } = this.props;
         return (
             <div className="add-home-container">
                 <Header />
                 <div className="add-item-box">
-                    <img src="./t-shirt.jpg" alt="tshirt" />
+                    <Dropzone
+                        multiple={false}
+                        accept="image/*"
+                        onDrop={this.onImageDrop.bind(this)}>
+                        <p>Drop an image or click to select a file to upload.</p>
+                    </Dropzone>
+                    <div>
+        {this.state.uploadedFileCloudinaryUrl === '' ? null :
+        <div>
+          <p>{this.state.uploadedFile.name}</p>
+          <img src={this.state.uploadedFileCloudinaryUrl} alt="shirt" />
+        </div>}
                     <label htmlFor="name">Name</label>
-                    <input id="name" onChange={(e) => { 
-                        this.setState({
-                            name: e.target.value
-                        })
-                    }}/>
+                    <input id="name" onChange={(e) => updateName(e.target.value)
+                    } />
                     <label htmlFor="description">description</label>
-                    <input id="description" onChange={(e) => { 
-                        this.setState({
-                            description: e.target.value
-                        })
-                    }}/>
+                    <input id="description" onChange={(e) => updateDescription(e.target.value)} />
                     <label htmlFor="price">price</label>
-                    <input id="price" onChange={(e) => { 
-                        this.setState({
-                            price: e.target.value
-                        })
-                    }}/>
+                    <input id="price" onChange={(e) => updatePrice(e.target.value)} />
                     <label htmlFor="man-small-size">man-small-size</label>
-                    <input id="man-small-size" onChange={(e) => { 
-                        this.setState({
-                            manSmallSize: e.target.value
-                        })
-                    }} />
+                    <input id="man-small-size" onChange={(e) => updateManSmall(e.target.value)} />
                     <label htmlFor="man-medium-size">man-medium-size</label>
-                    <input id="man-medium-size" onChange={(e) => { 
-                        this.setState({
-                            manMediumSize: e.target.value
-                        })
-                    }} />
+                    <input id="man-medium-size" onChange={(e) => updateManMedium(e.target.value)} />
                     <label htmlFor="man-large-size">man-large-size</label>
-                    <input id="man-large-size" onChange={(e) => { 
-                        this.setState({
-                            manLargeSize: e.target.value
-                        })
-                    }} />
+                    <input id="man-large-size" onChange={(e) => updateManLarge(e.target.value)} />
                     <label htmlFor="man-xlarge-size">man-xlarge-size</label>
-                    <input id="man-xlarge-size" onChange={(e) => { 
-                        this.setState({
-                            manXLargeSize: e.target.value
-                        })
-                    }} />
+                    <input id="man-xlarge-size" onChange={(e) => updateManXLarge(e.target.value)} />
                     <label htmlFor="woman-small-size">woman-small-size</label>
-                    <input id="woman-small-size" onChange={(e) => { 
-                        this.setState({
-                            womanSmallSize: e.target.value
-                        })
-                    }} />
+                    <input id="woman-small-size" onChange={(e) => updateWomanSmall(e.target.value)} />
                     <label htmlFor="woman-medium-size">woman-medium-size</label>
-                    <input id="woman-medium-size" onChange={(e) => { 
-                        this.setState({
-                            womanMediumSize: e.target.value
-                        })
-                    }} />
+                    <input id="woman-medium-size" onChange={(e) => updateWomanMedium(e.target.value)} />
                     <label htmlFor="woman-large-size">woman-large-size</label>
-                    <input id="woman-large-size" onChange={(e) => { 
-                        this.setState({
-                            womanLargeSize: e.target.value
-                        })
-                    }} />
+                    <input id="woman-large-size" onChange={(e) => updateWomanLarge(e.target.value)} />
                     <label htmlFor="woman-xlarge-size">woman-xlarge-size</label>
-                    <input id="woman-xlarge-size" onChange={(e) => { 
-                        this.setState({
-                            womanXLargeSize: e.target.value
-                        })
-                    }}/>
+                    <input id="woman-xlarge-size" onChange={(e) => updateWomanXLarge(e.target.value)} />
                     <div className="buttons-container">
                         <button onClick={this.submitItem}>SUBMIT</button>
-                        <button>CANCEL</button>    
+                        <button>CANCEL</button>
                     </div>
                 </div>
-            </div>
+                </div>
+            </div>    
         );
     }
 }
+
+function mapStateToProps(state) {
+    const { name, description, price, manSmallSize, manMediumSize, manLargeSize, manXLargeSize, womanSmallSize, womanMediumSize, womanLargeSize, womanXLargeSize, image } = state;
+
+    return {
+        name,
+        description,
+        price,
+        manSmallSize,
+        manMediumSize,
+        manLargeSize,
+        manXLargeSize,
+        womanSmallSize,
+        womanMediumSize,
+        womanLargeSize,
+        womanXLargeSize,
+        image,
+    };
+}
+
+const mapDispatchToProps = {
+    updateName: updateName,
+    updateDescription: updateDescription,
+    updatePrice: updatePrice,
+    updateManSmall: updateManSmall,
+    updateManMedium: updateManMedium,
+    updateManLarge: updateManLarge,
+    updateManXLarge: updateManXLarge,
+    updateWomanSmall: updateWomanSmall,
+    updateWomanMedium: updateWomanMedium,
+    updateWomanLarge: updateWomanLarge,
+    updateWomanXLarge: updateWomanXLarge,
+    updateImage: updateImage,
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddItem);

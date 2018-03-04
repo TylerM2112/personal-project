@@ -16,7 +16,16 @@ export default class Search extends Component {
             loading: false,
             message: null,
             products: [],
+            filteredProducts: [],
+            filter: {
+                gender: '',
+                size: '',
+                price: 0,
+
+            }
         }
+        this.displayProducts = this.displayProducts.bind(this);
+        this.filterProducts = this.filterProducts.bind(this);
     }
 
     componentDidMount() {
@@ -26,31 +35,103 @@ export default class Search extends Component {
         axios.get('/api/products').then(res => {
             this.setState({
                 loading: false,
-                products: res.data
+                products: res.data,
+                filteredProducts: res.data,
             });
         });
     }
 
+    filterProducts() {
+        const { gender, size, price } = this.state.filter;
+        let filterProducts = this.state.products.slice();
+        if (gender) {
+            filterProducts = filterProducts.filter(products => {
+                if (+products[`${gender}_small_size`] !== 0) { return products }
+                if (+products[`${gender}_medium_size`] !== 0) { return products }
+                if (+products[`${gender}_large_size`] !== 0) { return products }
+                if (+products[`${gender}_xlarge_size`] !== 0) { return products }
+            });
+
+        }
+        if (size) {
+            filterProducts = filterProducts.filter(products => {
+                if (+products[`man_${size}_size`] !== 0) { return products }
+                if (+products[`woman_${size}_size`] !== 0) { return products }
+            });
+        }
+        if (price) {
+            filterProducts = filterProducts.filter(products => {
+                if (+products.price <= `${price}`) { return products }
+            });
+
+        }
+        console.log("FILTERS", filterProducts);
+        this.setState({
+            filteredProducts: filterProducts
+        });
+    }
+
+    displayProducts() {
+        let html = [];
+        if (this.state.filteredProducts) {
+            console.log("LOOK AT ME", this.state.filteredProducts)
+            this.state.filteredProducts.map((e) => {
+                html.push(<div className="search-product-div" id={e.id} key={e.id}>
+                    <img src={e.image} alt="item" /> <br /> Name: {e.name} Description: {e.description} Price: {e.price}<button className="add-to-cart-button">ADD TO CART</button>
+                </div>);
+
+            });
+        }
+        console.log("HTML", html);
+        return html;
+
+    }
+
+
+
     render() {
         const { products } = this.state;
-    return (
-        <div className="search-landing-container">
-            <Header />
-            <div className="search-filter-buttons">
-                <button>GENDER</button>
-                <button>PRICE</button>
-                <button>SIZE</button>
-                <Link to="/additem"><button>ADD ITEM</button></Link>
+        console.log(this.state.filter);
+        console.log(this.state);
+        return (
+            <div className="search-landing-container">
+                <Header />
+                <div className="search-filter-buttons">
+                    <select name="filters" onChange={(e) => {
+                        let filter = { ...this.state.filter, gender: e.target.value }
+                        this.setState({
+                            filter: filter
+                        })
+                    }}>
+                        <option value="" selected />
+                        <option value="man">Men's</option>
+                        <option value="woman" >Women's</option>
+                    </select>
+                    <select name="filters" onChange={(e) => {
+                        let filter = { ...this.state.filter, size: e.target.value }
+                        this.setState({
+                            filter: filter
+                        })
+                    }}>
+                        <option value="" selected />
+                        <option value="small" >Small</option>
+                        <option value="medium" >Medium</option>
+                        <option value="large" >Large</option>
+                        <option value="xlarge" >XLarge</option>
+                    </select>
+                    <input onChange={(e) => {
+                        let filter = { ...this.state.filter, price: e.target.value }
+                        this.setState({
+                            filter: filter
+                        })
+                    }} />
+                    <button onClick={this.filterProducts}>FILTER</button>
+                    <Link to="/additem"><button>ADD ITEM</button></Link>
+                </div>
+                <div className="search-results">
+                    {this.displayProducts()}
+                </div>
             </div>
-            <div className="search-results">
-                {products.map((e) => {
-                    return (
-                    <div className="search-product-div" id={e.id}>
-                        <img src={e.image} alt="item" /> <br /> {e.name} {e.price}<button className="add-to-cart-button">ADD TO CART</button>
-                        </div>
-                )})}
-            </div>
-        </div>
-    );
-}
+        );
+    }
 }

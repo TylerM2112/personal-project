@@ -18,4 +18,10 @@
 .search-results{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.search-product-div{
+    flex: 0 0 10%;
 }
