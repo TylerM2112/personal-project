@@ -46,10 +46,10 @@ export default class Search extends Component {
         let filterProducts = this.state.products.slice();
         if (gender) {
             filterProducts = filterProducts.filter(products => {
-                if (+products[`${gender}_small_size`] !== 0) { return products }
-                if (+products[`${gender}_medium_size`] !== 0) { return products }
-                if (+products[`${gender}_large_size`] !== 0) { return products }
-                if (+products[`${gender}_xlarge_size`] !== 0) { return products }
+                if (+products[`${gender}_small_size`] !== 0) return products;
+                if (+products[`${gender}_medium_size`] !== 0) return products;
+                if (+products[`${gender}_large_size`] !== 0) return products;
+                if (+products[`${gender}_xlarge_size`] !== 0) return products;
             });
 
         }
@@ -74,11 +74,13 @@ export default class Search extends Component {
     displayProducts() {
         let html = [];
         if (this.state.filteredProducts) {
-            console.log("LOOK AT ME", this.state.filteredProducts)
             this.state.filteredProducts.map((e) => {
-                html.push(<div className="search-product-div" id={e.id} key={e.id}>
-                    <img src={e.image} alt="item" /> <br /> Name: {e.name} Description: {e.description} Price: {e.price}<button className="add-to-cart-button">ADD TO CART</button>
-                </div>);
+                html.push(<Link to={{
+                    pathname: `/product/${e.id}`,
+                    state: e
+                }}><div className="search-product-div" id={e.id} key={e.id}>
+                    <img src={e.image} alt="item" /> <br /> Name: {e.name} Price: {e.price}<button className="add-to-cart-button">ADD TO CART</button>
+                </div></Link>);
 
             });
         }
@@ -90,7 +92,7 @@ export default class Search extends Component {
 
 
     render() {
-        const { products } = this.state;
+
         console.log(this.state.filter);
         console.log(this.state);
         return (

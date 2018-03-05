@@ -1,5 +1,7 @@
 import React from 'react';
 import './VideoBanner.css';
+import { Link } from 'react-router-dom';
+
 
 const VideoBanner = () => {
     return (
@@ -12,7 +14,7 @@ const VideoBanner = () => {
             <h4 className="title-content-text">"Leading innovator in E-Commerce" -Prestige World Wide</h4>
             <span />
             <div>
-                <button className="shop-button">SHOP NOW</button>
+                <Link to="/search"><button className="shop-button">SHOP NOW</button></Link>
             </div>
         </div>
     );

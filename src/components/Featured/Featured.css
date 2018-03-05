@@ -2,7 +2,7 @@
 .feature-div{
     display: flex;
     flex-direction: column;
-    height: 100vh;    
+    /* height: 100vh;     */
     width: 100vw;
     background-color: rgb(9, 98, 139);
 }
@@ -25,7 +25,6 @@
 .featured-item {
     display: flex;
     flex-direction: column;
-    height: 500px;
     margin: 30px;    
     color: black;
     background-color: white;

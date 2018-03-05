@@ -2,23 +2,21 @@
     display: flex;
     justify-content: space-between;
     width: 100vw;
-    height: 8vh;
     background-color: black;
-    position: fixed;
-    top: 0px;
 }
 
 .logo-container{
     background-color: rgb(30, 138, 189);
+    background-color: black;
     margin-left: 100px;
 }
 
 .logo{
-    height: 59px;
+    height: 80px;
 }
 
 .nav-bar-container{
-
+    margin-top: 20px;    
 }
 
 .nav-list{
@@ -27,6 +25,8 @@
 }
 
 .nav-link-text{
+    display: flex;
+    flex-direction: row;
     color: white;
     list-style-type: none;
     text-transform: uppercase;

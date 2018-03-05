@@ -1,0 +1,12 @@
+.solo-product-container{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.solo-product-display{
+    display: flex;
+    flex-direction: column;
+    margin:  100px auto;
+}

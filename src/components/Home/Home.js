@@ -5,6 +5,7 @@ import './Home.css';
 import Header from '../Header/Header.js';
 import Featured from '../Featured/Featured';
 import VideoBanner from '../VideoBanner/VideoBanner';
+import Footer from '../Footer/Footer';
 
 export default class Home extends Component {
     render() {
@@ -13,6 +14,7 @@ export default class Home extends Component {
                 <Header /> 
                 <VideoBanner />
                 <Featured />
+                <Footer />
             </div>
         );
     }

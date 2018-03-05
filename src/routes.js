@@ -12,7 +12,7 @@ import Cart from './components/Cart/Cart';
 export default <Fragment>
     <Route exact path="/" component={Home}/>
     <Route path="/search" component={Search}/>
-    <Route path="/product" component={Product}/>
+    <Route path="/product/:id" component={Product}/>
     <Route path="/inventory" component={Inventory}/>
     <Route path="/additem" component={AddItem}/>
     <Route path="/orders" component={Orders}/>

@@ -36,16 +36,16 @@ CREATE TABLE orders (
 -- VALUES (
 --     'Popcorn T',
 --     'Pop Pop Pop.',
---     20,
+--     0,
 --     123,
---     83,
+--     0,
 --     10,
 --     20,
 --     123,
 --     83,
---     10,
+--     0,
 --     22.00,
---     't-shirt.jpg'
+--     'https://res.cloudinary.com/tylermiller/image/upload/v1520121128/sakzus1w8v7gv4x4cp6k.jpg'
 -- ),
 -- (
 --     'Chicken T',
@@ -54,26 +54,26 @@ CREATE TABLE orders (
 --     123,
 --     83,
 --     10,
---     20,
---     123,
---     83,
---     10,
+--     0,
+--     0,
+--     0,
+--     0,
 --     22.00,
---     't-shirt.jpg'
+--     'https://res.cloudinary.com/tylermiller/image/upload/v1520121128/sakzus1w8v7gv4x4cp6k.jpg'
 -- ),
 -- (
 --     'Hotdog T',
 --     'Hot diggity dog!',
+--     0,
+--     0,
+--     0,
+--     0,
 --     20,
 --     123,
 --     83,
 --     10,
---     20,
---     123,
---     83,
---     10,
---     22.00,
---     't-shirt.jpg'
+--     27.00,
+--     'https://res.cloudinary.com/tylermiller/image/upload/v1520121128/sakzus1w8v7gv4x4cp6k.jpg'
 -- ),
 -- (
 --     'Dog T',
@@ -86,8 +86,8 @@ CREATE TABLE orders (
 --     123,
 --     83,
 --     10,
---     22.00,
---     't-shirt.jpg'
+--     12.00,
+--     'https://res.cloudinary.com/tylermiller/image/upload/v1520121128/sakzus1w8v7gv4x4cp6k.jpg'
 -- ),
 -- (
 --     'ChinUp T',
@@ -100,6 +100,6 @@ CREATE TABLE orders (
 --     123,
 --     83,
 --     10,
---     22.00,
---     't-shirt.jpg'
+--     29.00,
+--     'https://res.cloudinary.com/tylermiller/image/upload/v1520121128/sakzus1w8v7gv4x4cp6k.jpg'
 -- );
