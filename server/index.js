@@ -34,7 +34,7 @@ app.get('/api/products', pc.getAll);
 app.get('/api/product/:id', pc.getSelect);
 app.post('/api/products', pc.createProduct);
 app.put('/api/products', pc.updateProduct);
-// app.delete('/api/products${id}', pc.deleteProduct);
+app.delete('/api/product/:id', pc.deleteProduct);
 
 //cart_controller
 // app.post( '/api/cart', cc.add );

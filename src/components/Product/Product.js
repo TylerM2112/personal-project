@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import './Product.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 class Product extends Component {
-    constructor(props) { 
+    constructor(props) {
         super();
         this.state = {
-            ...props.location.state, inputVal: 0,
+            ...props.location.state,
+            inputVal: 0,
         }
         this.updateProductDB = this.updateProductDB.bind(this);
+        this.deleteProductDB = this.deleteProductDB.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -21,10 +24,16 @@ class Product extends Component {
         });
         setTimeout(() => axios.put("/api/products", this.state).then(res => {
         }).catch(error => {
-            console.log("update function error", error);
+            console.log("UPDATE FUNCTION ERROR", error);
         }), 200);
-        console.log(this.state);
+    }
 
+    deleteProductDB() {
+        // const { id } = this.state.id
+        axios.delete(`/api/product/${this.state.id}`).then(res => {
+        }).catch(error => {
+            console.log("DELETE FUNCTION ERROR", error);
+        });
     }
     
     handleChange(e) {
@@ -96,7 +105,8 @@ class Product extends Component {
                     <p>Women's XLarge: {this.state.woman_xlarge_size}</p>
                         <button name="woman_xlarge_size"
                             onClick={(e) => this.updateProductDB(e)}>Update</button>
-                    </div>    
+                    </div> 
+                    <Link to="/search"><button onClick={this.deleteProductDB}>DELETE PRODUCT</button></Link>
                 </div>
                 <Footer />
             </div>
