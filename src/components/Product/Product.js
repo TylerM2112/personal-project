@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import { connect } from 'react-redux';
-import { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge, updateImage } from '../../redux/reducer';
-
 import './Product.css';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
@@ -12,52 +9,36 @@ class Product extends Component {
     constructor(props) { 
         super();
         this.state = {
-            ...props.location.state, newVal: 0,
+            ...props.location.state, inputVal: 0,
         }
         this.updateProductDB = this.updateProductDB.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.whenClicked = this.whenClicked.bind(this);
     }
 
-    // componentDidMount() {
-    //     const id = params.id;
-    //     axios.get(`/api/product/${id}`).then(res => {
-    //         this.setState({
-    //             ...res
-    //         })
-    //     })
-    // }    
-
-    whenClicked(e) {
+    updateProductDB(e) {
         this.setState({
-            [e.target.name]: this.state.newVal
+            [e.target.name]: this.state.inputVal
         });
-     }
-
-    updateProductDB() {
         setTimeout(() => axios.put("/api/products", this.state).then(res => {
         }).catch(error => {
             console.log("update function error", error);
-        }), 500);
+        }), 200);
+        console.log(this.state);
+
     }
     
     handleChange(e) {
         this.setState({
-            newVal: e.target.value
+            inputVal: e.target.value
         });
-        console.log(this.state);
      }
-
-
 
     render(props) {
         
         let shirt = this.props.location.state.image;
         // console.log("LOOK HERE", this.state)
         // console.log("HEY YOU", this.props, props)
-
         return (
-            
             <div className="solo-product-container">
                 <Header />
                 <div className="solo-product-display">
@@ -66,12 +47,12 @@ class Product extends Component {
                     <p>Description: {this.props.location.state.description}</p>
                     <p>Price: {this.props.location.state.price}</p>
                     <select>
-                        <option value="" selected />
+                        <option value="" defaultValue />
                         <option value="man">Men's</option>
                         <option value="woman" >Women's</option>
                     </select>
                     <select>
-                        <option value="" selected />
+                        <option value="" defaultValue />
                         <option value="small" >Small</option>
                         <option value="medium" >Medium</option>
                         <option value="large" >Large</option>
@@ -81,42 +62,40 @@ class Product extends Component {
                     <div className="inventory-edit-list">
                         <p>Name: {this.state.name}</p>   
                         
+                        <label htmlFor="changeInput">Update Input</label>                        
+                        <input name="changeInput" onChange={(e) => this.handleChange(e)} />
 
                     <p>Men's Small: {this.state.man_small_size}</p>
-                    <label htmlFor="manSmall">Men's Small Inventory:</label>
-                        <input name="man_small_size" defaultValue={this.state.man_small_size} onChange={this.handleChange}/>
-                        <button name="man_small_size" onClick={(e) => { { this.whenClicked(e) }; { this.updateProductDB() }  }}>Update</button>
+                        <button name="man_small_size"
+                            onClick={(e) => this.updateProductDB(e)}>Update</button>
 
+                        <p>Men's Medium: {this.state.man_medium_size}</p>
+                        <button name="man_medium_size"
+                            onClick={(e) => this.updateProductDB(e)}>Update</button>
                        
+                        <p>Men's Large: {this.state.man_large_size}</p>
+                        <button name="man_large_size"
+                            onClick={(e) => this.updateProductDB(e)}>Update</button>
 
-                    <p>Men's Medium: {this.state.man_medium_size}</p>
-                    <label htmlFor="manMedium">Men's Medium Inventory:</label>
-                    <input name="manMedium" value={this.state.man_medium_size} />
-                    <button>Update</button>
-                    <p>Men's Large: {this.state.man_large_size}</p>
-                    <label htmlFor="manLarge">Men's Large Inventory:</label>
-                    <input name="manLarge" value={this.state.man_large_size} />
-                    <button>Update</button>
                     <p>Men's XLarge: {this.state.man_xlarge_size}</p>
-                    <label htmlFor="manXLarge">Men's XLarge Inventory:</label>
-                    <input name="manXLarge" value={this.state.man_xlarge_size} />
-                    <button>Update</button>
+                        <button name="man_xlarge_size"
+                            onClick={(e) => this.updateProductDB(e)}>Update</button>
+
                     <p>Women's Small: {this.state.woman_small_size}</p>
-                    <label htmlFor="womanSmall">Women's Small Inventory:</label>
-                    <input name="womanSmall" value={this.state.woman_small_size} />
-                    <button>Update</button>
+                        <button name="woman_small_size"
+                            onClick={(e) => this.updateProductDB(e)}>Update</button>
+
                     <p>Women's Medium: {this.state.woman_medium_size}</p>
-                    <label htmlFor="womanMedium">Women's Medium Inventory:</label>
-                    <input name="womanMedium" value={this.state.woman_medium_size} />
-                    <button>Update</button>
+                        <button name="woman_medium_size"
+                            onClick={(e) => this.updateProductDB(e)}>Update</button>
+
                     <p>Women's Large: {this.state.woman_large_size}</p>
-                    <label htmlFor="womanLarge">Women's Large Inventory:</label>
-                    <input name="womanLarge" value={this.state.woman_large_size} />
-                    <button>Update</button>
+                        <button name="woman_large_size"
+                            onClick={(e) => this.updateProductDB(e)}>Update</button>
+
                     <p>Women's XLarge: {this.state.woman_xlarge_size}</p>
-                    <label htmlFor="womanXLarge">Women's XLarge Inventory:</label>
-                    <input name="womanXLarge" value={this.state.woman_xlarge_size} />
-                        <button>Update</button>
+                        <button name="woman_xlarge_size"
+                            onClick={(e) => this.updateProductDB(e)}>Update</button>
                     </div>    
                 </div>
                 <Footer />
@@ -124,40 +103,4 @@ class Product extends Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    const { name, description, price, manSmallSize, manMediumSize, manLargeSize, manXLargeSize, womanSmallSize, womanMediumSize, womanLargeSize, womanXLargeSize, image } = state;
-
-    return {
-        name,
-        description,
-        price,
-        manSmallSize,
-        manMediumSize,
-        manLargeSize,
-        manXLargeSize,
-        womanSmallSize,
-        womanMediumSize,
-        womanLargeSize,
-        womanXLargeSize,
-        image,
-    };
-}
-
-const mapDispatchToProps = {
-    updateName: updateName,
-    updateDescription: updateDescription,
-    updatePrice: updatePrice,
-    updateManSmall: updateManSmall,
-    updateManMedium: updateManMedium,
-    updateManLarge: updateManLarge,
-    updateManXLarge: updateManXLarge,
-    updateWomanSmall: updateWomanSmall,
-    updateWomanMedium: updateWomanMedium,
-    updateWomanLarge: updateWomanLarge,
-    updateWomanXLarge: updateWomanXLarge,
-    updateImage: updateImage,
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default Product;

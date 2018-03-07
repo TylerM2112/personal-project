@@ -30,9 +30,9 @@ module.exports = {
     },
     
     updateProduct: (req, res) => {
-        const { name, description, man_small_size, manMediumSize, manLargeSize, manXLargeSize, womanSmallSize, womanMediumSize, womanLargeSize, womanXLargeSize, price, image, id } = req.body
+        const { name, description, man_small_size, man_medium_size, man_large_size, man_xlarge_size, woman_small_size, woman_medium_size, woman_large_size, woman_xlarge_size, price, image, id } = req.body
         console.log("AXIOS UPDATE FUNCTION", req.body)
-        req.app.get('db').update_product([name, description, man_small_size, manMediumSize, manLargeSize, manXLargeSize, womanSmallSize, womanMediumSize, womanLargeSize, womanXLargeSize, price, image, id]).then(response => {
+        req.app.get('db').update_product([name, description, man_small_size, man_medium_size, man_large_size, man_xlarge_size, woman_small_size, woman_medium_size, woman_large_size, woman_xlarge_size, price, image, id]).then(response => {
             res.status(200).send(response);
         }).catch(error => {
             console.log("update controller error", error);
