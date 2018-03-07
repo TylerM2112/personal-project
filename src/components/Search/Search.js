@@ -114,7 +114,7 @@ export default class Search extends Component {
                             filter: filter
                         })
                     }}>
-                        <option value="" selected />
+                        <option value="" defaultValue />
                         <option value="man">Men's</option>
                         <option value="woman" >Women's</option>
                     </select>
@@ -124,7 +124,7 @@ export default class Search extends Component {
                             filter: filter
                         })
                     }}>
-                        <option value="" selected />
+                        <option value="" defaultValue />
                         <option value="small" >Small</option>
                         <option value="medium" >Medium</option>
                         <option value="large" >Large</option>

@@ -1,6 +1,7 @@
 module.exports = {
   getAll: (req, res) => {
-    req.app.get('db').get_products().then(products => {
+      req.app.get('db').get_products().then(products => {
+        console.log(req.session)
         // console.log('products', products)
         res.status(200).json(products);
     }).catch(error => {
@@ -9,14 +10,14 @@ module.exports = {
     });
     },
   
-    getSelect: (req, res) => { 
-        req.app.get('db').get_selected(req.body.id).then(products => {
-            res.status(200).send();
-        }).catch(error => {
-            console.log("get controller error", error);
-            res.status(500).json({ message: 'Bummer!' })
-        });
-    },
+    // getSelect: (req, res) => { 
+    //     req.app.get('db').get_selected(req.body.id).then(products => {
+    //         res.status(200).send();
+    //     }).catch(error => {
+    //         console.log("get controller error", error);
+    //         res.status(500).json({ message: 'Bummer!' })
+    //     });
+    // },
     
     createProduct: (req, res) => {
         const { name, description, manSmallSize, manMediumSize, manLargeSize, manXLargeSize, womanSmallSize, womanMediumSize, womanLargeSize, womanXLargeSize, price, image } = req.body
