@@ -6,6 +6,7 @@ import './Search.css';
 
 
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 
 export default class Search extends Component {
@@ -21,11 +22,11 @@ export default class Search extends Component {
                 gender: '',
                 size: '',
                 price: 0,
-
             }
         }
         this.displayProducts = this.displayProducts.bind(this);
         this.filterProducts = this.filterProducts.bind(this);
+        // this.addToCart = this.addToCart.bind(this);
     }
 
     componentDidMount() {
@@ -45,6 +46,7 @@ export default class Search extends Component {
         const { gender, size, price } = this.state.filter;
         let filterProducts = this.state.products.slice();
         if (gender) {
+            // eslint-disable-next-line
             filterProducts = filterProducts.filter(products => {
                 if (+products[`${gender}_small_size`] !== 0) return products;
                 if (+products[`${gender}_medium_size`] !== 0) return products;
@@ -54,18 +56,24 @@ export default class Search extends Component {
 
         }
         if (size) {
+            // eslint-disable-next-line
             filterProducts = filterProducts.filter(products => {
-                if (+products[`man_${size}_size`] !== 0) { return products }
-                if (+products[`woman_${size}_size`] !== 0) { return products }
+                if (gender) {
+                    if (+products[`${gender}_${size}_size`] !== 0) { return products }
+                }
+                // if (gender === "woman") {
+                //     if (+products[`woman_${size}_size`] !== 0) { return products }
+                // }
             });
         }
         if (price) {
+            // eslint-disable-next-line
             filterProducts = filterProducts.filter(products => {
                 if (+products.price <= `${price}`) { return products }
             });
 
         }
-        console.log("FILTERS", filterProducts);
+        // console.log("FILTERS", filterProducts);
         this.setState({
             filteredProducts: filterProducts
         });
@@ -74,30 +82,31 @@ export default class Search extends Component {
     displayProducts() {
         let html = [];
         if (this.state.filteredProducts) {
+            // eslint-disable-next-line
             this.state.filteredProducts.map((e) => {
                 html.push(<Link to={{
                     pathname: `/product/${e.id}`,
                     state: e
                 }}><div className="search-product-div" id={e.id} key={e.id}>
-                    <img src={e.image} alt="item" /> <br /> Name: {e.name} Price: {e.price}<button className="add-to-cart-button">ADD TO CART</button>
-                </div></Link>);
+                        <img src={e.image} alt="item" /> <br /> Name: {e.name} Price: {e.price}<button className="add-to-cart-button">ADD TO CART</button>
+                    </div></Link>);
 
             });
         }
-        console.log("HTML", html);
+        // console.log("HTML", html);
         return html;
 
     }
-
-
+    
 
     render() {
 
-        console.log(this.state.filter);
-        console.log(this.state);
+        // console.log(this.state.filter);
+        console.log("HELLO");
         return (
             <div className="search-landing-container">
                 <Header />
+                <h1>Take a look around!</h1>
                 <div className="search-filter-buttons">
                     <select name="filters" onChange={(e) => {
                         let filter = { ...this.state.filter, gender: e.target.value }
@@ -133,6 +142,7 @@ export default class Search extends Component {
                 <div className="search-results">
                     {this.displayProducts()}
                 </div>
+                <Footer />
             </div>
         );
     }

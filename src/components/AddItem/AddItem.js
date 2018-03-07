@@ -54,7 +54,7 @@ class AddItem extends Component {
     }
 
     render() {
-        console.log("LOOK", this.state.uploadedFileCloudinaryUrl);
+        // console.log("LOOK", this.state.uploadedFileCloudinaryUrl);
         const { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge } = this.props;
         return (
             <div className="add-home-container">

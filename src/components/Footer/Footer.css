@@ -7,3 +7,33 @@
     padding-bottom: 0px;
     margin-bottom: 0px;
 }
+
+
+.logo-container{
+    background-color: rgb(30, 138, 189);
+    background-color: black;
+    margin-left: 100px;
+}
+
+.logo{
+    height: 70px;
+}
+
+.nav-bar-container{
+    margin-top: 20px;    
+}
+
+.nav-list{
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-link-text{
+    display: flex;
+    flex-direction: row;
+    color: white;
+    list-style-type: none;
+    text-transform: uppercase;
+    margin-right: 15px;
+}
+

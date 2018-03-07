@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import shirt from '../../assets/t-shirt.jpg';
 
 import './Cart.css';
+
 import Header from '../Header/Header';
 
 export default class Cart extends Component {
@@ -11,11 +13,10 @@ export default class Cart extends Component {
                 <div className="cart-content-container">
                     <div className="cart-item">
                         <div className="cart-item-image">
-                            <img className="cart-image" src="./t-shirt.jpg" alt="tshirt" />
+                            <img className="cart-image" src={shirt} alt="tshirt" />
                         </div>
                         <div className="cart-item-info">
                             <p>Name: Cleft Heart T</p>
-                            <p>Description: Treble and Bass cleft formed to the shape of a heart. How Lovely!</p>
                             <p>Price: $45.88</p>
                             <p>Size: Small</p>
                             <div className="cart-quantity">
