@@ -5,6 +5,7 @@
   "main": "server/index.js",
   "dependencies": {
     "axios": "^0.18.0",
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",

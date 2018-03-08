@@ -1,5 +1,5 @@
 const initialState = {
-    user: {
+    product: {
         name: '',
         description: '',
         price: 0,
@@ -12,6 +12,9 @@ const initialState = {
         womanLargeSize: 0,
         womanXLargeSize: 0,
         image: '',
+    },
+    user: {
+        isAdmin: false,
     }
 };
 
@@ -28,9 +31,11 @@ const UPDATE_WOMANMEDIUM = "UPDATE_WOMANMEDIUM";
 const UPDATE_WOMANLARGE = "UPDATE_WOMANLARGE";
 const UPDATE_WOMANXLARGE = "UPDATE_WOMANXLARGE";
 const UPDATE_IMAGE = "UPDATE_IMAGE";
+const UPDATE_ISADMIN = "UPDATE_ISADMIN";
+const UPDATE_NOTADMIN = "UPDATE_NOTADMIN";
 
-export default function (state = initialState, action) { 
-    switch (action.type) { 
+export default function (state = initialState, action) {
+    switch (action.type) {
         case UPDATE_NAME:
             return { ...state, name: action.payload };
         case UPDATE_DESCRIPTION:
@@ -54,9 +59,19 @@ export default function (state = initialState, action) {
         case UPDATE_WOMANXLARGE:
             return { ...state, womanXLargeSize: action.payload };
         case UPDATE_IMAGE:
-            return { ...state, image: action.payload };    
+            return { ...state, image: action.payload };
+        case UPDATE_ISADMIN:
+            let newState = { ...state };
+            let user = newState.user;
+            user.isAdmin = true;
+            return { ...newState, user };
+        case UPDATE_NOTADMIN:
+            let newerState = { ...state };
+            // let user2 = newerState.user;
+            newerState.user.isAdmin = false;
+            return { ...newerState};
         default:
-            return state;    
+            return state;
     }
 }
 
@@ -66,51 +81,51 @@ export function updateName(name) {
         type: UPDATE_NAME,
         payload: name,
     };
- }
+}
 export function updateDescription(description) {
     return {
         type: UPDATE_DESCRIPTION,
         payload: description,
     };
- }
+}
 export function updatePrice(price) {
     return {
         type: UPDATE_PRICE,
         payload: price,
     };
- }
+}
 export function updateManSmall(manSmallSize) {
     return {
         type: UPDATE_MANSMALL,
         payload: manSmallSize,
     };
- }
- export function updateManMedium(manMediumSize) {
+}
+export function updateManMedium(manMediumSize) {
     return {
         type: UPDATE_MANMEDIUM,
         payload: manMediumSize,
     };
- }export function updateManLarge(manLargeSize) {
+} export function updateManLarge(manLargeSize) {
     return {
         type: UPDATE_MANLARGE,
         payload: manLargeSize,
     };
- }export function updateManXLarge(manXLargeSize) {
+} export function updateManXLarge(manXLargeSize) {
     return {
         type: UPDATE_MANXLARGE,
         payload: manXLargeSize,
     };
- }export function updateWomanSmall(womanSmallSize) {
+} export function updateWomanSmall(womanSmallSize) {
     return {
         type: UPDATE_WOMANSMALL,
         payload: womanSmallSize,
     };
- }export function updateWomanMedium(womanMediumSize) {
+} export function updateWomanMedium(womanMediumSize) {
     return {
         type: UPDATE_WOMANMEDIUM,
         payload: womanMediumSize,
     };
- }export function updateWomanLarge(womanLargeSize) {
+} export function updateWomanLarge(womanLargeSize) {
     return {
         type: UPDATE_WOMANLARGE,
         payload: womanLargeSize,
@@ -121,10 +136,21 @@ export function updateManSmall(manSmallSize) {
         payload: womanXLargeSize,
     };
 }
- export function updateImage(image) {
+export function updateImage(image) {
     return {
         type: UPDATE_IMAGE,
         payload: image,
     };
+
 }
+export function updateAdmin() {
+    return {
+        type: UPDATE_ISADMIN
+    }
+};
+export function updateNotAdmin() {
+    return {
+        type: UPDATE_NOTADMIN
+    }
+};
 

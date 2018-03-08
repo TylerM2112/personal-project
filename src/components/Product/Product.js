@@ -29,7 +29,6 @@ class Product extends Component {
     }
 
     deleteProductDB() {
-        // const { id } = this.state.id
         axios.delete(`/api/product/${this.state.id}`).then(res => {
         }).catch(error => {
             console.log("DELETE FUNCTION ERROR", error);

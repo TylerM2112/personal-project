@@ -8,6 +8,7 @@ import Inventory from './components/Inventory/Inventory';
 import AddItem from './components/AddItem/AddItem';
 import Orders from './components/Orders/Orders';
 import Cart from './components/Cart/Cart';
+import Login from './components/Login/Login';
 
 export default <Fragment>
     <Route exact path="/" component={Home}/>
@@ -16,5 +17,6 @@ export default <Fragment>
     <Route path="/inventory" component={Inventory}/>
     <Route path="/additem" component={AddItem}/>
     <Route path="/orders" component={Orders}/>
-    <Route path="/cart" component={Cart}/>
+    <Route path="/cart" component={Cart} />
+    <Route path="/login" component={Login} />
     </Fragment>

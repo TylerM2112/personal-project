@@ -1,12 +1,7 @@
-CREATE TABLE users (
+CREATE TABLE userAdmin (
     id SERIAL PRIMARY KEY,
-    stripeToken TEXT,
-    name TEXT NOT NULL,
-    addressLine1 TEXT NOT NULL,
-    addressZip INTEGER NOT NULL,
-    addressState TEXT NOT NULL,
-    addressCity TEXT NOT NULL,
-    addressCountry TEXT NOT NULL
+    username VARCHAR UNIQUE,
+    password VARCHAR
 );
 
 CREATE TABLE products (

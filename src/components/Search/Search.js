@@ -95,14 +95,11 @@ export default class Search extends Component {
         }
         // console.log("HTML", html);
         return html;
-
     }
     
-
     render() {
-
         // console.log(this.state.filter);
-        console.log("HELLO");
+        // console.log("HELLO");
         return (
             <div className="search-landing-container">
                 <Header />
