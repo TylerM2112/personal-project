@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateAdmin, updateNotAdmin } from '../../redux/reducer';
+import { updateAdmin} from '../../redux/reducer';
 
 import Header from '../Header/Header';
 
@@ -38,25 +38,12 @@ class Login extends Component {
                 this.setState({
                     user: response.data
                 })
-             }
+                this.props.history.push("/admin");
+            }
         }).catch(error => {
             this.setState({ message: 'Something went wrong: ' + this.getMessage(error) });
         });
     };
-
-    logout = () => {
-        axios.post('/api/logout').then(response => {
-            const { updateNotAdmin } = this.props;
-            updateNotAdmin();
-            this.setState({
-                user: '',
-            })
-            this.props.history.push("/");
-        }).catch(error => {
-            this.setState({ message: 'Something went wrong: ' + this.getMessage(error) });
-        });
-    };
-
 
     render() {
         const { message } = this.state;
@@ -72,19 +59,13 @@ class Login extends Component {
             <div className="login-main-container">
             <Header />    
                 <div className="App-intro">
-                    {!user &&
+                    {!user.isAdmin &&
                         <div className="admin-login">
                             <h2>Admin Login</h2>
                             {inputFields}
                             <button onClick={this.login}>Log in</button>
                         </div>}
-                    {message}
-                    {console.log("rendered", user.isAdmin)}
-                    {user && <div className="login-success">
-                        <h2>Status:</h2>
-                        <div>You have successfully logged in!</div>
-                        <button onClick={this.logout}>Log out</button>
-                    </div>}
+                        <div> { message }</div>
                 </div>
             </div>
         );
@@ -99,4 +80,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {updateAdmin, updateNotAdmin})(Login);
+export default connect(mapStateToProps, {updateAdmin})(Login);

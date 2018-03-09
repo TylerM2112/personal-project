@@ -15,6 +15,8 @@ const initialState = {
     },
     user: {
         isAdmin: false,
+        cart: [],
+        total: 0.00,
     }
 };
 
@@ -33,6 +35,9 @@ const UPDATE_WOMANXLARGE = "UPDATE_WOMANXLARGE";
 const UPDATE_IMAGE = "UPDATE_IMAGE";
 const UPDATE_ISADMIN = "UPDATE_ISADMIN";
 const UPDATE_NOTADMIN = "UPDATE_NOTADMIN";
+
+// const UPDATE_NOTADMIN = "UPDATE_NOTADMIN";
+// const UPDATE_NOTADMIN = "UPDATE_NOTADMIN";
 
 export default function (state = initialState, action) {
     switch (action.type) {
@@ -67,7 +72,6 @@ export default function (state = initialState, action) {
             return { ...newState, user };
         case UPDATE_NOTADMIN:
             let newerState = { ...state };
-            // let user2 = newerState.user;
             newerState.user.isAdmin = false;
             return { ...newerState};
         default:
