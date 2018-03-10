@@ -36,13 +36,15 @@ const UPDATE_IMAGE = "UPDATE_IMAGE";
 const UPDATE_ISADMIN = "UPDATE_ISADMIN";
 const UPDATE_NOTADMIN = "UPDATE_NOTADMIN";
 
-// const UPDATE_NOTADMIN = "UPDATE_NOTADMIN";
-// const UPDATE_NOTADMIN = "UPDATE_NOTADMIN";
+const UPDATE_CART = "UPDATE_CART";
 
 export default function (state = initialState, action) {
-    switch (action.type) {
+    let newState = { ...state }
+    switch (action.type) { 
         case UPDATE_NAME:
-            return { ...state, name: action.payload };
+            console.log("THIS IS IT", newState);    
+            newState.product.name = action.payload
+            return { ...newState};
         case UPDATE_DESCRIPTION:
             return { ...state, description: action.payload };
         case UPDATE_PRICE:
@@ -66,14 +68,19 @@ export default function (state = initialState, action) {
         case UPDATE_IMAGE:
             return { ...state, image: action.payload };
         case UPDATE_ISADMIN:
-            let newState = { ...state };
             let user = newState.user;
             user.isAdmin = true;
             return { ...newState, user };
         case UPDATE_NOTADMIN:
             let newerState = { ...state };
             newerState.user.isAdmin = false;
-            return { ...newerState};
+            return { ...newerState };
+        case UPDATE_CART:
+               
+            newState.user.cart.push(action.payload);
+            newState.user.total += action.payload.price;
+            console.log(newState); 
+            return { ...newState};
         default:
             return state;
     }
@@ -157,4 +164,10 @@ export function updateNotAdmin() {
         type: UPDATE_NOTADMIN
     }
 };
+export function updateCart(cart) {
+    return {
+        type: UPDATE_CART,
+        payload: cart,
+    }
+}
 

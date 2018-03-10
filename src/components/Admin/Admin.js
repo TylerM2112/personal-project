@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -12,7 +11,8 @@ class Admin extends Component {
                 <Header />
                 {this.props.user.isAdmin &&
                     <div>
-                    <Link to="/search"><button>Search</button></Link>
+                    <Link to="/search"><button>Search Inventory</button></Link>
+                    <Link to="/additem"><button>Add Invetory</button></Link>
                     <Link to="/orders"><button>Orders</button></Link>
                     Stripe Dashboard
                 </div>}

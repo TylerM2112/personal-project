@@ -40,17 +40,22 @@ class Header extends Component {
                     <Link to="/"><img className="logo" src={logo} alt="logo" /></Link>
                 </div>
                 <div className="nav-bar-container">
-                    <ul className="nav-list">
+                    
                         {!this.props.user.isAdmin &&
-                            <Link to="/login"><li className="nav-link-text">Admin Login</li></Link> 
+                        <ul className="nav-list">
+                            <Link to="/login"><li className="nav-link-text">Admin Login</li></Link>
+                            <Link to="/search"><li className="nav-link-text">Shop</li></Link>
+                            <Link to="/cart"><li className="nav-link-text">Cart</li></Link>
+                        </ul>
                         }
                         {this.props.user.isAdmin && 
-                        <Link to="/"><li className="nav-link-text" onClick={this.logout}>Logout</li></Link>
+                        <ul className="nav-list">   
+                            <Link to="/admin"><li className="nav-link-text">Admin Homepage</li></Link>           <Link to="/search"><li className="nav-link-text">Inventory</li></Link>
+                            <Link to="/orders"><li className="nav-link-text">Orders</li></Link>
+                            <Link to="/"><li className="nav-link-text" onClick={this.logout}>Logout</li></Link>
+                        </ul>
                         }
-                        <Link to="/search"><li className="nav-link-text">Shop</li></Link>
-                        <li className="nav-link-text">Orders</li>
-                        <Link to="/cart"><li className="nav-link-text">Cart</li></Link>
-                    </ul>
+                    
                 </div>
             </div>
         );

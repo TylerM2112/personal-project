@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 
 import './Search.css';
 
@@ -9,7 +11,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 
-export default class Search extends Component {
+class Search extends Component {
 
     constructor() {
         super();
@@ -26,7 +28,6 @@ export default class Search extends Component {
         }
         this.displayProducts = this.displayProducts.bind(this);
         this.filterProducts = this.filterProducts.bind(this);
-        // this.addToCart = this.addToCart.bind(this);
     }
 
     componentDidMount() {
@@ -61,9 +62,6 @@ export default class Search extends Component {
                 if (gender) {
                     if (+products[`${gender}_${size}_size`] !== 0) { return products }
                 }
-                // if (gender === "woman") {
-                //     if (+products[`woman_${size}_size`] !== 0) { return products }
-                // }
             });
         }
         if (price) {
@@ -80,21 +78,50 @@ export default class Search extends Component {
     }
 
     displayProducts() {
-        let html = [];
+        let productsToDisplay = [];
         if (this.state.filteredProducts) {
             // eslint-disable-next-line
             this.state.filteredProducts.map((e) => {
-                html.push(<Link to={{
-                    pathname: `/product/${e.id}`,
-                    state: e
-                }}><div className="search-product-div" id={e.id} key={e.id}>
-                        <img src={e.image} alt="item" /> <br /> Name: {e.name} Price: {e.price}<button className="add-to-cart-button">ADD TO CART</button>
-                    </div></Link>);
+                productsToDisplay.push(<div className="search-product-div" id={e.id} key={e.id}>
+                            <div className="search-product-info">
+                                <Link to={{
+                                    pathname: `/product/${e.id}`,
+                                    state: e
+                                    }}>
+                                <div className="search-product-image">
+                                <img src={e.image} alt="item" />
+                                </div></Link> 
+                                <div className="search-product-info">
+                                    Name: {e.name}
+                                    <br />
+                                    Price: {e.price}
+                            {this.props.user.isAdmin &&
+                            <div className="search-inventory-levels">   
+                                Man Small Size:{e.man_small_size}
+                                <br />
+                                Man Medium Size:{e.man_medium_size}
+                                <br />                              
+                                Man Large Size:{e.man_large_size}
+                                <br />
+                                Man XLarge Size:{e.man_xlarge_size}
+                                <br />
+                                Woman's Small Size:{e.woman_small_size}
+                                <br />
+                                Woman's Medium Size:{e.woman_medium_size}
+                                <br />
+                                Woman's Large Size:{e.woman_large_size}
+                                <br />
+                                Woman's XLarge Size:{e.woman_xlarge_size}
+                            </div>}
+                                </div>    
+                            </div>
+                        </div>
+                );
 
             });
         }
-        // console.log("HTML", html);
-        return html;
+        // console.log("productsToDisplay", productsToDisplay);
+        return productsToDisplay;
     }
     
     render() {
@@ -134,7 +161,6 @@ export default class Search extends Component {
                         })
                     }} />
                     <button onClick={this.filterProducts}>FILTER</button>
-                    <Link to="/additem"><button>ADD ITEM</button></Link>
                 </div>
                 <div className="search-results">
                     {this.displayProducts()}
@@ -144,3 +170,13 @@ export default class Search extends Component {
         );
     }
 }
+
+function mapStateToProps(state) {
+    const { user } = state;
+
+    return {
+        user
+    };
+}
+
+export default connect(mapStateToProps)(Search);

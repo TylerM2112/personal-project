@@ -7,7 +7,7 @@ const bcrypt = require('bcrypt');
 const checkForSession  = require('./middlewares/checkForSession');
 const pc = require('./controllers/products_controller');
 const ac = require('./controllers/admin_controller');
-// const cc = require('./controllers/cart_controller');
+const cc = require('./controllers/cart_controller');
 
 const saltRounds = 12;
 
@@ -39,7 +39,7 @@ app.put('/api/products', pc.updateProduct);
 app.delete('/api/product/:id', pc.deleteProduct);
 
 //Cart Controller
-// app.post( '/api/cart', cc.add );
+app.post( '/api/cart', cc.add );
 // app.post( '/api/cart/checkout', cc.checkout );
 // app.delete( '/api/cart', cc.delete );
 
