@@ -54,7 +54,7 @@ class Product extends Component {
      //Attached to OnClick for Adding Product to Cart
     addToCart() {
         const { updateCart } = this.props;
-         console.log("ADD2CART PRODUCT LINE53", this.state)
+        //  console.log("ADD2CART PRODUCT LINE53", this.state)
          const { id, image, name, price, gender, size } = this.state; 
          updateCart({
             id: id,

@@ -20,10 +20,29 @@ CREATE TABLE products (
     image TEXT
 );
 
+CREATE TABLE customers (
+    id SERIAL PRIMARY,
+    name TEXT,
+    address TEXT,
+    city TEXT,
+    state TEXT,
+    zip NUMERIC
+);
+
 CREATE TABLE orders (
     id SERIAL PRIMARY KEY,
-    
-)
+    customer FOREIGN KEY(customer) REFERENCES customers(id),
+    products FOREIGN KEY(products) REFERENCES products(id),
+    gender TEXT,
+    size TEXT,
+    quantity NUMERIC
+);
+
+-- SELECT orders.*, customers.*, products.name AS product_name, products.price FROM orders
+-- JOIN customers
+-- ON customers.id=orders.customer
+-- JOIN products
+-- ON products.id=orders.products;
 
 
 -- INSERT INTO products

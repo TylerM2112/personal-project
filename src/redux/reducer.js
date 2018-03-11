@@ -35,14 +35,13 @@ const UPDATE_WOMANXLARGE = "UPDATE_WOMANXLARGE";
 const UPDATE_IMAGE = "UPDATE_IMAGE";
 const UPDATE_ISADMIN = "UPDATE_ISADMIN";
 const UPDATE_NOTADMIN = "UPDATE_NOTADMIN";
-
 const UPDATE_CART = "UPDATE_CART";
+const DELETE_FROM_CART = "DELETE_FROM_CART";
 
 export default function (state = initialState, action) {
     let newState = { ...state }
     switch (action.type) { 
-        case UPDATE_NAME:
-            console.log("THIS IS IT", newState);    
+        case UPDATE_NAME:   
             newState.product.name = action.payload
             return { ...newState};
         case UPDATE_DESCRIPTION:
@@ -76,10 +75,12 @@ export default function (state = initialState, action) {
             newerState.user.isAdmin = false;
             return { ...newerState };
         case UPDATE_CART:
-               
             newState.user.cart.push(action.payload);
-            newState.user.total += action.payload.price;
-            console.log(newState); 
+            newState.user.total += action.payload.price; 
+            return { ...newState};
+        case DELETE_FROM_CART:
+            newState.user.cart = action.payload.cart;
+            newState.user.total = action.payload.total;
             return { ...newState};
         default:
             return state;
@@ -167,6 +168,12 @@ export function updateNotAdmin() {
 export function updateCart(cart) {
     return {
         type: UPDATE_CART,
+        payload: cart,
+    }
+}
+export function deleteFromCart(cart) {
+    return {
+        type: DELETE_FROM_CART,
         payload: cart,
     }
 }
