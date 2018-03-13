@@ -8,9 +8,9 @@
 .solo-product-display{
     display: flex;
     flex-direction: column;
-    margin:  25px auto;
+    margin:  15px auto;
 }
 
 .solo-product-display > img{
-    transform: scale(1)
+    transform: scale(.9)
 }

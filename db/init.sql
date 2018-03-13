@@ -17,7 +17,8 @@ CREATE TABLE products (
     woman_large_size NUMERIC,
     woman_xlarge_size NUMERIC,
     price DECIMAL,
-    image TEXT
+    image TEXT,
+    quantity INTEGER
 );
 
 CREATE TABLE customers (

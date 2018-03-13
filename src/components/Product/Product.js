@@ -22,6 +22,7 @@ class Product extends Component {
         this.deleteProductDB = this.deleteProductDB.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.addToCart = this.addToCart.bind(this);
+        this.handleQuantity = this.handleQuantity.bind(this);
     }
 
 
@@ -54,22 +55,34 @@ class Product extends Component {
      //Attached to OnClick for Adding Product to Cart
     addToCart() {
         const { updateCart } = this.props;
-        //  console.log("ADD2CART PRODUCT LINE53", this.state)
-         const { id, image, name, price, gender, size } = this.state; 
-         updateCart({
-            id: id,
-            name: name,
-            price: +price,
-            image: image,
-            gender: gender,
-            size: size,
-         });
-        axios.post('/api/cart', this.props.user).then(res => {
-            res.status(200).send();
-            }).catch(error => {
-                console.log("ADD TO SESSION CART", error);
-             })
+        const { id, image, name, price, gender, size, quantity } = this.state; 
+        if (this.state.size !== '') {
+            if (this.state.gender !== '') {
+                if (this.state.quantity !== '') {
+                    updateCart({
+                        id: id,
+                        name: name,
+                        price: +price,
+                        image: image,
+                        gender: gender,
+                        size: size,
+                        quantity: quantity,
+                     });
+                    axios.post('/api/cart', this.props.user).then(res => {
+                        // res.status(200).send();
+                        }).catch(error => {
+                            console.log("ADD TO SESSION CART", error);
+                         })
+                 }
+             }
+         }
     } 
+
+    handleQuantity(e) {
+        this.setState({
+            quantity: e.target.value
+        })
+     }
 
     render() {
         // console.log("THIS IS STATE", this.state)
@@ -88,22 +101,24 @@ class Product extends Component {
                     <p>Price: {price}</p>
                     {!this.props.user.isAdmin &&
                         <div>
+                        <label>Gender</label>
                             <select name="filters" onChange={(e) => {
                                 this.setState({
                                     gender: e.target.value
                                 })
                         
-                            }}>
+                            }} required>
                                 <option value="" defaultValue />
                                 <option value="man">Men's</option>
                                 <option value="woman" >Women's</option>
                             </select>
-                            <br />
+                        <br />
+                            <label>Size</label>
                             <select name="filters" onChange={(e) => {
                                 this.setState({
                                     size: e.target.value,
                                 })
-                            }}>
+                            }} required>
                                 <option value="" defaultValue />
                                 <option value="small" >Small</option>
                                 <option value="medium" >Medium</option>
@@ -111,7 +126,9 @@ class Product extends Component {
                                 <option value="xlarge" >XLarge</option>
                             </select>
 
-                            <div className="search-add-button">
+                        <div className="search-add-button">
+                        <label htmlFor="quantity">Quantity</label>
+                            <input name="quantity" type="number" onChange={(e) => this.handleQuantity(e)} required/>
                                 <button className="add-to-cart-button" onClick={() => { this.addToCart() }}>ADD TO CART</button>
                             </div>
                         </div>}    

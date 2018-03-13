@@ -9,6 +9,7 @@ const pc = require('./controllers/products_controller');
 const ac = require('./controllers/admin_controller');
 const cc = require('./controllers/cart_controller');
 const oc = require('./controllers/orders_controller');
+const custc = require('./controllers/customer_controller');
 
 const saltRounds = 12;
 
@@ -28,9 +29,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }));
-app.use(checkForSession.checkForSession);
+// app.use(checkForSession.checkForSession);
 
-app.use(express.static(`${__dirname}/../build`));
+// app.use(express.static(`${__dirname}/../build`));
 
 //Products Controller
 app.get('/api/products', pc.getAll);
@@ -40,7 +41,7 @@ app.put('/api/products', pc.updateProduct);
 app.delete('/api/product/:id', pc.deleteProduct);
 
 //Cart Controller
-app.post( '/api/cart', cc.add );
+app.post( '/api/cart',checkForSession.checkForSession, cc.add );
 app.post( '/api/cartRemove', cc.delete );
 
 //User Controller
@@ -50,6 +51,10 @@ app.post('/api/logout', ac.logout);
 
 //Orders Controller
 app.get('/api/orders', oc.getOrders);
+app.post('/api/orders', oc.createOrder);
+
+//Customer Controller
+app.post('/api/customer', custc.createCustomer)
 
 const port = 4000;
 app.listen(port, () => {

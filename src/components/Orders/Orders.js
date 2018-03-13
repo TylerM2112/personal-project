@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import './Orders.css';
 
-import Header from '../Header/Header';
+import Header from '../Header/Header'; 
 import Footer from '../Footer/Footer';    
 
 class Orders extends Component {
@@ -37,16 +37,17 @@ class Orders extends Component {
         return displayedOrders;
      }
     render() {
+        
         return (
             <div className="orders-landing-container">
                 <Header />
                 <div className="header-title">
-                ORDERS    
+                ORDERS
                 </div>    
                 {this.state.loaded ?
                 <table className="orders-content">    
                 <tr><th>Order ID</th> <th>Name</th> <th>Address</th> <th>City</th> <th>State</th> <th>Zip</th> <th>Product Name</th> <th>Product ID</th> <th>Gender</th> <th>Size</th>  <th>Quantity</th></tr>          
-                {this.displayOrders()}  
+                {this.displayOrders()}
                 </table>
                     : <div>No orders are available.</div>}
                 <Footer />

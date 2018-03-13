@@ -12,11 +12,14 @@ const initialState = {
         womanLargeSize: 0,
         womanXLargeSize: 0,
         image: '',
+        quantity: null,
     },
     user: {
         isAdmin: false,
         cart: [],
         total: 0.00,
+        submitted: false,
+        customerId: null,
     }
 };
 
@@ -37,6 +40,9 @@ const UPDATE_ISADMIN = "UPDATE_ISADMIN";
 const UPDATE_NOTADMIN = "UPDATE_NOTADMIN";
 const UPDATE_CART = "UPDATE_CART";
 const DELETE_FROM_CART = "DELETE_FROM_CART";
+const UPDATE_SUBMITTED = "UPDATED_SUBMITTED";
+const UPDATE_CUSTOMERID = "UPDATE_CUSTOMERID";
+const UPDATE_QUANTITY = "UPDATE_QUANTITY";
 
 export default function (state = initialState, action) {
     let newState = { ...state }
@@ -64,6 +70,10 @@ export default function (state = initialState, action) {
             return { ...state, womanLargeSize: action.payload };
         case UPDATE_WOMANXLARGE:
             return { ...state, womanXLargeSize: action.payload };
+        case UPDATE_QUANTITY:
+            let index = newState.user.cart.findIndex((e) => e.id === +action.payload.id);  
+            newState.user.cart[index].quantity = action.payload.quantity
+            return { ...newState};    
         case UPDATE_IMAGE:
             return { ...state, image: action.payload };
         case UPDATE_ISADMIN:
@@ -76,12 +86,18 @@ export default function (state = initialState, action) {
             return { ...newerState };
         case UPDATE_CART:
             newState.user.cart.push(action.payload);
-            newState.user.total += action.payload.price; 
+            newState.user.total += (+action.payload.price * +action.payload.quantity); 
             return { ...newState};
         case DELETE_FROM_CART:
             newState.user.cart = action.payload.cart;
             newState.user.total = action.payload.total;
-            return { ...newState};
+            return { ...newState };
+        case UPDATE_SUBMITTED:    
+            newState.user.submitted = action.payload;
+            return { ...newState }; 
+        case UPDATE_CUSTOMERID:
+            newState.user.customerId = action.payload;
+            return { ...newState };
         default:
             return state;
     }
@@ -148,6 +164,13 @@ export function updateManMedium(manMediumSize) {
         payload: womanXLargeSize,
     };
 }
+
+export function updateQuantity(quantity) { 
+    return {
+        type: UPDATE_QUANTITY,
+        payload: quantity
+    }
+}
 export function updateImage(image) {
     return {
         type: UPDATE_IMAGE,
@@ -177,4 +200,17 @@ export function deleteFromCart(cart) {
         payload: cart,
     }
 }
+export function updateSubmitted(submitted) {
+    return {
+        type: UPDATE_SUBMITTED,
+        payload: submitted
+    }
+}
+ 
+export function updateCustomerID(id) {
+    return {
+        type: UPDATE_CUSTOMERID,
+        payload: id,
+    }
+ }
 

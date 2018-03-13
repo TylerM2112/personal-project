@@ -1,6 +1,7 @@
 .cart-page-container{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 .cart-content-container{
     display: flex;
@@ -10,4 +11,29 @@
     width: 80vw;
     /* border: 2px red solid; */
     margin: 100px auto;
+}
+.customer-form{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(51, 94, 189);
+    height: 100%;
+    width: 80%;
+    position: absolute;
+    top: 170px;
+    left: 10%;
+}
+.form-inputs{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    margin: auto;
+}
+.form-inputs > *{
+    margin-bottom: 5px;
+}
+
+.checkout-button{
+    width: 100px;
+    height: 75px;
+    margin: auto;
 }
