@@ -8,13 +8,14 @@ module.exports = {
             });
     },
     createOrder: (req, res) => {
-        const { customerId, cart } = req.body.user;
-
-        req.app.get('db').create_order([customerId, cart[0].id]).then(orders => {
-            res.status(200).json(orders);    
+        const { customerId, cart, gender, size, quantity } = req.body.user;
+        console.log("HEHEHEHEHE", req.body.user)
+        cart.map((e) => {
+            req.app.get('db').create_order([customerId, e.id, e.gender, e.size, e.quantity]).then(orders => {   
         }).catch(error => {
             console.log("post orders controller error", error);
             res.status(500).json({ message: 'Bummer!' })
-         })
+         });
+        })
      }
 }

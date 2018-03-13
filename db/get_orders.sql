@@ -1,5 +1,5 @@
-SELECT orders.*, customers.*, products.name AS product_name, products.price FROM orders
+SELECT orders.*, customers.*, products.name AS product_name FROM orders
 JOIN customers
-ON customers.id=orders.customer
+ON customers.id = orders.customer
 JOIN products
-ON products.id=orders.products;
+ON products.id = orders.products;
