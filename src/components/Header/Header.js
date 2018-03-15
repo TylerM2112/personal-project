@@ -42,18 +42,19 @@ class Header extends Component {
                 <div className="nav-bar-container">
                     
                         {!this.props.user.isAdmin &&
-                        <ul className="nav-list">
-                            <Link to="/login"><li className="nav-link-text">Admin Login</li></Link>
-                            <Link to="/search"><li className="nav-link-text">Shop</li></Link>
-                            <Link to="/cart"><li className="nav-link-text">Cart</li></Link>
-                        </ul>
+                        <div className="nav-list">
+                            <Link to="/login"><div className="nav-link-text">Admin Login</div></Link>
+                            <Link to="/search"><div className="nav-link-text">Shop</div></Link>
+                            <Link to="/cart"><div className="nav-link-text">Cart</div></Link>
+                        </div>
                         }
                         {this.props.user.isAdmin && 
-                        <ul className="nav-list">   
-                            <Link to="/admin"><li className="nav-link-text">Admin Homepage</li></Link>           <Link to="/search"><li className="nav-link-text">Inventory</li></Link>
-                            <Link to="/orders"><li className="nav-link-text">Orders</li></Link>
-                            <Link to="/"><li className="nav-link-text" onClick={this.logout}>Logout</li></Link>
-                        </ul>
+                        <div className="nav-list">   
+                        <Link to="/admin"><div className="nav-link-text">Admin Homepage</div></Link>
+                        <Link to="/search"><div className="nav-link-text">Inventory</div></Link>
+                        <Link to="/orders"><div className="nav-link-text">Orders</div></Link>
+                        <Link to="/"><div className="nav-link-text" onClick={this.logout}>Logout</div></Link>
+                        </div>
                         }
                     
                 </div>

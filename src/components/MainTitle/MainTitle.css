@@ -1,0 +1,32 @@
+
+.title-content-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 50%;
+    width: 100%;
+}
+
+.title-content-text{
+    color: rgb(255, 255, 255);
+    width: 100vw;
+    padding-bottom: 28px;
+}
+
+.shop-button{
+    width: 35%;
+    height: 45px;
+    border-radius: 25px;
+    color: transparent;
+    border: 5px solid rgb(30, 138, 189);
+    color: rgb(30, 138, 189);
+    font-weight: 700;
+    background-color: transparent;
+}
+.shop-button:hover{
+    background-color: rgb(30, 138, 189);
+    border: none;
+    color: white;
+    cursor: pointer;
+}

@@ -6,16 +6,15 @@ module.exports = {
                 console.log("get orders controller error", error);
                 res.status(500).json({ message: 'Bummer!' })
             });
-    },
-    createOrder: (req, res) => {
-        const { customerId, cart, gender, size, quantity } = req.body.user;
-        console.log("HEHEHEHEHE", req.body.user)
-        cart.map((e) => {
-            req.app.get('db').create_order([customerId, e.id, e.gender, e.size, e.quantity]).then(orders => {   
-        }).catch(error => {
-            console.log("post orders controller error", error);
-            res.status(500).json({ message: 'Bummer!' })
-         });
-        })
-     }
+    }
+    // createOrder: (req, res) => {
+    //     const { customerId, cart, gender, size, quantity } = req.body.user;
+    //     cart.map((e) => {
+    //         req.app.get('db').create_order([customerId, e.id, e.gender, e.size, e.quantity]).then(orders => {   
+    //     }).catch(error => {
+    //         console.log("post orders controller error", error);
+    //         res.status(500).json({ message: 'Bummer!' })
+    //      });
+    //     })
+    //  }
 }

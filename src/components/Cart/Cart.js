@@ -26,7 +26,7 @@ class Cart extends Component {
         this.updateState = this.updateState.bind(this);
         // this.createACustomer = this.createACustomer.bind(this);
         this.submitForm = this.submitForm.bind(this);
-        this.createOrder = this.createOrder.bind(this);
+        // this.createOrder = this.createOrder.bind(this);
         this.updateQuantity = this.updateQuantity.bind(this);
     }
 
@@ -151,7 +151,6 @@ class Cart extends Component {
                                     customerId: res.data[0].id,
                                 }), updateCustomerID(res.data[0].id)
                             })
-                            console.log("IS THIS HAPPENING?", this.state)
                             updateSubmitted(true);
 
                         } else {
@@ -163,16 +162,16 @@ class Cart extends Component {
         }
     }
 
-    createOrder() {
-        if (this.props.user.submitted === true) {
-            console.log("CREATE ORDER PROP CHECK", this.props)
-            axios.post('./api/orders', this.props).then(response => { }).catch(error => {
-                console.log("createOrder/cart.js 145 error", error)
-            })
-        } else {
-            alert('Please make sure you submit your shipping information!');
-        }
-    }
+    // createOrder() {
+    //     if (this.props.user.submitted === true) {
+    //         console.log("CREATE ORDER PROP CHECK", this.props)
+    //         axios.post('/api/orders', this.props).then(response => { }).catch(error => {
+    //             console.log("createOrder/cart.js 145 error", error)
+    //         })
+    //     } else {
+    //         alert('Please make sure you submit your shipping information!');
+    //     }
+    // }
 
     updateQuantity(e) {
         const { updateQuantity } = this.props;

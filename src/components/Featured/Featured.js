@@ -5,15 +5,7 @@ const Featured = () => {
     return (
         <div className="feature-div">
         UNDER CONSTRUCTION
-        UNDER CONSTRUCTION
-        UNDER CONSTRUCTION
-        UNDER CONSTRUCTION
-        UNDER CONSTRUCTION
-        UNDER CONSTRUCTION
-        UNDER CONSTRUCTION
-        UNDER CONSTRUCTION
-        UNDER CONSTRUCTION
-        UNDER CONSTRUCTION      
+         
         </div>    
     );
 };

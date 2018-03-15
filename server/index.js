@@ -58,7 +58,7 @@ app.post('/api/logout', ac.logout);
 
 //Orders Controller
 app.get('/api/orders', oc.getOrders);
-app.post('/api/orders', oc.createOrder);
+// app.post('/api/orders', oc.createOrder);
 
 //Customer Controller
 app.post('/api/customer', custc.createCustomer)

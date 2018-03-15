@@ -17,6 +17,7 @@ class Product extends Component {
             inputVal: 0,
             gender: '',
             size: '',
+            added: false,
         }
         this.updateProductDB = this.updateProductDB.bind(this);
         this.deleteProductDB = this.deleteProductDB.bind(this);
@@ -58,7 +59,7 @@ class Product extends Component {
         const { id, image, name, price, gender, size, quantity } = this.state; 
         if (this.state.size !== '') {
             if (this.state.gender !== '') {
-                if (this.state.quantity !== '') {
+                if (this.state.quantity !== 0) {
                     updateCart({
                         id: id,
                         name: name,
@@ -67,13 +68,21 @@ class Product extends Component {
                         gender: gender,
                         size: size,
                         quantity: quantity,
-                     });
+                    });
                     axios.post('/api/cart', this.props.user).then(res => {
-                        // res.status(200).send();
-                        }).catch(error => {
-                            console.log("ADD TO SESSION CART", error);
-                         })
-                 }
+                        this.setState({
+                            added: true,
+                        })
+                    }).catch(error => {
+                        console.log("ADD TO SESSION CART", error);
+                    })
+                    setTimeout(() => {
+                        this.setState({ added: false })
+                    }, 2000)
+                } else { 
+                    alert('Please fill in Gender, Size, and Quantity!')
+                }                    
+                
              }
          }
     } 
@@ -91,6 +100,18 @@ class Product extends Component {
         return (
             <div className="solo-product-container">
                 <Header />
+
+                {this.state.added === true ?
+                    <div className="add-cart-message">
+                        Item added to cart!
+                </div>
+                    : <div></div>}
+                
+                <div>
+                    <Link to="/search"><button>Back to Search</button></Link>
+                    <Link to="/cart"><button>Head to Cart</button></Link>
+                </div>
+                
                 <div className="solo-product-display">
                     <img src={image} alt="shirt" />
 

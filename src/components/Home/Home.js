@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import './Home.css';
 
 import Header from '../Header/Header.js';
-import Featured from '../Featured/Featured';
 import VideoBanner from '../VideoBanner/VideoBanner';
+import MainTitle from '../MainTitle/MainTitle';
+import Featured from '../Featured/Featured';
+
 import Footer from '../Footer/Footer';
 
 export default class Home extends Component {
@@ -13,6 +15,7 @@ export default class Home extends Component {
             <div className="home-container">
                 <Header /> 
                 <VideoBanner />
+                <MainTitle />
                 <Featured />
                 <Footer />
             </div>

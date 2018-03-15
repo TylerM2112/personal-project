@@ -25,7 +25,7 @@ const successPayment = data => {
     .then(successPayment)
     .catch(errorPayment);
 
-const Checkout = ({ name, description, amount }) =>{
+const Checkout = ({ name, description, amount }) => {
     
     return (
         <StripeCheckout
