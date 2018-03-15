@@ -89,7 +89,7 @@ class Search extends Component {
                                     state: e
                                     }}>
                                 <div className="search-product-image">
-                                <img src={e.image} alt="item" />
+                                <img className="product-image" src={e.image} alt="item" />
                                 </div></Link> 
                                 <div className="search-product-info">
                                     Name: {e.name}

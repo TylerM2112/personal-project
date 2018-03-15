@@ -1,28 +1,20 @@
 .footer-container{
     display: flex;
-    justify-content: space-between;
-    width: 100vw;
-    height: 10vh;
     background-color: black;
-    padding-bottom: 0px;
-    margin-bottom: 0px;
+    width: 100vw;
+    height: 8vh;
     position: fixed;
     bottom: 0px;
 }
-
-
 .logo-container{
-    background-color: rgb(30, 138, 189);
     background-color: black;
-    margin-left: 100px;
+    margin-left: 5%;    
 }
 
 .logo{
-    height: 70px;
+    height: 100%;
 }
-
 .nav-bar-container{
-    margin-top: 20px;    
 }
 
 .nav-list{
@@ -37,5 +29,5 @@
     list-style-type: none;
     text-transform: uppercase;
     margin-right: 15px;
+    font-size: 10px;
 }
-

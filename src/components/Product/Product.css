@@ -12,5 +12,6 @@
 }
 
 .solo-product-display > img{
-    transform: scale(.9)
+    transform: scale(.7);
+    height: 250px;
 }
