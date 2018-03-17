@@ -3,13 +3,17 @@ module.exports = {
 
     console.log("MUMBO JUMOB",req.session.user);
     if (!req.session.user) {
-      console.log("check LOG", req.session)
-      req.session.user = { isAdmin: false, cart: [], total: 0.00, submitted: false, customerId: null };
+      req.session.user = { cart: [], total: 0.00, submitted: false, customerId: null };
       console.log("check session", req.session)
-
     }
-  
-    
     next();
+  }, 
+
+  checkForAdmin(req, res, next) { 
+    if (req.session.user.isAdmin === true) {
+      next();
+    } else {
+      this.props.history.push('/search');
+     }
   }
 };

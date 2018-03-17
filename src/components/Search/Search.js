@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { updateAdmin } from '../../redux/reducer';
 
 
 import './Search.css';
@@ -31,6 +32,15 @@ class Search extends Component {
     }
 
     componentDidMount() {
+        axios.get('/api/session').then(res => { 
+            console.log("MUBMOMUMBO", res.data)
+            if (res.data.isAdmin === true) {
+                this.props.updateAdmin();
+                this.setState({
+                    isAdmin: true,
+                })
+             }
+        })
         this.setState({
             loading: true
         });
@@ -42,6 +52,7 @@ class Search extends Component {
             });
         });
     }
+
 
     filterProducts() {
         const { gender, size, price } = this.state.filter;
@@ -154,7 +165,7 @@ class Search extends Component {
                         <option value="large" >Large</option>
                         <option value="xlarge" >XLarge</option>
                     </select>
-                    <input onChange={(e) => {
+                    <input className="quantity-filter"onChange={(e) => {
                         let filter = { ...this.state.filter, price: e.target.value }
                         this.setState({
                             filter: filter
@@ -179,4 +190,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps, {updateAdmin})(Search);

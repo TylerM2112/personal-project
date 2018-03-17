@@ -35,7 +35,7 @@ app.use(session({
     saveUninitialized: false
 }));
 
-// app.use(checkForSession.checkForSession);
+app.use(checkForSession.checkForSession);
 
 // app.use(express.static(`${__dirname}/../build`));
 
@@ -48,7 +48,7 @@ app.put('/api/products', pc.updateProduct);
 app.delete('/api/product/:id', pc.deleteProduct);
 
 //Cart Controller
-app.post( '/api/cart',checkForSession.checkForSession, cc.add );
+app.post( '/api/cart', cc.add );
 app.post( '/api/cartRemove', cc.delete );
 
 //User Controller
@@ -58,13 +58,15 @@ app.post('/api/logout', ac.logout);
 
 //Orders Controller
 app.get('/api/orders', oc.getOrders);
-// app.post('/api/orders', oc.createOrder);
 
 //Customer Controller
 app.post('/api/customer', custc.createCustomer)
 
 //Stripe Controller
 app.post('/api/payment', stripe_ctrl.paymentAPI)
+
+//Session Controller
+app.get('/api/session', custc.getSessions)
 
 const port = 4000;
 app.listen(port, () => {

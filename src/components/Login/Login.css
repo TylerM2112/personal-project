@@ -1,0 +1,32 @@
+.login-main-container{   
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.admin-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-field{
+    width: 100px;
+    border: 1px black solid;
+}
+
+.login-button-container{
+    border: 1px rgb(0, 0, 0) solid;
+    width: 100px;
+    margin: 15px auto;
+    padding: 5px;
+}
+.login-button{
+    margin-left: 17px;
+    font-size: 15px;
+}

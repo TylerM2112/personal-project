@@ -7,7 +7,7 @@ module.exports = {
       if (users.length) {
         bcrypt.compare(password, users[0].password).then(passwordsMatch => {
           if (passwordsMatch) {
-            req.session.user = { username: users[0].username, isAdmin: true };
+            req.session.user = { username: users[0].username, isAdmin: users[0].isadmin};
             res.status(200).json(true);
           } else {
             res.status(418).json({ message: 'Incorrect Username/Password' })

@@ -1,28 +1,27 @@
 .footer-container{
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     background-color: black;
     width: 100vw;
-    height: 8vh;
+    height: 7vh;
     position: fixed;
     bottom: 0px;
 }
 .logo-container{
     background-color: black;
-    margin-left: 5%;    
 }
 
 .logo{
     height: 100%;
 }
-.nav-bar-container{
-}
 
-.nav-list{
+.nav-list-footer{
     display: flex;
     flex-direction: row;
 }
 
-.nav-link-text{
+.nav-link-text-footer{
     display: flex;
     flex-direction: row;
     color: white;
@@ -30,4 +29,5 @@
     text-transform: uppercase;
     margin-right: 15px;
     font-size: 10px;
+
 }

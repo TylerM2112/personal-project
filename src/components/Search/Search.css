@@ -1,18 +1,26 @@
 .search-landing-container{
     display: flex;
     flex-direction: column;
-    background-color: rgb(0, 100, 250);
+    background-color: rgb(255, 255, 255);
 }
 
 .search-filter-buttons{
-    /* margin-top: 20px; */
+    border: 1px black solid;
 }
+select {
+    border: 1px black solid;
+}
+.quantity-filter{
+    border: 1px black solid;
+}
+
 
 .search-product-div {
     flex: 1;
     margin: auto;
-    height: 150px;
+    height: 125px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 .product-image{
     height: 100px;

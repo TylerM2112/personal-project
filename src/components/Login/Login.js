@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateAdmin} from '../../redux/reducer';
-
+import { updateAdmin } from '../../redux/reducer';
 import Header from '../Header/Header';
-
 import axios from 'axios';
+
+import './Login.css';
 
 
 class Login extends Component {
@@ -32,7 +32,7 @@ class Login extends Component {
             username,
             password
         }).then(response => {
-            if (response.data === true) { 
+            if (response.data === true) {
                 const { updateAdmin } = this.props
                 updateAdmin();
                 this.setState({
@@ -41,31 +41,27 @@ class Login extends Component {
                 this.props.history.push("/admin");
             }
         }).catch(error => {
-            this.setState({ message: 'Something went wrong: ' + this.getMessage(error) });
+            this.setState({ message: 'Uh-Oh! Something went wrong: ' + this.getMessage(error) });
         });
     };
 
     render() {
         const { message } = this.state;
-        const { user } = this.state;
-        console.log(this.props);
-        const inputFields = <div>
-            Username: <input ref="username" />
-            {' '}
-            Password: <input type="password" ref="password" />
-            {' '}
-        </div>
+        
         return (
             <div className="login-main-container">
-            <Header />    
-                <div className="App-intro">
-                    {!user.isAdmin &&
-                        <div className="admin-login">
-                            <h2>Admin Login</h2>
-                            {inputFields}
-                            <button onClick={this.login}>Log in</button>
-                        </div>}
-                        <div> { message }</div>
+                <Header />
+                <div className="admin-login">
+                    <h2>Admin Login</h2>
+                    <div className="input-container">
+                        Username: <input className="input-field" ref="username" />
+                        Password: <input className="input-field" type="password" ref="password" />
+                    </div>
+                    
+                    <div className="login-button-container">
+                        <button className="login-button"onClick={this.login}>Login</button>
+                    </div>   
+                    <div> {message}</div>
                 </div>
             </div>
         );
@@ -80,4 +76,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {updateAdmin})(Login);
+export default connect(mapStateToProps, { updateAdmin })(Login);

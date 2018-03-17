@@ -3,10 +3,9 @@
     flex-direction: row;
     justify-content: space-between;
     background-color: black;
-    width: 100%;
+    width: 100vw;
     height: 7vh;
 }
-
 .logo-container{
     background-color: black;
 }
@@ -15,15 +14,22 @@
     height: 100%;
 }
 
+.nav-bar-container{
+    margin-top: 15px;
+}
+
 .nav-list{
     display: flex;
     flex-direction: row;
 }
 
 .nav-link-text{
+    display: flex;
+    flex-direction: row;
     color: white;
+    list-style-type: none;
     text-transform: uppercase;
     margin-right: 15px;
     font-size: 10px;
-}
 
+}

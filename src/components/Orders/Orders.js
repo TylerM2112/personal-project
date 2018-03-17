@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { updateAdmin } from '../../redux/reducer'
 
 import './Orders.css';
 
@@ -19,6 +20,14 @@ class Orders extends Component {
     }
 
     componentDidMount() {
+        axios.get('/api/session').then(res => { 
+            if (res.data.isAdmin === true) {
+                this.props.updateAdmin();
+                this.setState({
+                    isAdmin: true,
+                })
+             }
+        })
         axios.get('/api/orders').then(res => {
             console.log("ORDERS 18", res.data)
             this.setState({
@@ -26,6 +35,7 @@ class Orders extends Component {
                 orders: res.data,
             });
         });
+        
     }
     
     displayOrders() {
@@ -114,4 +124,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Orders);
+export default connect(mapStateToProps, {updateAdmin})(Orders);

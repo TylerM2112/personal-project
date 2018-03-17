@@ -210,15 +210,15 @@ class Cart extends Component {
                 </div>
                 {this.displayCartTotal()}
                 {this.props.user.submitted && this.props.user.cart.length !== 0 ?
-                    <button className="checkout-button" onClick={this.createOrder}>Check Out</button> : <div></div>
-                }
-                <div>
+                   <div>
                     <Checkout
                         name={'GENERIC SHOP TITLE'}
                         description={'100% AWESOME Tshirts!'}
                         amount={this.state.total}
                     />
-                </div>
+                </div>  : <div></div>
+                }
+                
             </div>
         );
     }

@@ -4,7 +4,8 @@
     z-index: -1;
     min-width: 100%; 
     min-height: 100%;
-    top: 8%;
+    top: 7%;
+    overflow: hidden;
 }
 .video{
   width: 100%;

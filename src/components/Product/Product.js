@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateCart } from '../../redux/reducer';
+import { updateCart, updateAdmin } from '../../redux/reducer';
 
 
 import './Product.css';
@@ -24,6 +24,21 @@ class Product extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.addToCart = this.addToCart.bind(this);
         this.handleQuantity = this.handleQuantity.bind(this);
+        this.backToSearch = this.backToSearch.bind(this);
+        this.headToCart = this.headToCart.bind(this);
+    }
+
+
+    componentDidMount() { 
+        axios.get('/api/session').then(res => { 
+            console.log("MUBMOMUMBO", res.data)
+            if (res.data.isAdmin === true) {
+                this.props.updateAdmin();
+                this.setState({
+                    isAdmin: true,
+                })
+             }
+        })
     }
 
 
@@ -91,6 +106,13 @@ class Product extends Component {
         this.setState({
             quantity: e.target.value
         })
+    }
+    
+    backToSearch() {
+        this.props.history.push('/search');
+    }
+    headToCart() {
+        this.props.history.push('/cart');
      }
 
     render() {
@@ -108,8 +130,8 @@ class Product extends Component {
                     : <div></div>}
                 
                 <div>
-                    <Link to="/search"><button>Back to Search</button></Link>
-                    <Link to="/cart"><button>Head to Cart</button></Link>
+                    <button onClick={this.backToSearch}>Back to Search</button>
+                    <button onClick={this.headToCart}>Head to Cart</button>
                 </div>
                 
                 <div className="solo-product-display">
@@ -120,7 +142,7 @@ class Product extends Component {
                     <p>Description: {description}</p>
 
                     <p>Price: {price}</p>
-                    {!this.props.user.isAdmin &&
+                    {!this.props.isAdmin &&
                         <div>
                         <label>Gender</label>
                             <select name="filters" onChange={(e) => {
@@ -219,4 +241,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {updateCart})(Product);
+export default connect(mapStateToProps, {updateCart, updateAdmin})(Product);

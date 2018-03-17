@@ -12,5 +12,9 @@ module.exports = {
             console.log("create customer controller error", error);
             res.status(500).json({ message: 'Bummer!' })
         });
-    }
+    },
+    getSessions: (req, res) => {
+        console.log("JUMOB MUMBO", req.session.user)
+        res.status(200).json(req.session.user);
+     }
 }

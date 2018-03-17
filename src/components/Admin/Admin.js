@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { updateAdmin } from '../../redux/reducer';
+import axios from 'axios';
 
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 class Admin extends Component {
+
+    componentDidMount() { 
+        axios.get('/api/session').then(res => { 
+            console.log("MUBMOMUMBO", res.data)
+            if (res.data.isAdmin === true) {
+                this.props.updateAdmin();
+                this.setState({
+                    isAdmin: true,
+                })
+             }
+        })
+    }
+
     render() {
         return (
             <div className="admin-home-container">
@@ -34,4 +49,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps)(Admin);
+export default connect(mapStateToProps, {updateAdmin})(Admin);

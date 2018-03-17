@@ -4,7 +4,7 @@ import axios from 'axios';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { connect } from 'react-redux';
-import { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge, updateImage } from '../../redux/reducer';
+import { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge, updateImage, updateAdmin } from '../../redux/reducer';
 
 import './AddItem.css';
 const CLOUDINARY_UPLOAD_PRESET = 'yoitcpgp';
@@ -17,8 +17,28 @@ class AddItem extends Component {
         this.state = {
             uploadedFile: '',
             uploadedFileCloudinaryURL: '',
+            isAdmin: false,
         }
         this.submitItem = this.submitItem.bind(this);
+        this.cancelAdd = this.cancelAdd.bind(this);
+    }
+
+    componentDidMount() { 
+        axios.get('/api/session').then(res => { 
+            console.log("MUBMOMUMBO", res.data)
+            if (res.data.isAdmin === true) {
+                this.props.updateAdmin();
+                this.setState({
+                    isAdmin: true,
+                })
+             }
+        })
+    }
+
+    componentDidUpdate(prevProps, prevState){
+        if (prevProps.user.isAdmin !== this.props.user.isAdmin) {
+            return true;
+        }
     }
 
     onImageDrop(files) { 
@@ -47,19 +67,27 @@ class AddItem extends Component {
       }
 
     submitItem() {
+        console.log("SUBMIT ITEM", this.props)
         axios.post('/api/products', this.props).then(res => {
         }).catch(error => {
             console.log("submit error", error);
-        })
+            })
+        window.location.reload();
     }
 
+    cancelAdd() {
+        this.props.history.push('/admin');
+     }
+
     render() {
-        // console.log("LOOK", this.state.uploadedFileCloudinaryUrl);
+        console.log("LOOK", this.props);
         const { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge } = this.props;
         return (
             <div className="add-home-container">
                 <Header />
-                <div className="add-item-box">
+                {console.log(this.props.user.isAdmin)}
+                {this.props.user.isAdmin ?
+                (<div className="add-item-box">
                     <Dropzone
                         multiple={false}
                         accept="image/*"
@@ -73,8 +101,7 @@ class AddItem extends Component {
           <img src={this.state.uploadedFileCloudinaryUrl} alt="shirt" />
         </div>}
                     <label htmlFor="name">Name</label>
-                    <input id="name" onChange={(e) => updateName(e.target.value)
-                    } />
+                    <input id="name" onChange={(e) => updateName(e.target.value)} />
                     <label htmlFor="description">description</label>
                     <input id="description" onChange={(e) => updateDescription(e.target.value)} />
                     <label htmlFor="price">price</label>
@@ -96,20 +123,25 @@ class AddItem extends Component {
                     <label htmlFor="woman-xlarge-size">woman-xlarge-size</label>
                     <input id="woman-xlarge-size" onChange={(e) => updateWomanXLarge(e.target.value)} />
                     <div className="buttons-container">
-                        <button onClick={this.submitItem}>SUBMIT</button>
-                        <button>CANCEL</button>
+                        <button onClick={this.submitItem}>SUBMIT</button> 
+                                <button onClick={this.cancelAdd}>CANCEL</button>
                     </div>
                 </div>
-                </div>
+                </div>)
+                :
+                <div>UNAUTHORIZED, TURN BACK NOW! 3...2...1...</div>
+            
+                }
             </div>    
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { name, description, price, manSmallSize, manMediumSize, manLargeSize, manXLargeSize, womanSmallSize, womanMediumSize, womanLargeSize, womanXLargeSize, image } = state;
+    const { user, name, description, price, manSmallSize, manMediumSize, manLargeSize, manXLargeSize, womanSmallSize, womanMediumSize, womanLargeSize, womanXLargeSize, image } = state;
 
     return {
+        user,
         name,
         description,
         price,
@@ -138,6 +170,7 @@ const mapDispatchToProps = {
     updateWomanLarge: updateWomanLarge,
     updateWomanXLarge: updateWomanXLarge,
     updateImage: updateImage,
+    updateAdmin: updateAdmin,
 
 }
 

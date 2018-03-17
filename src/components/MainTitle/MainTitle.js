@@ -5,14 +5,13 @@ import './MainTitle.css';
 const MainTitle = () => {
     return (
         <div className="title-content-container">
-            <div className="title-content-text">
+            <div className="header-content">    
                 <h1>GENERIC SHOP TITLE</h1>
-                <span />
-                <h4>"Leading innovator in E-Commerce" -Prestige World Wide</h4>
-                <span />
+            </div>
+            <div className="button-container">
                 <Link to="/search"><button className="shop-button">SHOP NOW</button></Link>
             </div>
-        </div>
+        </div>    
     );
 };
 

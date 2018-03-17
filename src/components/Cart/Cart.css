@@ -1,7 +1,6 @@
 .cart-page-container{
     display: flex;
     flex-direction: column;
-    position: relative;
 }
 .cart-content-container{
     display: flex;

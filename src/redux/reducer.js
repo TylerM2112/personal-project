@@ -43,13 +43,13 @@ const DELETE_FROM_CART = "DELETE_FROM_CART";
 const UPDATE_SUBMITTED = "UPDATED_SUBMITTED";
 const UPDATE_CUSTOMERID = "UPDATE_CUSTOMERID";
 const UPDATE_QUANTITY = "UPDATE_QUANTITY";
+const UPDATE_USER = "UPDATE_USER";
 
 export default function (state = initialState, action) {
     let newState = { ...state }
     switch (action.type) { 
         case UPDATE_NAME:   
-            newState.product.name = action.payload
-            return { ...newState};
+            return { ...state, name: action.payload };
         case UPDATE_DESCRIPTION:
             return { ...state, description: action.payload };
         case UPDATE_PRICE:
@@ -98,6 +98,9 @@ export default function (state = initialState, action) {
         case UPDATE_CUSTOMERID:
             newState.user.customerId = action.payload;
             return { ...newState };
+        case UPDATE_USER:
+            newState.user = action.payload;    
+            return {...newState}    
         default:
             return state;
     }
@@ -212,5 +215,5 @@ export function updateCustomerID(id) {
         type: UPDATE_CUSTOMERID,
         payload: id,
     }
- }
-
+}
+ 
