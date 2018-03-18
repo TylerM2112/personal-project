@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { updateAdmin } from '../../redux/reducer';
 import axios from 'axios';
 
+import './Admin.css';
+
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
@@ -26,11 +28,25 @@ class Admin extends Component {
             <div className="admin-home-container">
                 <Header />
                 {this.props.user.isAdmin ?   
-                    <div>
-                    <Link to="/search"><button>Search Inventory</button></Link>
-                    <Link to="/additem"><button>Add Invetory</button></Link>
-                    <Link to="/orders"><button>Orders</button></Link>
-                    Stripe Dashboard
+                    <div className="admin-container">
+                        <div className="admin-title">
+                        Admin Dashboard    
+                        </div>    
+                        <div className="admin-options">
+                              
+                        <div className="button-links"> 
+                            <Link to="/search"><button>Search Inventory</button></Link>
+                        </div>
+                        <div className="button-links">                         
+                            <Link to="/additem"><button>Add Inventory</button></Link>
+                        </div>
+                        <div className="button-links"> 
+                            <Link to="/orders"><button>Orders</button></Link>
+                        </div>
+                        <div className="button-links">                         
+                            <a href="https://dashboard.stripe.com/test/dashboard" target="_"><button>Stripe Dashboard</button></a>
+                            </div>
+                        </div>        
                 </div>
             :
                 <div className="turn-back">Unauthorized, TURN BACK NOW!</div>

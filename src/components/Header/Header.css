@@ -5,6 +5,8 @@
     background-color: black;
     width: 100vw;
     height: 7vh;
+    position: relative;
+    top: 0px;
 }
 .logo-container{
     background-color: black;
@@ -24,12 +26,13 @@
 }
 
 .nav-link-text{
+    text-decoration-line: none;
     display: flex;
     flex-direction: row;
-    color: white;
+    color: #0180ff;
     list-style-type: none;
     text-transform: uppercase;
     margin-right: 15px;
-    font-size: 10px;
+    font-size: 9px;
 
 }

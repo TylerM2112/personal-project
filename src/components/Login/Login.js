@@ -5,6 +5,7 @@ import Header from '../Header/Header';
 import axios from 'axios';
 
 import './Login.css';
+import Footer from '../Footer/Footer';
 
 
 class Login extends Component {
@@ -63,6 +64,7 @@ class Login extends Component {
                     </div>   
                     <div> {message}</div>
                 </div>
+                <Footer />
             </div>
         );
     }

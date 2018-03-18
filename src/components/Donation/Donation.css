@@ -1,0 +1,18 @@
+.donation-div{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    background: linear-gradient(to bottom, #03b3ff 60%, #0335ff 100%);
+    color: rgb(0, 0, 0);
+    
+}
+.donation-text{
+    margin: auto;
+    width: 75%;
+    font-size: 15px;
+    align-content: center;
+}
+
+.donation-text h1{
+    font-size: 20px;
+}

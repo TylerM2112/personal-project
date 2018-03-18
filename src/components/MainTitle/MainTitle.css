@@ -1,18 +1,18 @@
 
 .title-content-container{
-
     display: flex;
 	flex-direction: column;
     align-items: center;
     height: 175px;
-    width: 70%;
+    width: 100%;
     margin: auto;
     padding-bottom: 25px;
+    background-color: rgba(0, 0, 0, 0.486);
+    
 }
 
 .header-content{
-
-    color: white;
+    color: #0180ff;
     font-size: 10px;
     margin: auto;
 }
@@ -21,8 +21,8 @@
     height: 45px;
     border-radius: 25px;
     color: transparent;
-    border: 5px solid rgb(255, 255, 255);
-    color: rgb(255, 255, 255);
+    border: 5px solid #0180ff;
+    color: #0180ff;
     font-weight: 900;
     background-color: transparent;
 }

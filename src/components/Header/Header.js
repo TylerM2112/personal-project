@@ -57,7 +57,7 @@ class Header extends Component {
                     }
                     {this.props.user.isAdmin &&
                         <div className="nav-list">
-                            <Link to="/admin"><div className="nav-link-text">Admin Homepage</div></Link>
+                            <Link to="/admin"><div className="nav-link-text">Admin Dashboard</div></Link>
                             <Link to="/search"><div className="nav-link-text">Inventory</div></Link>
                             <Link to="/orders"><div className="nav-link-text">Orders</div></Link>
                             <Link to="/"><div className="nav-link-text" onClick={this.logout}>Logout</div></Link>

@@ -3,7 +3,16 @@
     display: flex;
     flex-direction: column;
     width: 100vw;
-    background-color: rgb(97, 8, 156);
-    color: rgb(250, 250, 250);
-    font-size: 30px;
+    background: linear-gradient(to bottom, #03ffcd 0%, #03b3ff 100%);
+    
+}
+.mission-text{
+    margin: auto;
+    width: 75%;
+    font-size: 15px;
+    align-content: center;
+}
+
+.mission-text h1{
+    font-size: 25px;
 }

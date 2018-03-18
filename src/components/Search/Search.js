@@ -32,14 +32,14 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/session').then(res => { 
+        axios.get('/api/session').then(res => {
             console.log("MUBMOMUMBO", res.data)
             if (res.data.isAdmin === true) {
                 this.props.updateAdmin();
                 this.setState({
                     isAdmin: true,
                 })
-             }
+            }
         })
         this.setState({
             loading: true
@@ -93,39 +93,51 @@ class Search extends Component {
         if (this.state.filteredProducts) {
             // eslint-disable-next-line
             this.state.filteredProducts.map((e) => {
-                productsToDisplay.push(<div className="search-product-div" id={e.id} key={e.id}>
-                            <div className="search-product-info">
-                                <Link to={{
-                                    pathname: `/product/${e.id}`,
-                                    state: e
-                                    }}>
-                                <div className="search-product-image">
+                productsToDisplay.push(
+                    <div className="search-product-container">
+                    <div className="search-image-text-container" id={e.id} key={e.id}>
+                        <Link to={{
+                            pathname: `/product/${e.id}`,
+                            state: e
+                        }}>
+                        
+                            <div className="search-product-image">
                                 <img className="product-image" src={e.image} alt="item" />
-                                </div></Link> 
-                                <div className="search-product-info">
-                                    Name: {e.name}
-                                    <br />
-                                    Price: {e.price}
-                            {this.props.user.isAdmin &&
-                            <div className="search-inventory-levels">   
-                                Man Small Size:{e.man_small_size}
-                                <br />
-                                Man Medium Size:{e.man_medium_size}
-                                <br />                              
-                                Man Large Size:{e.man_large_size}
-                                <br />
-                                Man XLarge Size:{e.man_xlarge_size}
-                                <br />
-                                Woman's Small Size:{e.woman_small_size}
-                                <br />
-                                Woman's Medium Size:{e.woman_medium_size}
-                                <br />
-                                Woman's Large Size:{e.woman_large_size}
-                                <br />
-                                Woman's XLarge Size:{e.woman_xlarge_size}
-                            </div>}
-                                </div>    
                             </div>
+                        </Link>
+                            <div className="search-product-text">
+                                {this.props.user.isAdmin &&
+                                    <p>Product ID: {e.id}</p>}    
+                                <p>Name:<br/>{e.name}</p>
+                                <p>Price: ${e.price}</p>
+                            </div>
+                    </div>
+                        
+                        {this.props.user.isAdmin &&
+                            
+                            <div className="search-inventory-levels">
+                            <div className="men-inventory-levels">
+                                    <p> Men's Inventory</p>
+                                Small: {e.man_small_size}
+                                <br />
+                                Medium: {e.man_medium_size}
+                                <br/>
+                                Large: {e.man_large_size}
+                                <br/>
+                                XLarge: {e.man_xlarge_size}
+                                <br/>
+                                </div>
+                                <div className="women-inventory-levels">
+                                    <p> Women's Inventory</p>   
+                                    Small: {e.woman_small_size}
+                                    <br />
+                                    Medium: {e.woman_medium_size}
+                                    <br />
+                                    Large: {e.woman_large_size}
+                                    <br />
+                                    XLarge: {e.woman_xlarge_size}
+                                </div>
+                            </div>}
                         </div>
                 );
 
@@ -134,7 +146,7 @@ class Search extends Component {
         // console.log("productsToDisplay", productsToDisplay);
         return productsToDisplay;
     }
-    
+
     render() {
         // console.log(this.state.filter);
         // console.log("HELLO");
@@ -143,7 +155,8 @@ class Search extends Component {
                 <Header />
                 <h1>Take a look around!</h1>
                 <div className="search-filter-buttons">
-                    <select name="filters" onChange={(e) => {
+                    <label htmlFor="gender">Gender</label>    
+                    <select name="gender" className="input-field" onChange={(e) => {
                         let filter = { ...this.state.filter, gender: e.target.value }
                         this.setState({
                             filter: filter
@@ -153,7 +166,8 @@ class Search extends Component {
                         <option value="man">Men's</option>
                         <option value="woman" >Women's</option>
                     </select>
-                    <select name="filters" onChange={(e) => {
+                    <label htmlFor="size">Size</label> 
+                    <select name="size" className="input-field" onChange={(e) => {
                         let filter = { ...this.state.filter, size: e.target.value }
                         this.setState({
                             filter: filter
@@ -165,13 +179,16 @@ class Search extends Component {
                         <option value="large" >Large</option>
                         <option value="xlarge" >XLarge</option>
                     </select>
-                    <input className="quantity-filter"onChange={(e) => {
+                    <label htmlFor="price">Price</label> 
+                    <input name="price" className="input-field" onChange={(e) => {
                         let filter = { ...this.state.filter, price: e.target.value }
                         this.setState({
                             filter: filter
                         })
                     }} />
-                    <button onClick={this.filterProducts}>FILTER</button>
+                    <div className="filter-button">
+                        <button className="button" onClick={this.filterProducts}>FILTER</button>
+                    </div>    
                 </div>
                 <div className="search-results">
                     {this.displayProducts()}
@@ -190,4 +207,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {updateAdmin})(Search);
+export default connect(mapStateToProps, { updateAdmin })(Search);

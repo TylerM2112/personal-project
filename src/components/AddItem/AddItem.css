@@ -1,18 +1,46 @@
 .add-home-container{
     display: flex;
     flex-direction: column;
+    width: 300px;
 }
 
-.add-item-box{
+.add-item-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    width: 30vw;
-    margin: auto auto;
-    padding-top: 100px;
+    margin: auto;
+}
+
+.dropzone-container{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.dropzone{
+    height: 150px;
+    width: 150px;
+    border: 1px black dotted;
+}
+.dropzone-image{
+    height: 150px;
+    width: 150px;
+}
+
+.additem-input-fields{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
 }
 
 .buttons-container{
     padding: 20px;
+    margin: auto;
+}
+
+.button{
+    border: 1px rgb(0, 0, 0) solid;
+    width: 100px;
+    margin: auto;
+    padding: 5px;
+    font-size: 15px;
 }
