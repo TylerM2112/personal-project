@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { deleteFromCart, updateSubmitted, updateCustomerID, updateQuantity } from '../../redux/reducer';
 import axios from 'axios';
 import Checkout from '../Checkout/Checkout';
+import { withRouter } from 'react-router-dom';
 
 
 import './Cart.css';
@@ -30,13 +31,6 @@ class Cart extends Component {
         this.updateQuantity = this.updateQuantity.bind(this);
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     if(this.state.user != nextProps.user){
-    //       this.setState({
-    //           myState: nextProps.user
-    //       }); 
-    //     }
-    //   }
 
     componentDidUpdate() {
         console.log("UPDATING")
@@ -182,10 +176,11 @@ class Cart extends Component {
     }
 
     render() {
-        console.log("RENDER CART LINE 93", this.state)
-        return (
+        
+        return (<div>
+                {this.props.user.isAdmin &&
+                    <Header />}
             <div className="cart-page-container">
-                <Header />
                 {!this.props.user.submitted && this.props.user.cart.length !== 0 ?
                     <div className="customer-form">
                         <label htmlFor="name">Name</label>
@@ -220,6 +215,7 @@ class Cart extends Component {
                 }
                 
             </div>
+            </div>
         );
     }
 }
@@ -232,4 +228,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { deleteFromCart, updateSubmitted, updateCustomerID, updateQuantity })(Cart);
+export default withRouter(connect(mapStateToProps, { deleteFromCart, updateSubmitted, updateCustomerID, updateQuantity })(Cart));

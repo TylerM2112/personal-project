@@ -1,35 +1,55 @@
 .admin-home-container{
     display: flex;
     flex-direction: column;
-    width: 100%;
-    height: 100%;
+    align-items: center;
+    height: 100vh;
     background-image: linear-gradient(to bottom, #01ff80 24%, #0180ff 70%,#4101ff 100%);
 }
 
 .admin-container{
     display: flex;
     flex-direction: column;
-    margin-top: 30px;
 }
+
 .admin-title{
     margin: auto;
     font-weight: 500px;
     text-decoration-line: underline;
 }
 
-.admin-options{
+.unauthorized-container{
     display: flex;
     flex-direction: column;
-    margin: 20px auto;
-}
-
-.button-links{
-    border: 1px black solid;
-    width: 130px;
-    margin: 10px;
-    border-radius: 20px;
+    margin:  40px auto;
 }
 
 .turn-back{
+    font-weight: 600;
+    color: black;
+    text-shadow: -1px 0 red, 0 1px red, 1px 0 red, 0 -1px red;
+}
 
+.admin-options{
+    display: flex;
+    flex-direction: column;
+    color: #0180ff;
+    margin: auto;
+}
+.button-links{
+    margin: 5px;
+    width: 100px;
+    height: 45px;
+    border-radius: 25px;
+    color: transparent;    
+    font-weight: 900;
+    background-color: transparent;
+    border: 5px solid #4101ff;
+    color: #4101ff;
+    letter-spacing: 1px;
+}
+.button-links:hover{
+    background-color: #4101ff;
+    border: none;
+    color: white;
+    cursor: pointer;
 }

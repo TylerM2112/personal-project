@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateAdmin } from '../../redux/reducer';
 
-
 import './Search.css';
-
-
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
-
 
 class Search extends Component {
 
@@ -151,10 +146,13 @@ class Search extends Component {
         // console.log(this.state.filter);
         // console.log("HELLO");
         return (
+            <div>
+                {this.props.user.isAdmin &&
+                    <Header />}
             <div className="search-landing-container">
-                <Header />
                 <h1>Take a look around!</h1>
-                <div className="search-filter-buttons">
+                <div className="search-filter-container">
+                <div className="search-inputs-container">    
                     <label htmlFor="gender">Gender</label>    
                     <select name="gender" className="input-field" onChange={(e) => {
                         let filter = { ...this.state.filter, gender: e.target.value }
@@ -182,19 +180,20 @@ class Search extends Component {
                     <label htmlFor="price">Price</label> 
                     <input name="price" className="input-field" onChange={(e) => {
                         let filter = { ...this.state.filter, price: e.target.value }
-                        this.setState({
+                        this.setState({ 
                             filter: filter
                         })
-                    }} />
-                    <div className="filter-button">
-                        <button className="button" onClick={this.filterProducts}>FILTER</button>
+                        }} />
+                    </div>    
+                    <div className="">
+                        <button className="filter-button" onClick={this.filterProducts}>FILTER</button>
                     </div>    
                 </div>
                 <div className="search-results">
                     {this.displayProducts()}
                 </div>
-                <Footer />
-            </div>
+                </div>
+            </div>    
         );
     }
 }
@@ -207,4 +206,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { updateAdmin })(Search);
+export default withRouter(connect(mapStateToProps, { updateAdmin })(Search));

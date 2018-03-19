@@ -1,20 +1,34 @@
 
-.title-content-container{
+.title-content-container{  
+  
     display: flex;
 	flex-direction: column;
     align-items: center;
-    height: 175px;
+    height: 155px;
     width: 100%;
     margin: auto;
-    padding-bottom: 25px;
-    background-color: rgba(0, 0, 0, 0.486);
-    
+    padding-bottom: -15px;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
+.title-content-container:after{
+    content: "";
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 160px 20px 160px;
+    border-color: transparent transparent #07FFC6 transparent;
+}
 .header-content{
+    font-family: 'Permanent Marker', cursive;
     color: #0180ff;
     font-size: 10px;
     margin: auto;
+}
+
+.button-container{
+
+    padding-bottom: 15px;
 }
 
 .shop-button{
@@ -26,9 +40,13 @@
     font-weight: 900;
     background-color: transparent;
 }
-/* .shop-button:hover{
-    background-color: rgb(30, 138, 189);
+.shop-button:hover{
+    background-color: #0180ff;
     border: none;
     color: white;
     cursor: pointer;
-} */
+}
+
+.donation-link{
+    text-decoration-line: none;
+}

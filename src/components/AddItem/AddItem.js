@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 import request from 'superagent';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge, updateImage, updateAdmin } from '../../redux/reducer';
-
+import Header from '../Header/Header';
 import './AddItem.css';
+
 const CLOUDINARY_UPLOAD_PRESET = 'yoitcpgp';
 const CLOUDINARY_UPLOAD_URL = 'https://api.cloudinary.com/v1_1/tylermiller/upload';
-
 
 class AddItem extends Component {
     constructor(props) {
@@ -83,8 +83,10 @@ class AddItem extends Component {
         console.log("LOOK", this.props);
         const { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge } = this.props;
         return (
+            <div>
+                {this.props.user.isAdmin &&
+                    <Header />}
             <div className="add-home-container">
-                <Header />
 
                 {this.props.user.isAdmin ?
 
@@ -137,7 +139,8 @@ class AddItem extends Component {
                     <div>UNAUTHORIZED, TURN BACK NOW! 3...2...1...</div>
 
                 }
-            </div>
+                </div>
+            </div>    
         );
     }
 }
@@ -179,4 +182,4 @@ const mapDispatchToProps = {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddItem);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AddItem));

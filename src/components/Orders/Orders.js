@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { updateAdmin } from '../../redux/reducer'
+import { updateAdmin } from '../../redux/reducer';
+import { withRouter } from 'react-router-dom';    
 
 import './Orders.css';
-
-import Header from '../Header/Header'; 
-import Footer from '../Footer/Footer';    
+import Header from '../Header/Header';
 
 class Orders extends Component {
     constructor(props) { 
@@ -94,8 +93,10 @@ class Orders extends Component {
     render() {
         
         return (
+            <div>
+                {this.props.user.isAdmin &&
+                    <Header />}
             <div className="orders-landing-container">
-                <Header />
                 {this.props.user.isAdmin ?   
                 <div className="header-title">
                 ORDERS
@@ -110,8 +111,8 @@ class Orders extends Component {
                     </div>
                     :
                 <div className="turn-back">Unauthorized! TURN BACK NOW!</div>}
-                <Footer />
-            </div>
+                </div>
+            </div>    
         );
     }
 }
@@ -124,4 +125,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {updateAdmin})(Orders);
+export default withRouter(connect(mapStateToProps, {updateAdmin})(Orders));

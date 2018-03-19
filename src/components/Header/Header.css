@@ -4,7 +4,6 @@
     justify-content: space-between;
     background-color: black;
     width: 100vw;
-    height: 7vh;
     position: relative;
     top: 0px;
 }
@@ -12,8 +11,10 @@
     background-color: black;
 }
 
-.logo{
-    height: 100%;
+.logo{    
+    width: 28px;
+    margin: 5px 5px;
+    padding: 0px;
 }
 
 .nav-bar-container{
@@ -31,8 +32,12 @@
     flex-direction: row;
     color: #0180ff;
     list-style-type: none;
+    text-decoration: none;
     text-transform: uppercase;
     margin-right: 15px;
-    font-size: 9px;
+    font-size: 10px;
 
+}
+a {
+    text-decoration: none;
 }

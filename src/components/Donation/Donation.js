@@ -12,11 +12,8 @@ const Donation = () => {
                     <p>Each year we choose a different non-profit coding education organization to donate a percentage of  sales to.</p>
                 </div>
                 <div>
-                    <p>This year, 5% of sales will be donated to <strong>Girls Who Code</strong></p>
+                    <p>This year, 5% of sales will be donated to <strong><a className="donation-link" href="https://girlswhocode.com/" target="_">Girls Who Code</a></strong>!</p>
                 </div>
-                <div>
-                    Take a moment and check them out <a href="https://girlswhocode.com/" target="_">HERE</a>
-                    </div>
             </div>
         </div>
     );

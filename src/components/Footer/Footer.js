@@ -7,8 +7,8 @@ import logo from '../../assets/cleftHeart.jpg'
 const Footer = () => {
     return (
         <div className="footer-container">
-            <div className="logo-container">
-                <Link to="/"><img className="logo" src={logo} alt="logo" /></Link>
+            <div className="logo-container-footer">
+                <Link to="/"><img className="logo-footer" src={logo} alt="logo" /></Link>
             </div>
             <div className="nav-bar-container-footer">
                 <ul className="nav-list-footer">

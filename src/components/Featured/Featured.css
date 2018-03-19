@@ -6,6 +6,7 @@
     background: linear-gradient(to bottom, #03ffcd 0%, #03b3ff 100%);
     
 }
+
 .mission-text{
     margin: auto;
     width: 75%;
@@ -14,5 +15,11 @@
 }
 
 .mission-text h1{
-    font-size: 25px;
+    font-size: 20px;
+    font-family: 'Permanent Marker', cursive;
+}
+.mission-text p{
+    font-family: 'Stone Handwriting Pro', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
 }

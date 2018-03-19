@@ -17,7 +17,6 @@ class Header extends Component {
         this.logout = this.logout.bind(this);
 
     }
-
     componentDidMount() {
         axios.get('/api/session').then(res => {
             if (res.data.isAdmin === true) {
@@ -44,15 +43,21 @@ class Header extends Component {
     render() {
         return (
             <div className="header-container">
-                <div className="logo-container">
-                    <Link to="/"><img className="logo" src={logo} alt="logo" /></Link>
-                </div>
+                <Link to="/"><div className="logo-container">
+                    <img className="logo" src={logo} alt="logo" />
+                </div></Link>
                 <div className="nav-bar-container">
                     {!this.props.user.isAdmin &&
                         <div className="nav-list">
+                        <div>
                             <Link to="/login"><div className="nav-link-text">Admin Login</div></Link>
+                        </div>
+                        <div>
                             <Link to="/search"><div className="nav-link-text">Shop</div></Link>
+                        </div>
+                        <div>
                             <Link to="/cart"><div className="nav-link-text">Cart</div></Link>
+                            </div>
                         </div>
                     }
                     {this.props.user.isAdmin &&

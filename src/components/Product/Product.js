@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { updateCart, updateAdmin } from '../../redux/reducer';
 
-
 import './Product.css';
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 
 class Product extends Component {
     constructor(props) {
@@ -120,8 +118,10 @@ class Product extends Component {
         const { name, description, price, image, man_small_size, man_medium_size, man_large_size, man_xlarge_size, woman_small_size, woman_medium_size, woman_large_size, woman_xlarge_size } = this.state;
         
         return (
+            <div>
+                {this.props.user.isAdmin &&
+                    <Header />}
             <div className="solo-product-container">
-                <Header />
 
                 {this.state.added === true ?
                     <div className="add-cart-message">
@@ -227,8 +227,8 @@ class Product extends Component {
                         <Link to="/search"><button onClick={this.deleteProductDB}>DELETE PRODUCT</button></Link>
                         </div>}
                 </div>
-                <Footer />
-            </div>
+                </div>
+            </div>    
         );
     }
 }
@@ -241,4 +241,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, {updateCart, updateAdmin})(Product);
+export default withRouter(connect(mapStateToProps, {updateCart, updateAdmin})(Product));

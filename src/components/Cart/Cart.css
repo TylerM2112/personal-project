@@ -1,6 +1,9 @@
 .cart-page-container{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #01ff80 24%, #0180ff 70%,#4101ff 100%);
 }
 .cart-content-container{
     display: flex;
@@ -11,6 +14,7 @@
     /* border: 2px red solid; */
     margin: 100px auto;
 }
+
 .customer-form{
     display: flex;
     flex-direction: column;

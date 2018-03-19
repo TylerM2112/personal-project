@@ -5,9 +5,7 @@ import { updateAdmin } from '../../redux/reducer';
 import axios from 'axios';
 
 import './Admin.css';
-
 import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 
 class Admin extends Component {
 
@@ -25,34 +23,27 @@ class Admin extends Component {
 
     render() {
         return (
+            <div>
+                {this.props.user.isAdmin &&
+                    <Header />}
             <div className="admin-home-container">
-                <Header />
                 {this.props.user.isAdmin ?   
                     <div className="admin-container">
                         <div className="admin-title">
-                        Admin Dashboard    
+                        <h1>Admin Dashboard</h1>
                         </div>    
                         <div className="admin-options">
-                              
-                        <div className="button-links"> 
-                            <Link to="/search"><button>Search Inventory</button></Link>
-                        </div>
-                        <div className="button-links">                         
-                            <Link to="/additem"><button>Add Inventory</button></Link>
-                        </div>
-                        <div className="button-links"> 
-                            <Link to="/orders"><button>Orders</button></Link>
-                        </div>
-                        <div className="button-links">                         
-                            <a href="https://dashboard.stripe.com/test/dashboard" target="_"><button>Stripe Dashboard</button></a>
-                            </div>
+                            <Link to="/search"><button className="button-links" >Search Inventory</button></Link>
+                            <Link to="/additem"><button className="button-links">Add Inventory</button></Link>
+                            <Link to="/orders"><button className="button-links">Orders</button></Link>
+                            <a href="https://dashboard.stripe.com/test/dashboard" target="_"><button className="button-links bottom">Stripe Dashboard</button></a>
                         </div>        
                 </div>
             :
-                <div className="turn-back">Unauthorized, TURN BACK NOW!</div>
-                }
-            <Footer />    
-            </div>
+               <div className="unauthorized-container"><div className="turn-back"><h1>UNAUTHORIZED! TURN BACK NOW!</h1></div></div>
+                }  
+                </div>
+                </div>
         );
     }
 }

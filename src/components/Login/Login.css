@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    height: 100vh;
     background-image: linear-gradient(to bottom, #01ff80 24%, #0180ff 70%,#4101ff 100%);
 }
 
@@ -10,7 +10,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px auto;
+    /* height: 100vh; */
+    margin: 30px auto;
 }
 .input-container{
     display: flex;
@@ -24,12 +25,17 @@
 }
 
 .login-button-container{
-    border: 1px rgb(0, 0, 0) solid;
-    width: 100px;
+    color: #0180ff;
+    font-size: 10px;
     margin: 15px auto;
-    padding: 5px;
 }
 .login-button{
-    margin-left: 17px;
-    font-size: 15px;
+    width: 100px;
+    height: 45px;
+    border-radius: 25px;
+    color: transparent;
+    border: 5px solid #4101ff;
+    color: #4101ff;
+    font-weight: 900;
+    background-color: transparent;
 }
