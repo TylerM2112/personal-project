@@ -24,6 +24,18 @@ class Search extends Component {
         }
         this.displayProducts = this.displayProducts.bind(this);
         this.filterProducts = this.filterProducts.bind(this);
+         
+    }
+
+    productGrabber = async () => { 
+            await axios.get('/api/products')
+            const data = await axios.get('/api/products');
+            // .then(res => {
+            this.setState({
+                loading: false,
+                products: data.data,
+                filteredProducts: data.data,
+            });
     }
 
     componentDidMount() {
@@ -39,13 +51,8 @@ class Search extends Component {
         this.setState({
             loading: true
         });
-        axios.get('/api/products').then(res => {
-            this.setState({
-                loading: false,
-                products: res.data,
-                filteredProducts: res.data,
-            });
-        });
+    this.productGrabber();
+        // });
     }
 
 
@@ -102,35 +109,35 @@ class Search extends Component {
                         </Link>
                             <div className="search-product-text">
                                 {this.props.user.isAdmin &&
-                                    <p>Product ID: {e.id}</p>}    
-                                <p>Name:<br/>{e.name}</p>
-                                <p>Price: ${e.price}</p>
+                                <div className="id-tag">
+                                    <h1>Product ID:</h1>
+                                    <p>{e.id}</p>
+                                </div>} 
+                                <div className="name-tag">
+                                    <h1>Name:</h1><p>{e.name}</p>
+                                </div>
+                                <div className="price-tag">
+                                <h1>Price:</h1><p> ${e.price}</p>
+                                </div>
                             </div>
                     </div>
                         
                         {this.props.user.isAdmin &&
                             
                             <div className="search-inventory-levels">
-                            <div className="men-inventory-levels">
-                                    <p> Men's Inventory</p>
-                                Small: {e.man_small_size}
-                                <br />
-                                Medium: {e.man_medium_size}
-                                <br/>
-                                Large: {e.man_large_size}
-                                <br/>
-                                XLarge: {e.man_xlarge_size}
-                                <br/>
+                                <div className="men-inventory-levels">
+                                    <h1>Men's Inventory</h1>
+                                    <p>Small: {e.man_small_size}</p>
+                                    <p>Medium: {e.man_medium_size}</p>
+                                    <p>Large: {e.man_large_size}</p>
+                                    <p>XLarge: {e.man_xlarge_size}</p>
                                 </div>
                                 <div className="women-inventory-levels">
-                                    <p> Women's Inventory</p>   
-                                    Small: {e.woman_small_size}
-                                    <br />
-                                    Medium: {e.woman_medium_size}
-                                    <br />
-                                    Large: {e.woman_large_size}
-                                    <br />
-                                    XLarge: {e.woman_xlarge_size}
+                                    <h1> Women's Inventory</h1>   
+                                    <p>Small: {e.woman_small_size}</p>
+                                    <p>Medium: {e.woman_medium_size}</p>
+                                    <p>Large: {e.woman_large_size}</p>
+                                    <p>XLarge: {e.woman_xlarge_size}</p>
                                 </div>
                             </div>}
                         </div>

@@ -4,27 +4,25 @@
     background-image: linear-gradient(to bottom, #4101ff 0%, #0180ff 10%,#01ff80 100%);
 }
 
-.search-landing-container h1{
+.search-landing-container > h1{
     color: #01ff80;
     margin: auto;
+    font-size: 30px;
+    text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 4.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
 }
-.search-filter-container label {
+.search-inputs-container label {
     color: rgb(0, 185, 247);
-    width: 100%;
 }
 
 .search-inputs-container{
-    border: 1px red solid;
     display: flex;
-    flex-direction: row;
-    width: 100%;
+    flex-direction: column;
 }
 
 .search-filter-container{
     display: flex;
     flex-direction: column;
-    margin:  10px auto;
-    padding: 10px;
+    margin: auto;
 }
 
 .filter-button{
@@ -39,8 +37,9 @@
     background-image: linear-gradient(to bottom, #01ff80 0%, #4101ff 50%,#01ff80 100%);
 }
 
-.price-input-field{
-    border-radius: 25px;
+.input-field{
+    background-color: #0180ff;
+    color: white;
 }
 
 select {
@@ -48,17 +47,19 @@ select {
 }
 
 .search-results{
-
+    margin-top: 10px;
 }
 
 .search-product-container{
     display: flex;
     flex-direction: column;
-    background-color: rgb(255, 255, 255);
+    background-color: #00000036;
     margin-bottom: 20px;
     width: 80%;
-    margin: 10px auto;
+    margin: 20px auto;
     border-radius: 25px;
+    border: 1px solid #0180ff;
+    box-shadow: -9px -9px 24px 0px rgba(0,0,0,0.67);
 }
 
 .search-image-text-container{
@@ -68,18 +69,35 @@ select {
    height: 150px;
 }
 
-.search-product-image{
-    
-}
-
 .product-image{
     height: 150px;
     width: 150px;
+    border-radius: 25px;
+    border: 1px black solid;
 }
 
 .search-product-text{
-    margin: auto;
-    /* padding: 8px; */
+    width: 150px;
+    margin: 0 auto;
+    padding-left: 5px;
+    margin-top: 10px;
+}
+.search-product-text > *{
+    margin-bottom: -13px;
+}
+.search-product-text h1{
+    font-size: 0.9em;
+    color: white;
+    letter-spacing: 1px;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: -18px;
+    text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
+}
+.search-product-text p{
+    font-size: 1rem;
+    color: white;
+    text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 1.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
 }
 
 .search-inventory-levels{
@@ -91,19 +109,24 @@ select {
 .men-inventory-levels{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    align-content: center;
-    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
 .search-inventory-levels p{
-    font-size: 15px;
-    text-decoration-line: underline;
     margin: auto;
+    font-size: 15px;
+}
+.men-inventory-levels h1{
+    font-size: 15px;
+    margin-left: 30px;
+}
+.women-inventory-levels h1{
+    font-size: 15px;
+    margin-left: 30px;
+    
 }
 
 .women-inventory-levels{
-    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
