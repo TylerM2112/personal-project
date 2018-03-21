@@ -8,16 +8,34 @@
 .donation-text{
     margin: auto;
     width: 75%;
-    font-size: 16px;
+    font-size: 1rem;
     align-content: center;
 }
 
 .donation-text h1{
     font-family: 'Permanent Marker', cursive;
-    font-size: 20px;
+    font-size: 1.3rem;
 }
 .donation-text p{
     font-family: 'Stone Handwriting Pro';
   font-style: normal;
   font-weight: 400;
+  font-size: 1.1rem;
+}
+@media (min-width: 426px){
+    .donation-text p{
+        font-size: 1.5rem;
+    }
+    .donation-text h1{
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px){
+    .donation-text p{
+        font-size: 1.75rem;
+    }
+    .donation-text h1{
+        font-size: 1.75rem;
+    }
 }

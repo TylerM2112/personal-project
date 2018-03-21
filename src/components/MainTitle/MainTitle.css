@@ -4,11 +4,11 @@
     display: flex;
 	flex-direction: column;
     align-items: center;
-    height: 155px;
     width: 100%;
     margin: auto;
-    padding-bottom: -15px;
-    background-color: rgba(0, 0, 0, 0.6);
+    /* background-color: rgba(0, 0, 0, 0.6); */
+    background: url(../../assets/codingwormhole.jpg) no-repeat center;
+    background-size: cover;
 }
 
 .title-content-container:after{
@@ -20,28 +20,54 @@
     border-color: transparent transparent #07FFC6 transparent;
 }
 .header-content{
-    font-family: 'Permanent Marker', cursive;
-    color: #0180ff;
-    font-size: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #000000;
+    font-size: 20px;
     margin: auto;
+    margin-bottom: 30px;
+    text-shadow: -3px 0 white, 0 3px rgb(255, 255, 255), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
+}
+
+.header-content h1{
+    margin-bottom: -10px;
+}
+.storename-content{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    letter-spacing: 2px;
+    color: #000000;
+    font-size: 20px;
+    margin: auto;
+    margin-top: 20px;
+    text-shadow: -2px 0 rgb(255, 255, 255), 0 3px rgb(255, 255, 255), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
+}
+
+.quote-div{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 20px;
+    font-size: 25px;
+    color: #000000;
+    text-shadow: -1px 0 white, 0 3px rgb(255, 255, 255), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
 }
 
 .button-container{
-
-    padding-bottom: 15px;
+    padding-bottom: 30px;
 }
 
 .shop-button{
-    height: 45px;
+    height: 50px;
+    width: 200px;
     border-radius: 25px;
-    color: transparent;
-    border: 5px solid #0180ff;
-    color: #0180ff;
+    border: 3px solid #ffffff;
+    color: #ffffff;
     font-weight: 900;
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.808);
 }
 .shop-button:hover{
-    background-color: #0180ff;
+    background-color: #000000;
     border: none;
     color: white;
     cursor: pointer;
@@ -49,4 +75,52 @@
 
 .donation-link{
     text-decoration-line: none;
+}
+
+@media (min-width: 426px){
+    .header-content h1{
+        /* font-size: 1.5rem; */
+    }
+    .shop-button{
+        height: 50px;
+        width: 100px;
+    }
+    .button-container{
+        padding-bottom: 25px;
+    }
+    .title-content-container{  
+        /* height: 200px; */
+    }
+    .title-content-container:after{
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 200px 40px 200px;
+        border-color: transparent transparent #07FFC6 transparent;
+    }
+
+}
+
+@media (min-width: 768px){
+    .header-content h1{
+        font-size: 2.5rem;
+    }
+    .shop-button{
+        height: 100px;
+        width: 200px;
+    }
+    .button-container{
+        padding-bottom: 50px;
+    }
+    .title-content-container{  
+    }
+    .title-content-container:after{
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 340px 40px 340px;
+        border-color: transparent transparent #07FFC6 transparent;
+    }
 }

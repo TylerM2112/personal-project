@@ -12,7 +12,7 @@
 }
 
 .logo{    
-    width: 28px;
+    width: 40px;
     margin: 5px 5px;
     padding: 0px;
 }
@@ -35,9 +35,25 @@
     text-decoration: none;
     text-transform: uppercase;
     margin-right: 15px;
-    font-size: 10px;
+    font-size: 0.8rem;
 
 }
 a {
     text-decoration: none;
+}
+
+@media (min-width: 426px){
+    .logo{
+       width: 50px;
+    }
+    .nav-link-text{
+        font-size: 1.3rem;
+        margin-top: 10px;
+    }
+}
+
+@media (min-width: 768px){
+    .logo{
+        width: 70px;
+    }
 }

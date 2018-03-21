@@ -86,61 +86,68 @@ class AddItem extends Component {
             <div>
                 {this.props.user.isAdmin &&
                     <Header />}
-            <div className="add-home-container">
+                <div className="add-home-container">
 
-                {this.props.user.isAdmin ?
+                    {this.props.user.isAdmin ?
 
-                    <div className="add-item-container">
-                        <div className="dropzone-container"> {this.state.uploadedFileCloudinaryUrl === '' ? null :
+                        <div className="add-item-container">
+                            <div className="dropzone-container"> {this.state.uploadedFileCloudinaryUrl === '' ? null :
 
-                            <div>
-                                <img src={this.state.uploadedFileCloudinaryUrl} className="dropzone-image" alt="shirt" />
-                            </div>}
-                            <Dropzone
-                                className="dropzone"
-                                multiple={false}
-                                accept="image/*"
-                                onDrop={this.onImageDrop.bind(this)}>
-                                <p>Drop an image or click to select a file to upload.</p>
-                            </Dropzone>
+                                <div className="dropzone-image-container">
+                                    <img src={this.state.uploadedFileCloudinaryUrl} className="dropzone-image" alt="shirt" />
+                                </div>}
+                                <Dropzone
+                                    className="dropzone"
+                                    multiple={false}
+                                    accept="image/*"
+                                    onDrop={this.onImageDrop.bind(this)}>
+                                    <p>Drop an image or click to select a file to upload.</p>
+                                </Dropzone>
+                            </div>
+                            <div className="additem-input-fields">
+                                <div className="additem-text-fields">
+                                    <label htmlFor="name">Name:</label>
+                                    <input className="input-field" id="name" onChange={(e) => updateName(e.target.value)} />
+                                    <label htmlFor="description">Description:</label>
+                                    <input className="input-field" id="description" onChange={(e) => updateDescription(e.target.value)} />
+                                    <label htmlFor="price">Price:</label>
+                                    <input className="input-field" id="price" onChange={(e) => updatePrice(e.target.value)} />
+                                </div>
+                                <div className="additem-Inventory">
+                                    <div className="additem-man-inventory-levels">
+                                        
+                                        <label htmlFor="man-small-size">Men's Small: </label>
+                                        <input className="input-field" id="man-small-size" onChange={(e) => updateManSmall(e.target.value)} />
+                                        <label htmlFor="man-medium-size">Medium: </label>
+                                        <input className="input-field" id="man-medium-size" onChange={(e) => updateManMedium(e.target.value)} />
+                                        <label htmlFor="man-large-size">Large: </label>
+                                        <input className="input-field" id="man-large-size" onChange={(e) => updateManLarge(e.target.value)} />
+                                        <label htmlFor="man-xlarge-size">XLarge: </label>
+                                        <input className="input-field" id="man-xlarge-size" onChange={(e) => updateManXLarge(e.target.value)} />
+                                    </div>
+                                    <div className="additem-womens-inventory-levels">
+                                        <label htmlFor="woman-small-size">Woman's Small: </label>
+                                        <input className="input-field" id="woman-small-size" onChange={(e) => updateWomanSmall(e.target.value)} />
+                                        <label htmlFor="woman-medium-size">Medium: </label>
+                                        <input className="input-field" id="woman-medium-size" onChange={(e) => updateWomanMedium(e.target.value)} />
+                                        <label htmlFor="woman-large-size">Large: </label>
+                                        <input className="input-field" id="woman-large-size" onChange={(e) => updateWomanLarge(e.target.value)} />
+                                        <label htmlFor="woman-xlarge-size">XLarge: </label>
+                                        <input className="input-field" id="woman-xlarge-size" onChange={(e) => updateWomanXLarge(e.target.value)} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="additem-buttons-container">
+                                <button className="additem-button" onClick={this.submitItem}>SUBMIT</button>
+                                <button className="additem-button" onClick={this.cancelAdd}>CANCEL</button>
+                            </div>
                         </div>
-                        <div className="additem-input-fields">
-                        <label htmlFor="name">Name:</label>
-                        <input className="input-field" id="name" onChange={(e) => updateName(e.target.value)} />
-                        <label htmlFor="description">Description:</label>
-                        <input className="input-field" id="description" onChange={(e) => updateDescription(e.target.value)} />
-                        <label htmlFor="price">Price:</label>
-                            <input className="input-field" id="price" onChange={(e) => updatePrice(e.target.value)} />
-                        <p><strong>Inventory Levels</strong></p>    
-                        <label htmlFor="man-small-size">Men's Small:</label>
-                        <input className="input-field" id="man-small-size" onChange={(e) => updateManSmall(e.target.value)} />
-                        <label htmlFor="man-medium-size">Men's Medium:</label>
-                        <input className="input-field" id="man-medium-size" onChange={(e) => updateManMedium(e.target.value)} />
-                        <label htmlFor="man-large-size">Men's Large:</label>
-                        <input className="input-field" id="man-large-size" onChange={(e) => updateManLarge(e.target.value)} />
-                        <label htmlFor="man-xlarge-size">Men's XLarge:</label>
-                        <input className="input-field" id="man-xlarge-size" onChange={(e) => updateManXLarge(e.target.value)} />
-                        <label htmlFor="woman-small-size">Woman's Small:</label>
-                        <input className="input-field" id="woman-small-size" onChange={(e) => updateWomanSmall(e.target.value)} />
-                        <label htmlFor="woman-medium-size">Woman's Medium:</label>
-                        <input className="input-field" id="woman-medium-size" onChange={(e) => updateWomanMedium(e.target.value)} />
-                        <label htmlFor="woman-large-size">Woman's Large:</label>
-                        <input className="input-field" id="woman-large-size" onChange={(e) => updateWomanLarge(e.target.value)} />
-                        <label htmlFor="woman-xlarge-size">Woman's XLarge:</label>
-                        <input className="input-field" id="woman-xlarge-size" onChange={(e) => updateWomanXLarge(e.target.value)} />
-                        </div>
-                            
-                        <div className="buttons-container">
-                            <button className="button" onClick={this.submitItem}>SUBMIT</button>
-                            <button className="button" onClick={this.cancelAdd}>CANCEL</button>
-                        </div>
-                    </div>
-                    :
-                    <div>UNAUTHORIZED, TURN BACK NOW! 3...2...1...</div>
-
-                }
+                        :
+                        <div className="unauthorized-container"><div className="turn-back"><h1>UNAUTHORIZED! TURN BACK NOW!</h1></div></div>
+                    }
                 </div>
-            </div>    
+            </div>
         );
     }
 }

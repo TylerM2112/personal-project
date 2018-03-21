@@ -1,6 +1,7 @@
 .search-landing-container{
     display: flex;
     flex-direction: column;
+    width: 100vw;
     background-image: linear-gradient(to bottom, #4101ff 0%, #0180ff 10%,#01ff80 100%);
 }
 
@@ -11,7 +12,7 @@
     text-shadow: rgb(0, 0, 0) 2px 0px 0px, rgb(0, 0, 0) 1.75517px 0.958851px 0px, rgb(0, 0, 0) 1.0806px 4.68294px 0px, rgb(0, 0, 0) 0.141474px 1.99499px 0px, rgb(0, 0, 0) -0.832294px 1.81859px 0px, rgb(0, 0, 0) -1.60229px 1.19694px 0px, rgb(0, 0, 0) -1.97998px 0.28224px 0px, rgb(0, 0, 0) -1.87291px -0.701566px 0px, rgb(0, 0, 0) -1.30729px -1.5136px 0px, rgb(0, 0, 0) -0.421592px -1.95506px 0px, rgb(0, 0, 0) 0.567324px -1.91785px 0px, rgb(0, 0, 0) 1.41734px -1.41108px 0px, rgb(0, 0, 0) 1.92034px -0.558831px 0px;
 }
 .search-inputs-container label {
-    color: rgb(0, 185, 247);
+    color: rgb(0, 0, 0);
 }
 
 .search-inputs-container{
@@ -36,6 +37,9 @@
     font-weight: 900;
     background-image: linear-gradient(to bottom, #01ff80 0%, #4101ff 50%,#01ff80 100%);
 }
+button:focus{
+    outline: 0;
+}
 
 .input-field{
     background-color: #0180ff;
@@ -55,7 +59,7 @@ select {
     flex-direction: column;
     background-color: #00000036;
     margin-bottom: 20px;
-    width: 80%;
+    /* width: 80%; */
     margin: 20px auto;
     border-radius: 25px;
     border: 1px solid #0180ff;
@@ -132,4 +136,67 @@ select {
     align-items: center;
     align-content: center;
     
+}
+
+@media (min-width: 0px){
+    .search-product-container{
+        width: 80%;
+    }
+}
+
+@media (min-width: 426px){
+    .search-product-container{
+        display: flex;
+        flex-direction: column;
+    }
+    .search-results{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .search-inputs-container label{}
+}
+
+@media (min-width: 768px){
+    .search-product-container{
+        display: flex;
+        flex-direction: column;
+        width: 27%
+    }
+    .search-results{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .search-filter-container{
+        display: flex;
+        flex-direction: row;
+        
+    }
+    .search-inputs-container{
+        display: flex;
+        flex-direction: row;
+        padding-right: 20px;
+    }
+
+    .search-landing-container{
+        padding-bottom: 200px;
+    }
+    .search-inputs-container label{
+        font-size: 30px;
+        padding-right: 15px;
+    }
+    .input-field{
+        background-color: #0180ff;
+        color: white;
+        height: 30px;
+        margin-top: 10px;
+        margin-right: 10px;
+    }
+    .search-product-text h1{
+        font-size: 20px;
+    }
+    .search-product-text{
+        width: 250px;
+    }
 }

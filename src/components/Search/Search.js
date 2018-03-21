@@ -59,6 +59,7 @@ class Search extends Component {
     filterProducts() {
         const { gender, size, price } = this.state.filter;
         let filterProducts = this.state.products.slice();
+        console.log(filterProducts);
         if (gender) {
             // eslint-disable-next-line
             filterProducts = filterProducts.filter(products => {
@@ -66,6 +67,7 @@ class Search extends Component {
                 if (+products[`${gender}_medium_size`] !== 0) return products;
                 if (+products[`${gender}_large_size`] !== 0) return products;
                 if (+products[`${gender}_xlarge_size`] !== 0) return products;
+
             });
 
         }

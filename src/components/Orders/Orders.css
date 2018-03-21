@@ -1,21 +1,82 @@
 .orders-landing-container{
-    display: flex;
-    flex-direction: column;
+    border: 1px transparent solid;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, #01ff80 0%, #4101ff 50%,#01ff80 100%);
 }
 
 .orders-content{
-    padding: 20px;
-    margin: auto;
-    width: 80%;
+
+    width: 90%;
     font-size: 20px;
+    margin: auto;
 }
 
-
-.header-title{
-    font-size: 40px;
-    text-decoration-line: underline;
-    padding: 20px;
+.column-header{
+    display: flex;
+    font-size: 15px;
+    justify-content: space-between;
+    align-content: space-between;
 }
-.order-line-content{
+.order-line-content > div{
 
+    display: flex;
+    flex-direction: row;
+    font-size: 15px;
+    justify-content: space-between;
+    align-content: space-between;
 }
+.orders-landing-container h1{
+    margin: auto 30%;
+}
+
+/* displayOrders() {
+    let displayedOrders = this.state.orders.map((e, i, arr) => {
+        return (
+            i === 0 ? 
+                <div className="order-line-content" key={e.id}>        
+                    <div>{e.id}</div>
+                    <div>{e.name}</div>
+                    <div>{e.address}</div>
+                    <div>{e.city}</div>
+                    <div>{e.state}</div>
+                    <div>{e.zip}</div>
+                    <div>{e.product_name}</div>
+                    <div>{e.products}</div>
+                    <div>{e.gender}</div>
+                    <div>{e.size}</div>
+                    <div>{e.quantity}</div>    
+                </div>
+                :
+                arr[i - 1].id === e.id ?
+                <div className="order-line-content" key={e.id}>
+                    <div> </div>
+                    <div> </div>
+                    <div> </div>
+                    <div> </div>
+                    <div> </div>
+                    <div> </div>
+                    <div>{e.product_name}</div>
+                    <div>{e.products}</div>
+                    <div>{e.gender}</div>
+                    <div>{e.size}</div>
+                    <div>{e.quantity}</div>       
+                </div> 
+                :
+                <div className="order-line-content" key={e.id}>
+                    <div>{e.id}</div>
+                    <div>{e.name}</div>
+                    <div>{e.address}</div>
+                    <div>{e.city}</div>
+                    <div>{e.state}</div>
+                    <div>{e.zip}</div>
+                    <div>{e.product_name}</div>
+                    <div>{e.products}</div>
+                    <div>{e.gender}</div>
+                    <div>{e.size}</div>
+                    <div>{e.quantity}</div>      
+                </div> 
+                    
+        )
+    })
+    return displayedOrders;
+ } */

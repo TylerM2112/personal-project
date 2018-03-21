@@ -1,7 +1,8 @@
 .add-home-container{
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    background-image: linear-gradient(to bottom, #4101ff 0%, #0180ff 10%,#01ff80 100%);
 }
 
 .add-item-container{
@@ -14,22 +15,56 @@
     display: flex;
     flex-direction: row;
     padding: 10px;
+    margin: auto;
 }
 
 .dropzone{
     height: 150px;
     width: 150px;
     border: 1px black dotted;
+    margin-left: 30px;
 }
 .dropzone-image{
     height: 150px;
     width: 150px;
 }
 
-.additem-input-fields{
+.additem-Inventory{
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-bottom: 20px;
+
+}
+.additem-text-fields{
     display: flex;
     flex-direction: column;
     margin: auto;
+    margin-bottom: 10px;
+}
+.additem-inventory-header{
+    margin: auto;
+    width: 100%
+}
+
+.additem-man-inventory-levels{
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+.additem-womens-inventory-levels{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.additem-input-fields{
+    display: flex;
+    flex-direction: column;
+}
+.additem-input-fields h1{
+    font-size: 19px;
 }
 
 .buttons-container{
@@ -37,10 +72,50 @@
     margin: auto;
 }
 
-.button{
-    border: 1px rgb(0, 0, 0) solid;
+.additem-button{
+    margin: 5px;
     width: 100px;
-    margin: auto;
-    padding: 5px;
-    font-size: 15px;
+    height: 30px;
+    border-radius: 25px;
+    color: transparent;    
+    font-weight: 900;
+    background-color: transparent;
+    border: 5px solid #4101ff;
+    color: #4101ff;
+    letter-spacing: 1px;
+}
+.additem-buttons-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.additem-button:hover{
+    background-color: #4101ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@media (min-width: 768px){
+    .additem-Inventory{
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+
+    }
+    .additem-text-fields{
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+    .additem-man-inventory-levels{
+        display: flex;
+        flex-direction: column;
+        margin-right: 15px;
+    }
+    .additem-womens-inventory-levels{
+        display: flex;
+        flex-direction: column;
+    }
 }

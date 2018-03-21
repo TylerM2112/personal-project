@@ -4,22 +4,39 @@
     flex-direction: column;
     width: 100vw;
     background: linear-gradient(to bottom, #03ffcd 0%, #03b3ff 100%);
-    
 }
 
 .mission-text{
     margin: auto;
     width: 75%;
-    font-size: 15px;
     align-content: center;
 }
 
 .mission-text h1{
-    font-size: 20px;
+    font-size: 1.3rem;
     font-family: 'Permanent Marker', cursive;
 }
 .mission-text p{
     font-family: 'Stone Handwriting Pro', Arial, Helvetica, sans-serif;
   font-style: normal;
   font-weight: 400;
+  font-size: 1.1rem;
+}
+
+@media (min-width: 426px){
+    .mission-text p{
+        font-size: 1.5rem;
+    }
+    .mission-text h1{
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px){
+    .mission-text p{
+        font-size: 2rem;
+    }
+    .mission-text h1{
+        font-size: 2rem;
+    }
 }

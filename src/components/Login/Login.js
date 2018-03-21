@@ -54,10 +54,10 @@ class Login extends Component {
                     <Header />}
                 <div className="login-main-container">
                     <div className="admin-login">
-                        <h2>Admin Login</h2>
+                        <h1>Admin Login</h1>
                         <div className="input-container">
-                            Username: <input className="input-field" ref="username" />
-                            Password: <input className="input-field" type="password" ref="password" />
+                            <label>Username: </label><input className="input-field" ref="username" />
+                            <label>Password: </label><input className="input-field" type="password" ref="password" />
                         </div>
 
                         <div className="login-button-container">

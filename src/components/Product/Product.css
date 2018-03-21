@@ -1,17 +1,180 @@
 .solo-product-container{
     display: flex;
     flex-direction: column;
+    background-image: linear-gradient(to bottom, #4101ff 0%, #0180ff 10%,#01ff80 100%);
+    padding-bottom: 50px;
 }
-
-
 
 .solo-product-display{
     display: flex;
     flex-direction: column;
-    margin:  15px auto;
+    margin-top: 20px;
+}
+.solo-product-image{
+    margin: auto;
+}
+.solo-product-image > img{
+    width: 250px;
+    margin: auto;
+    border-radius: 25%;
+    border: 1px #4101ff solid;
+    box-shadow: -9px -9px 24px 0px rgba(0,0,0,0.67);
+    
 }
 
-.solo-product-display > img{
-    transform: scale(.7);
-    height: 250px;
+.solo-info-container{
+    display: flex;
+    flex-direction: row;  
+    margin-top: 10px;
+}
+
+.solo-product-text{
+    margin-left: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+}
+
+.solo-product-text h1{
+    font-size: 1em;
+    margin: 0px;
+}
+.solo-product-text p{
+    font-size: 1em;
+    margin: 0px;
+}
+.solo-product-selects{
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    margin: auto;
+}
+
+.solo-button-container{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-between; */
+    margin:  5px auto;
+}
+
+.solo-product-button{
+    width: 75px;
+    height: 45px;
+    border-radius: 25px;
+    color: transparent;    
+    font-weight: 900;
+    background-color: transparent;
+    border: 5px solid #4101ff;
+    color: #4101ff;
+    letter-spacing: 1px;
+}
+
+.solo-product-button:hover{
+    background-color: #4101ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.add-cart-message{
+    background-color: #01ff80;
+    border: 2px #4101ff solid;
+    width: 90vw;
+    position: absolute;
+    top: 40%;
+    left: 5%;
+}
+.add-cart-message h1{
+    width: 80%;
+    color: #0180ff;
+    font-size: 1.4em;
+    margin: auto;
+    margin-left: 60px;
+    
+}
+
+.product-text-updates{
+    width: 50%;
+}
+
+.inventory-input-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.inventory-edit-list{
+    display: flex;
+    flex-direction: row;
+}
+.inventory-updates{
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    margin: 0 auto;
+}
+.solo-text-updates{
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    margin: auto;
+}
+.inventory-updates h1{
+    font-size: 20px;
+}
+.delete-button{
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    color: transparent;    
+    font-weight: 900;
+    background-color: black;
+    border: 5px solid red;
+    color: red;
+    letter-spacing: 3px;
+}
+
+.delete-button:hover{
+    background-color: red;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.delete-button-container{
+    margin: 20px auto;
+}
+
+.update-button{
+    margin: auto 0;
+    height: 25px;
+    border-radius: 25px;
+    color: transparent;
+    border: 4px solid #0180ff;
+    color: #0180ff;
+    font-weight: 700;
+    background-color: transparent;
+}
+.update-button:hover{
+    background-color: #0180ff;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+@media(min-width: 426px){
+    .solo-product-image > img{
+        width: 300px;
+    }
+}
+@media(min-width: 768px){
+    .solo-product-image > img{
+        width: 350px;
+    }
+    .solo-product-display{
+        width: 40%;
+        margin: auto;
+        margin-top: 20px;
+    }
+    .inventory-updates h1{
+        font-size: 2em;
+    }
 }

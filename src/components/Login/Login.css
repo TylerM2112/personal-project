@@ -39,3 +39,21 @@
     font-weight: 900;
     background-color: transparent;
 }
+.login-button:hover{
+        background-color: #4101ff;
+        border: none;
+        color: white;
+        cursor: pointer;
+    }
+
+@media(min-width: 768px){
+    .input-field{
+        width: 200px;
+    }
+    .login-button{
+        width: 150px;
+        height: 80px;
+        font-size: 30px;
+    }
+    
+}

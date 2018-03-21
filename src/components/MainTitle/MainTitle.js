@@ -5,11 +5,19 @@ import './MainTitle.css';
 const MainTitle = () => {
     return (
         <div className="title-content-container">
-            <div className="header-content">    
-                <h1>GENERIC SHOP TITLE</h1>
+            <div className="storename-content">    
+                <h1>shirtController.js</h1>
+            </div>
+            <div className="header-content">
+                <h1>UNIVERSAL DEV</h1>
+                <h1> T-SHIRT</h1>
+                <h1>REPOSITORY</h1>
+            </div>
+            <div className="quote-div">
+                <p><strong>WARP TO THE STORE</strong></p>
             </div>
             <div className="button-container">
-                <Link to="/search"><button className="shop-button">SHOP NOW</button></Link>
+                <Link to="/search"><button className="shop-button">SHOP WARP</button></Link>
             </div>
         </div>    
     );
