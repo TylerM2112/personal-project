@@ -138,13 +138,10 @@ class Product extends Component {
                             <div className="solo-info-container">
                                 <div className="solo-product-text">
                                     <div>
-                                        <h1>Name:</h1><p>{name}</p>
+                                        <p><strong>{name}</strong></p>
                                     </div>
                                     <div>
-                                        <h1>Description:</h1><p> {description}</p>
-                                    </div>
-                                    <div>
-                                        <h1>Price:</h1><p> ${price}</p>
+                                        <p> ${price}</p>
                                     </div>
                                 </div>
                                 <div className="solo-product-selects">
@@ -172,11 +169,11 @@ class Product extends Component {
                                         <option value="xlarge" >XLarge</option>
                                     </select>
                                     <label htmlFor="quantity">Quantity</label>
-                                    <input name="quantity" type="numeric" onChange={(e) => this.handleQuantity(e)} required />
-                                    <div className="solo-button-container">
-                                        <button className="solo-product-button" onClick={() => { this.addToCart() }}>ADD TO CART</button>
-                                    </div>
+                                    <input name="quantity" type="numeric" value="1" onChange={(e) => this.handleQuantity(e)} required />
                                 </div>
+                            </div>
+                            <div className="add-to-button-container">
+                                <button className="add-to-button" onClick={() => { this.addToCart() }}>ADD TO CART</button>
                             </div>
                         </div>}
                     {this.props.user.isAdmin &&
@@ -226,10 +223,10 @@ class Product extends Component {
                                     </div>
 
                                     <div className="inventory-input-container">
-                                            <button className="update-button" name="man_medium_size"
-                                                onClick={(e) => this.updateProductDB(e)}>Update
+                                        <button className="update-button" name="man_medium_size"
+                                            onClick={(e) => this.updateProductDB(e)}>Update
                                             </button>
-                                            <p>Medium: {man_medium_size}</p>
+                                        <p>Medium: {man_medium_size}</p>
                                     </div>
                                     <div className="inventory-input-container">
                                         <button className="update-button" name="man_large_size"

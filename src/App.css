@@ -1,25 +1,17 @@
 * {
     box-sizing: border-box;
 }
-/* h1 {
-    font-family: 'Permanent Marker', cursive; 
-} */
-/* p {
-    font-family: 'Stone Handwriting Pro';
-    font-style: normal;
-    font-weight: 400;
-    src: url(http://fonts.gstatic.com/l/font?kit=PbyzFnz_CwjSpffyj819Nin_ojeGj7JEywgDzwJ0crbI9EQuRaioMzUs0in-qtKOXOo&skey=8b0d05282a81a4c4&v=v1) format('woff2');
-} */
 input{
     padding: 0px;
     margin: 0px;
-    background-color: #0180ff;
+    background-color: #5fa8f0;
     color: white;
+    border-radius: 10px;
 }
 select{
     padding: 0px;
     margin: 0px;
-    background-color: #0180ff;
+    background-color: #5fa8f0;
     color: white;
 }
 
@@ -27,6 +19,14 @@ label{
     font-family: 'Permanent Marker', cursive;
 }
 button{
+    padding: 0px;
+    margin: 0px;
+}
+h4{
+    padding: 0px;
+    margin: 0px;
+}
+p{
     padding: 0px;
     margin: 0px;
 }

@@ -1,7 +1,6 @@
 .solo-product-container{
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(to bottom, #4101ff 0%, #0180ff 10%,#01ff80 100%);
     padding-bottom: 50px;
 }
 
@@ -14,67 +13,63 @@
     margin: auto;
 }
 .solo-product-image > img{
-    width: 250px;
+    width: 300px;
     margin: auto;
     border-radius: 25%;
-    border: 1px #4101ff solid;
+    border: 1px #0180ff solid;
     box-shadow: -9px -9px 24px 0px rgba(0,0,0,0.67);
     
 }
 
 .solo-info-container{
+
     display: flex;
-    flex-direction: row;  
+    flex-direction: column;  
     margin-top: 10px;
+    margin: auto;
+    width: 60%;
 }
 
 .solo-product-text{
-    margin-left: 5px;
+   
+    margin: 10px auto;
     display: flex;
     flex-direction: column;
-    width: 48%;
+    align-items: center;
 }
 
-.solo-product-text h1{
-    font-size: 1em;
-    margin: 0px;
-}
-.solo-product-text p{
-    font-size: 1em;
-    margin: 0px;
-}
 .solo-product-selects{
     display: flex;
     flex-direction: column;
     width: 48%;
-    margin: auto;
+    margin: 10px auto;
 }
 
-.solo-button-container{
+.add-to-button-container{
     display: flex;
     flex-direction: row;
     /* justify-content: space-between; */
-    margin:  5px auto;
+    margin: 15px auto;
 }
 
-.solo-product-button{
-    width: 75px;
+.add-to-button{
+    width: 300px;
     height: 45px;
     border-radius: 25px;
     color: transparent;    
     font-weight: 900;
-    background-color: transparent;
-    border: 5px solid #4101ff;
-    color: #4101ff;
+    background-color: #0180ff;
+    border: 3px black solid;
+    color: #000000;
     letter-spacing: 1px;
 }
 
-.solo-product-button:hover{
+/* .add-to-button:hover{
     background-color: #4101ff;
     border: none;
     color: white;
     cursor: pointer;
-}
+} */
 .add-cart-message{
     background-color: #01ff80;
     border: 2px #4101ff solid;

@@ -49,21 +49,26 @@ class Login extends Component {
         const { message } = this.state;
 
         return (
-            <div>
+            <div className="login-main-container">
                 {this.props.user.isAdmin &&
                     <Header />}
-                <div className="login-main-container">
-                    <div className="admin-login">
-                        <h1>Admin Login</h1>
-                        <div className="input-container">
-                            <label>Username: </label><input className="input-field" ref="username" />
-                            <label>Password: </label><input className="input-field" type="password" ref="password" />
+                <h1>Admin Login</h1>
+                <div className="admin-login">
+                    <div className="input-container">
+                        <div>
+                            <label>Username: </label>
+                            <input className="input-field" ref="username" />
                         </div>
-
-                        <div className="login-button-container">
-                            <button className="login-button" onClick={this.login}>Login</button>
+                        <div>
+                            <label>Password: </label>
+                            <input className="input-field" type="password" ref="password" />
                         </div>
-                        <div> {message}</div>
+                    </div>
+                    <div className="login-button-container">
+                        <button className="login-button" onClick={this.login}>Login</button>
+                    </div>
+                    <div className="error-message-container">
+                        {message}
                     </div>
                 </div>
             </div>

@@ -3,40 +3,36 @@
     display: flex;
     flex-direction: column;
     width: 100vw;
-    background: linear-gradient(to bottom, #03ffcd 0%, #03b3ff 100%);
+    background: white;
 }
 
-.mission-text{
-    margin: auto;
-    width: 75%;
+.featuredin-container{
+    display: flex;
     align-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.featured-logo-container{
+    width: 50%;
 }
 
-.mission-text h1{
-    font-size: 1.3rem;
-    font-family: 'Permanent Marker', cursive;
+.feature-title{
+    width: 35%;
+    margin: auto;
+    letter-spacing: 1px;
 }
-.mission-text p{
-    font-family: 'Stone Handwriting Pro', Arial, Helvetica, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 1.1rem;
+
+.featured-logo{
+    display: flex;
+    margin: auto;
+    width: 80%;
 }
 
 @media (min-width: 426px){
-    .mission-text p{
-        font-size: 1.5rem;
-    }
-    .mission-text h1{
-        font-size: 1.5rem;
-    }
+   
 }
 
 @media (min-width: 768px){
-    .mission-text p{
-        font-size: 2rem;
-    }
-    .mission-text h1{
-        font-size: 2rem;
-    }
+  
 }
