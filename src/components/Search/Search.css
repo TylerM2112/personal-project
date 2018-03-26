@@ -81,6 +81,22 @@ margin-left: 25%;
     margin-bottom: 10px;
 }
 
+.search-inventory-levels{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.men-inventory-levels{
+    margin-bottom: 10px;
+    
+    
+}
+.women-inventory-levels{
+
+}
+
 
 
 @media (min-width: 0px){

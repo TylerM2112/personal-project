@@ -91,11 +91,7 @@ class AddItem extends Component {
                     {this.props.user.isAdmin ?
 
                         <div className="add-item-container">
-                            <div className="dropzone-container"> {this.state.uploadedFileCloudinaryUrl === '' ? null :
-
-                                <div className="dropzone-image-container">
-                                    <img src={this.state.uploadedFileCloudinaryUrl} className="dropzone-image" alt="shirt" />
-                                </div>}
+                            <div className="dropzone-container"> 
                                 <Dropzone
                                     className="dropzone"
                                     multiple={false}
@@ -103,6 +99,11 @@ class AddItem extends Component {
                                     onDrop={this.onImageDrop.bind(this)}>
                                     <p>Drop an image or click to select a file to upload.</p>
                                 </Dropzone>
+                                {this.state.uploadedFileCloudinaryUrl === '' ? null :
+
+                                <div className="dropzone-image-container">
+                                    <img src={this.state.uploadedFileCloudinaryUrl} className="dropzone-image" alt="shirt" />
+                                </div>}
                             </div>
                             <div className="additem-input-fields">
                                 <div className="additem-text-fields">

@@ -54,7 +54,6 @@ app.post( '/api/cartRemove', cc.delete );
 //User Controller
 app.post('/api/login', ac.loginAdmin);
 app.post('/api/logout', ac.logout);
-// console.log("HASHED KEY", bcrypt.hash("123", saltRounds).then(res => console.log(res)))
 
 //Orders Controller
 app.get('/api/orders', oc.getOrders);

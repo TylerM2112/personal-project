@@ -2,62 +2,43 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: linear-gradient(to bottom, #01ff80 24%, #0180ff 70%,#4101ff 100%);
-    padding-bottom: 75px;
+    background: rgb(255, 255, 255);
+    border: 2px black solid;
+    right: 0px;
 }
 .cart-content-container{
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    width: 80vw;
-    margin: 30px auto;
+    height: 70vh;
+    color: rgb(0, 0, 0);
 }
 
 .cart-item-displayed{
-    border: 1px #4101ff solid;
-    box-shadow: -9px -9px 24px 0px rgba(0,0,0,0.67);
-    margin: auto;
-    margin-bottom: 15px;
+   
 }
 
 .cart-image-container{
-    margin: 10px;
 }
 
 .cart-image{
-    width: 100px;
 
 }
 .customer-form{
-    display: flex;
-    flex-direction: column;
-    background-image: linear-gradient(to bottom, #01ff80 24%, #0180ff 70%,#4101ff 100%);
-    box-shadow: -9px -9px 24px 0px rgba(0,0,0,0.67);    
-    height: 80%;
-    width: 80%;
-    position: absolute;
-    top: 100px;
-    left: 10%;
+    
 }
 .customer-form p {
-    width: 70%;
-    margin: auto 25%;
+    
 }
 .customer-form h1 {
-    font-size: 1rem;
-    width: 90%;
-    margin: auto 10%;
+   
 }
 .customer-form input{
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    margin: auto;
+  
 }
 .customer-form label{
-    color: black;
-    margin: auto;
+  
 }
 
 .remove-button{
@@ -67,25 +48,16 @@
 .customer-form > *{
 }
 .checkout-containter{
-    margin-bottom: 20px;
+  
 }
 .checkout-button{
-    width: 100px;
-    height: 75px;
-    margin: auto;
+   
 }
 @media (min-width: 426px){
-    .cart-page-container{
-        padding-bottom: 200px;
-    }
+ 
 
 }
 
 @media (min-width: 768px){
-    .customer-form{
-        width: 75%;
-    }
-    .customer-form label{
-        font-size: 1.5em;
-    }
+   
 }    

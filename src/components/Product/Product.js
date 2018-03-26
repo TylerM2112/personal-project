@@ -88,15 +88,12 @@ class Product extends Component {
                             added: true,
                         })
                     }).catch(error => {
-                        console.log("ADD TO SESSION CART", error);
+                        console.log("ADD TO SESSION CART ERROR", error);
                     })
                     setTimeout(() => {
                         this.setState({ added: false })
                     }, 2000)
-                } else {
-                    alert('Please fill in Gender, Size, and Quantity!')
-                }
-
+                } 
             }
         }
     }
@@ -125,7 +122,7 @@ class Product extends Component {
                 <div className="solo-product-container">
                     {this.state.added === true ?
                         <div className="add-cart-message">
-                            <h1>Item added to cart!</h1>
+                            <h4>Item added to cart!</h4>
                         </div>
                         :
                         <div></div>}
@@ -169,7 +166,7 @@ class Product extends Component {
                                         <option value="xlarge" >XLarge</option>
                                     </select>
                                     <label htmlFor="quantity">Quantity</label>
-                                    <input name="quantity" type="numeric" value="1" onChange={(e) => this.handleQuantity(e)} required />
+                                    <input name="quantity" onChange={(e) => this.handleQuantity(e)} required />
                                 </div>
                             </div>
                             <div className="add-to-button-container">
@@ -187,9 +184,9 @@ class Product extends Component {
                             </div>
                             <div className="solo-text-updates">
                                 <div className="solo-product-text">
-                                    <h1>Name:</h1><p>{name}</p>
-                                    <h1>Description:</h1><p> {description}</p>
-                                    <h1>Price:</h1><p> ${price}</p>
+                                    <h4>Name:</h4><p>{name}</p>
+                                    <h4>Description:</h4><p> {description}</p>
+                                    <h4>Price:</h4><p> ${price}</p>
                                 </div>
                                 <div className="product-text-updates">
 
@@ -215,7 +212,7 @@ class Product extends Component {
 
 
                                 <div className="inventory-updates">
-                                    <h1>Men's Sizes</h1>
+                                    <h4>Men's Sizes</h4>
                                     <div className="inventory-input-container">
                                         <button className="update-button" name="man_small_size"
                                             onClick={(e) => this.updateProductDB(e)}>Update</button>
@@ -242,7 +239,7 @@ class Product extends Component {
 
                                 <div className="inventory-updates">
                                     <div>
-                                        <h1>Women's Sizes</h1>
+                                        <h4>Women's Sizes</h4>
                                     </div>
                                     <div className="inventory-input-container">
                                         <button className="update-button" name="woman_small_size"

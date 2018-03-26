@@ -3,7 +3,6 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    background-image: linear-gradient(to bottom, #01ff80 24%, #0180ff 70%,#4101ff 100%);
 }
 
 .admin-container{
@@ -14,7 +13,7 @@
 .admin-title{
     margin: auto;
     font-weight: 500px;
-    text-decoration-line: underline;
+    border-bottom: 1px black solid;
 }
 
 .unauthorized-container{
@@ -34,30 +33,25 @@
     flex-direction: column;
     color: #0180ff;
     margin: auto;
+    margin-top: 20px;
 }
-.button-links{
-    margin: 5px;
-    width: 100px;
-    height: 45px;
+.option-button{
+    height: 35px;
+    width: 150px;
     border-radius: 25px;
-    color: transparent;    
+    border: 3px solid #5fa8f0;
+    color: #ffffff;
     font-weight: 900;
-    background-color: transparent;
-    border: 5px solid #4101ff;
-    color: #4101ff;
-    letter-spacing: 1px;
+    background-color: rgba(0, 0, 0, 0.808);
+    margin-bottom: 15px;
 }
-.button-links:hover{
-    background-color: #4101ff;
+.option-button:hover{
+    background-color: #000000;
     border: none;
     color: white;
     cursor: pointer;
 }
 
 @media(min-width: 768px){
-    .button-links{
-        height: 100px;
-        width: 200px;
-        font-size: 20px;
-    }
+   
 }

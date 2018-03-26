@@ -2,27 +2,25 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(to bottom, #4101ff 0%, #0180ff 10%,#01ff80 100%);
 }
 
 .add-item-container{
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: 20px auto;
 }
 
 .dropzone-container{
     display: flex;
     flex-direction: row;
     padding: 10px;
-    margin: auto;
+    margin: 0px;
 }
 
 .dropzone{
     height: 150px;
     width: 150px;
     border: 1px black dotted;
-    margin-left: 30px;
 }
 .dropzone-image{
     height: 150px;
@@ -71,26 +69,22 @@
     padding: 20px;
     margin: auto;
 }
-
-.additem-button{
-    margin: 5px;
-    width: 100px;
-    height: 30px;
-    border-radius: 25px;
-    color: transparent;    
-    font-weight: 900;
-    background-color: transparent;
-    border: 5px solid #4101ff;
-    color: #4101ff;
-    letter-spacing: 1px;
-}
 .additem-buttons-container{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+.additem-button{
+    height: 35px;
+    width: 150px;
+    border-radius: 25px;
+    border: 3px solid #5fa8f0;
+    color: #ffffff;
+    font-weight: 900;
+    background-color: rgba(0, 0, 0, 0.808);
+}
 .additem-button:hover{
-    background-color: #4101ff;
+    background-color: #000000;
     border: none;
     color: white;
     cursor: pointer;

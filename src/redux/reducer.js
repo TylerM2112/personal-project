@@ -47,8 +47,8 @@ const UPDATE_USER = "UPDATE_USER";
 
 export default function (state = initialState, action) {
     let newState = { ...state }
-    switch (action.type) { 
-        case UPDATE_NAME:   
+    switch (action.type) {
+        case UPDATE_NAME:
             return { ...state, name: action.payload };
         case UPDATE_DESCRIPTION:
             return { ...state, description: action.payload };
@@ -71,9 +71,9 @@ export default function (state = initialState, action) {
         case UPDATE_WOMANXLARGE:
             return { ...state, womanXLargeSize: action.payload };
         case UPDATE_QUANTITY:
-            let index = newState.user.cart.findIndex((e) => e.id === +action.payload.id);  
+            let index = newState.user.cart.findIndex((e) => e.id === +action.payload.id);
             newState.user.cart[index].quantity = action.payload.quantity
-            return { ...newState};    
+            return { ...newState };
         case UPDATE_IMAGE:
             return { ...state, image: action.payload };
         case UPDATE_ISADMIN:
@@ -85,9 +85,10 @@ export default function (state = initialState, action) {
             newerState.user.isAdmin = false;
             return { ...newerState };
         case UPDATE_CART:
+            console.log("reducer")
             newState.user.cart.push(action.payload);
-            newState.user.total += (+action.payload.price * +action.payload.quantity); 
-            return { ...newState};
+            newState.user.total += (+action.payload.price * +action.payload.quantity);
+            return {...newState};
         case DELETE_FROM_CART:
             newState.user.cart = action.payload.cart;
             newState.user.total = action.payload.total;

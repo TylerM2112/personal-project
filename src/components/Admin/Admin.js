@@ -33,10 +33,10 @@ class Admin extends Component {
                         <h1>Admin Dashboard</h1>
                         </div>    
                         <div className="admin-options">
-                            <Link to="/search"><button className="button-links" >Search Inventory</button></Link>
-                            <Link to="/additem"><button className="button-links">Add Inventory</button></Link>
-                            <Link to="/orders"><button className="button-links">Orders</button></Link>
-                            <a href="https://dashboard.stripe.com/test/dashboard" target="_"><button className="button-links bottom">Stripe Dashboard</button></a>
+                            <Link to="/search"><button className="option-button" >Search Inventory</button></Link>
+                            <Link to="/additem"><button className="option-button">Add Inventory</button></Link>
+                            <Link to="/orders"><button className="option-button">Orders</button></Link>
+                            <a href="https://dashboard.stripe.com/test/dashboard" target="_"><button className="option-button bottom">Stripe Dashboard</button></a>
                         </div>        
                 </div>
             :

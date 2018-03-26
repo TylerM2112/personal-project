@@ -1,4 +1,4 @@
-.header-container {
+.header-container {  
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -11,35 +11,71 @@
     background-color: black;
 }
 
-.logo{    
-    width: 40px;
-    margin: 5px 5px;
-    padding: 0px;
+.logo{ 
+    width: 60px;
 }
 
-.nav-bar-container{
-    margin-top: 15px;
-}
+.nav {
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+  }
+  
+  .links {
+    display: none;
+  }
 
-.nav-list{
-    display: flex;
-    flex-direction: row;
-}
+  .nav-link-text{
+      padding-bottom: 10px;
+  }
+  
+  .menu {    
+    display: initial;
+  }
+  .menu > div {
+      margin-top: 25%;
+      margin-left: 10px;
+      width: 30px;  
+      font-size: 25px;
+  }
+  .cart-menu {  
+    display: initial;
+    margin-top: 10px;
+    margin-right: 10px;
+  }
+  .cart-menu img{
+      height: 40px;
+      width: 40px;
+  }
+  
+  .bin a{
+      color: white;
+      text-decoration: none;
+  }
 
-.nav-link-text{
-    text-decoration-line: none;
-    display: flex;
-    flex-direction: row;
-    color: #0180ff;
-    list-style-type: none;
-    text-decoration: none;
-    text-transform: uppercase;
-    margin-right: 15px;
-    font-size: 0.8rem;
-
+.bin {
+  display: initial;
+  position: absolute;
+  left: 0px;
+  width: 30vw;
+  padding-top: 20px;
+  padding-left: 10px;
+  background: rgb(0, 0, 0);
+  align-content: center;
 }
-a {
-    text-decoration: none;
+.closedBin{
+  display: none;
+}
+.cart{
+  display: initial;
+  position: absolute;
+  right: 0px;
+  top: 58px;
+  width: 45vw;
+  background: rgb(250, 1, 1);
+  align-content: center;
+}
+.closedCart{
+  display: none;
 }
 
 @media (min-width: 426px){
@@ -57,3 +93,30 @@ a {
         width: 70px;
     }
 }
+
+/* .nav-bar-container{
+    margin-top: 15px;
+}
+
+.nav-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+
+.nav-link-text{
+    text-decoration-line: none;
+    display: flex;
+    flex-direction: row;
+    color: #0180ff;
+    list-style-type: none;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-right: 15px;
+    font-size: 0.8rem;
+
+}
+a {
+    text-decoration: none;
+} */

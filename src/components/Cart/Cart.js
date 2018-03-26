@@ -8,8 +8,6 @@ import { withRouter } from 'react-router-dom';
 
 import './Cart.css';
 
-import Header from '../Header/Header';
-
 class Cart extends Component {
     constructor(props) {
         super();
@@ -35,7 +33,7 @@ class Cart extends Component {
     }
 
     displayCartItems(props) {
-        let displayedString = 'Your cart is empty, head over to the shop!';
+        let displayedString = <h4>Your cart is empty, head over to the shop!</h4>;
         return (
             this.props.user.cart.length !== 0 ?
                 this.props.user.cart.map((e) => {
@@ -158,10 +156,9 @@ class Cart extends Component {
 
     render() {
         
-        return (<div>
-                {this.props.user.isAdmin &&
-                    <Header />}
+        return (
             <div className="cart-page-container">
+            {console.log("TAKE A LOOK", this.props.user)}    
                 {!this.props.user.submitted && this.props.user.cart.length !== 0 ?
                     <div className="customer-form">
                     <h1>Please fill out your shipping information!</h1>    
@@ -196,7 +193,6 @@ class Cart extends Component {
                 </div>  : <div></div>
                 }
                 
-            </div>
             </div>
         );
     }
