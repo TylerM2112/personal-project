@@ -14,8 +14,7 @@ class Home extends Component {
     render() {
         return (
             <div>
-                {this.props.user.isAdmin &&
-                    <Header />}
+                    <Header />
             <div className="home-container">
                 <VideoBanner />
                 <MainTitle />
@@ -28,10 +27,9 @@ class Home extends Component {
 }
 
 function mapStateToProps(state) {
-    const { user } = state;
 
     return {
-        user
+        state
     };
 }
 

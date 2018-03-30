@@ -48,6 +48,7 @@ app.put('/api/products', pc.updateProduct);
 app.delete('/api/product/:id', pc.deleteProduct);
 
 //Cart Controller
+app.get('/api/cart', cc.read)
 app.post( '/api/cart', cc.add );
 app.post( '/api/cartRemove', cc.delete );
 

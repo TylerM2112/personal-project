@@ -18,9 +18,6 @@ import Admin from './components/Admin/Admin';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        {!this.props.user.isAdmin &&
-          <Header />}
         <div>
           <Switch>
             <Route exact path="/" component={Home} />
@@ -32,7 +29,6 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/admin" component={Admin} />
           </Switch>
-        </div>
         <Footer />
       </div>
     );
@@ -41,10 +37,9 @@ class App extends Component {
 
 
 function mapStateToProps(state) {
-  const { user } = state;
 
   return {
-    user
+    state
   };
 }
 

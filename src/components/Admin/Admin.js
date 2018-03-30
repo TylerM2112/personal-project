@@ -24,10 +24,9 @@ class Admin extends Component {
     render() {
         return (
             <div>
-                {this.props.user.isAdmin &&
-                    <Header />}
+                <Header />
             <div className="admin-home-container">
-                {this.props.user.isAdmin ?   
+                {this.props.state.isAdmin ?   
                     <div className="admin-container">
                         <div className="admin-title">
                         <h1>Admin Dashboard</h1>
@@ -49,10 +48,9 @@ class Admin extends Component {
 }
 
 function mapStateToProps(state) {
-    const { user } = state;
 
     return {
-        user
+        state
     };
 }
 

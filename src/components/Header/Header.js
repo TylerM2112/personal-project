@@ -23,18 +23,38 @@ class Header extends Component {
         this.logout = this.logout.bind(this);
         this.isOpen = this.isOpen.bind(this);
         this.cartOpen = this.cartOpen.bind(this);
-        this.updateCartCount = this.updateCartCount.bind(this);
+        // this.updateCartCount = this.updateCartCount.bind(this);
     }
+    // cartGrabber = async () => {
+    //     const data = await axios.get('/api/cart');
+    //     this.setState({
+    //         loading: false,
+    //         cart: data.data,
+    //     });
+    // }
+    // componentWillMount() {
+    //     this.cartGrabber();
+    // }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.state.isAdmin !== this.props.state.isAdmin) {
+            return true;
+        }
+    }
+   
     componentDidMount() {
         axios.get('/api/session').then(res => {
             if (res.data.isAdmin === true) {
                 this.props.updateAdmin();
                 this.setState({
                     isAdmin: true,
+                    cart: this.props.cart,
                 })
             }
         })
+        // this.props.updateCount();
     }
+
 
     logout = () => {
         axios.post('/api/logout').then(response => {
@@ -57,26 +77,26 @@ class Header extends Component {
     }
 
     updateCartCount() {
-        console.log("HERE IS NEXTPROPS", this.props.cart);
-        if (this.state.cartCount === this.props.cart.length) {
+        // console.log("HERE IS NEXTPROPS", this.props.cart);
+        if (this.state.cartCount === this.props.state.cart.length) {
 
         } else { 
             this.setState({
-                cartCount: this.props.cart.length
+                cartCount: this.props.state.cart.length
             })
         }
-        console.log(this.props.user)
-        return this.props.cart.length;
+        return this.state.cartCount;
     }
 
 
     render() {
+        console.log("NEW NEW NEW", this.props)
         return (
             <div className="header-container">
                 <div className="nav">
                     <div className="menu" onClick={this.isOpen}><div>☰</div></div>
                     <div className={this.state.isOpen ? "bin" : "closedBin"}>
-                        {!this.props.user.isAdmin &&
+                        {!this.props.state.isAdmin &&
                             <div className="">
                                 <div>
                                     <Link to="/"><div className="nav-link-text">Home</div></Link>
@@ -91,7 +111,7 @@ class Header extends Component {
 
                             </div>
                         }
-                        {this.props.user.isAdmin &&
+                        {this.props.state.isAdmin &&
                             <div className="">
                                 <Link to="/admin"><div className="nav-link-text">Admin Dashboard</div></Link>
                                 <Link to="/search"><div className="nav-link-text">Inventory</div></Link>
@@ -106,9 +126,12 @@ class Header extends Component {
                 </div></Link>
                 <div className="cart-menu" onClick={this.cartOpen}>
                     <img src={cartimage} alt="cart" />
-                    {this.state.cartCount}
+                    {this.updateCartCount()}
                 </div>
                 {this.state.cartOpen ? <div className="cart"><Cart /></div> : "closedCart"}
+
+
+                
             </div>
         );
     };
@@ -116,9 +139,8 @@ class Header extends Component {
 
 function mapStateToProps(state) {
     console.log("MAP PROPS STATE",state)
-    const { user } = state;
     return {
-        user,
+        state,
     };
 }
 

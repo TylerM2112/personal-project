@@ -49,9 +49,9 @@ class Login extends Component {
         const { message } = this.state;
 
         return (
+            <div>
+                <Header />
             <div className="login-main-container">
-                {this.props.user.isAdmin &&
-                    <Header />}
                 <h1>Admin Login</h1>
                 <div className="admin-login">
                     <div className="input-container">
@@ -71,16 +71,16 @@ class Login extends Component {
                         {message}
                     </div>
                 </div>
-            </div>
+                </div>
+            </div>    
         );
     }
 }
 
 function mapStateToProps(state) {
-    const { user } = state;
 
     return {
-        user
+        state
     };
 }
 

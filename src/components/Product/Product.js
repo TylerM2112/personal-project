@@ -24,6 +24,7 @@ class Product extends Component {
         this.handleQuantity = this.handleQuantity.bind(this);
         this.backToSearch = this.backToSearch.bind(this);
         this.headToCart = this.headToCart.bind(this);
+        this.updateCartCount = this.updateCartCount.bind(this);
     }
 
 
@@ -111,14 +112,26 @@ class Product extends Component {
         this.props.history.push('/cart');
     }
 
+    updateCartCount(props) {
+        console.log("HERE IS NEXTPROPS", this.props.state.cart);
+        if (this.state.cartCount === this.props.state.cart.length) {
+
+        } else { 
+            this.setState({
+                cartCount: this.props.state.cart.length
+            })
+        }
+        console.log(this.props.state)
+        return this.state.cartCount;
+    }
+
     render() {
         // console.log("THIS IS STATE", this.state)
         const { name, description, price, image, man_small_size, man_medium_size, man_large_size, man_xlarge_size, woman_small_size, woman_medium_size, woman_large_size, woman_xlarge_size } = this.state;
 
         return (
             <div>
-                {this.props.user.isAdmin &&
-                    <Header />}
+                    <Header updateCount={this.updateCartCount}/>
                 <div className="solo-product-container">
                     {this.state.added === true ?
                         <div className="add-cart-message">
@@ -127,7 +140,7 @@ class Product extends Component {
                         :
                         <div></div>}
 
-                    {!this.props.user.isAdmin &&
+                    {!this.props.state.isAdmin &&
                         <div className="solo-product-display">
                             <div className="solo-product-image">
                                 <img src={image} alt="shirt" />
@@ -138,7 +151,7 @@ class Product extends Component {
                                         <p><strong>{name}</strong></p>
                                     </div>
                                     <div>
-                                        <p> ${price}</p>
+                                        <p>${price}</p> 
                                     </div>
                                 </div>
                                 <div className="solo-product-selects">
@@ -173,7 +186,7 @@ class Product extends Component {
                                 <button className="add-to-button" onClick={() => { this.addToCart() }}>ADD TO CART</button>
                             </div>
                         </div>}
-                    {this.props.user.isAdmin &&
+                    {this.props.state.isAdmin &&
                         <div className="solo-product-display">
                             <div className="solo-product-image">
                                 <img src={image} alt="shirt" />
@@ -274,11 +287,9 @@ class Product extends Component {
     }
 }
 function mapStateToProps(state) {
-    const { user, product } = state;
 
     return {
-        user,
-        product
+        state
     };
 }
 

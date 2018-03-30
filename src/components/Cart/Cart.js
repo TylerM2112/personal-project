@@ -12,7 +12,7 @@ class Cart extends Component {
     constructor(props) {
         super();
         this.state = {
-            ...props.user,
+            ...props,
             customerName: '',
             customerId: null,
             address: null,
@@ -28,31 +28,30 @@ class Cart extends Component {
     }
 
 
-    componentDidUpdate() {
-        console.log("UPDATING")
-    }
-
     displayCartItems(props) {
+        console.log(this.props.state.cart.length)
+        
         let displayedString = <h4>Your cart is empty, head over to the shop!</h4>;
         return (
-            this.props.user.cart.length !== 0 ?
-                this.props.user.cart.map((e) => {
+            
+            this.props.state.cart.length !== 0 ?
+                this.props.state.cart.map((e) => {
                     let productId = e.id
-                    let index = this.state.cart.findIndex((e) => e.id === productId);
+                    let index = this.props.state.cart.findIndex((e) => e.id === productId);
                     return (
                         <div className="cart-item-displayed" id={e.id} key={e.id}>
                         <div className="cart-image-container">    
                             <img className="cart-image" src={e.image} alt="item" />
                         </div>
                             <div className="search-product-info">
-                                <p>Name: {e.name}</p>
-                                <p>Price: ${e.price.toFixed(2)}</p>
-                                <p>Gender: {e.gender === "man" ? "Men's" : "Woman's"}</p>
-                                <p>Size: {e.size}</p>
-                                <p>Quantity: {this.props.user.cart[index].quantity}</p>
+                                <p>{e.name}</p>
+                                <p>${e.price.toFixed(2)}</p>
+                                <p>{e.gender === "man" ? "Men's" : "Woman's"} {e.size}</p>
+                                
+                                <p>Quantity: {this.props.state.cart[index].quantity}</p>
                             </div>
                             <label htmlFor="quantity" />
-                            <input type="number" name="quantity" value={this.props.user.cart[index].quantity} id={e.id} onChange={(e) => this.updateQuantity(e)} />
+                            <input type="number" name="quantity" value={this.props.state.cart[index].quantity} id={e.id} onChange={(e) => this.updateQuantity(e)} />
                             <br />
                             <button className="remove-button" value={e.id} onClick={(e) => { this.deleteFromCart(e.target.value) }}>REMOVE ITEM</button>
                         </div>
@@ -67,10 +66,10 @@ class Cart extends Component {
 
     displayCartTotal() {
         let updatedTotal = 0;
-        this.state.cart.map((e) => {
+        this.props.state.cart.map((e) => {
             updatedTotal += (+e.price * +e.quantity)
         })
-        if (this.state.cart.length !== 0) {
+        if (this.props.state.cart.length !== 0) {
             if (this.state.ran !== true) {
                 this.setState({
                     total: updatedTotal,
@@ -89,11 +88,11 @@ class Cart extends Component {
 
     deleteFromCart(id) {
         const { deleteFromCart } = this.props;
-        let index = this.state.cart.findIndex((e) => e.id === +id);
-        let updatedCart = this.state.cart;
-        let updatedTotal = this.state.total;
+        let index = this.props.state.cart.findIndex((e) => e.id === +id);
+        let updatedCart = this.props.state.cart;
+        let updatedTotal = this.props.state.total;
 
-        updatedTotal -= (+this.state.cart[index].price * this.state.cart[index].quantity);
+        updatedTotal -= (+this.props.state.cart[index].price * this.props.state.cart[index].quantity);
         updatedCart.splice(index, 1);
         console.log("UPDATED CART", updatedCart)
         this.setState({
@@ -102,7 +101,7 @@ class Cart extends Component {
             ran: false,
         }, () => {
             const { cart, total } = this.state;
-            console.log("STATE BEFORE REDUCER CALL", this.state)
+            // console.log("STATE BEFORE REDUCER CALL", this.state)
             deleteFromCart({
                 cart,
                 total,
@@ -158,8 +157,8 @@ class Cart extends Component {
         
         return (
             <div className="cart-page-container">
-            {console.log("TAKE A LOOK", this.props.user)}    
-                {!this.props.user.submitted && this.props.user.cart.length !== 0 ?
+            {console.log("TAKE A LOOK", this.state)}
+                {!this.state.submitted &&
                     <div className="customer-form">
                     <h1>Please fill out your shipping information!</h1>    
                         <label htmlFor="name">Name</label>
@@ -174,8 +173,6 @@ class Cart extends Component {
                         <input name="zip" type="number" onChange={(e) => this.updateState(e)} required />
                         <input type="submit" onClick={this.submitForm} />
                     </div>
-                    :
-                    <div></div>
                 }
 
 
@@ -183,7 +180,7 @@ class Cart extends Component {
                     {this.displayCartItems()}
                 </div>
                 {this.displayCartTotal()}
-                {this.props.user.submitted && this.props.user.cart.length !== 0 ?
+                {this.props.submitted && this.props.cart[0] ?
                    <div className="checkout-containter">
                     <Checkout
                         name={'GENERIC SHOP TITLE'}
@@ -199,10 +196,9 @@ class Cart extends Component {
 }
 
 function mapStateToProps(state) {
-    const { user } = state;
 
     return {
-        user
+        state,
     };
 }
 

@@ -1,5 +1,4 @@
 const initialState = {
-    product: {
         name: '',
         description: '',
         price: 0,
@@ -13,14 +12,11 @@ const initialState = {
         womanXLargeSize: 0,
         image: '',
         quantity: null,
-    },
-    user: {
         isAdmin: false,
         cart: [],
         total: 0.00,
         submitted: false,
         customerId: null,
-    }
 };
 
 //Add Item Reducers
@@ -71,27 +67,23 @@ export default function (state = initialState, action) {
         case UPDATE_WOMANXLARGE:
             return { ...state, womanXLargeSize: action.payload };
         case UPDATE_QUANTITY:
-            let index = newState.user.cart.findIndex((e) => e.id === +action.payload.id);
-            newState.user.cart[index].quantity = action.payload.quantity
-            return { ...newState };
+            let index = state.cart.findIndex((e) => e.id === +action.payload.id);
+            state.cart[index].quantity = action.payload.quantity
+            return { ...state};
         case UPDATE_IMAGE:
             return { ...state, image: action.payload };
         case UPDATE_ISADMIN:
-            let user = newState.user;
-            user.isAdmin = true;
-            return { ...newState, user };
+            return { ...state, isAdmin: true };
         case UPDATE_NOTADMIN:
-            let newerState = { ...state };
-            newerState.user.isAdmin = false;
-            return { ...newerState };
+            return { ...state, isAdmin: false };
         case UPDATE_CART:
             console.log("reducer")
-            newState.user.cart.push(action.payload);
-            newState.user.total += (+action.payload.price * +action.payload.quantity);
+            newState.cart.push(action.payload);
+            newState.total += (+action.payload.price * +action.payload.quantity);
             return {...newState};
         case DELETE_FROM_CART:
-            newState.user.cart = action.payload.cart;
-            newState.user.total = action.payload.total;
+            newState.cart = action.payload.cart;
+            newState.total = action.payload.total;
             return { ...newState };
         case UPDATE_SUBMITTED:    
             newState.user.submitted = action.payload;

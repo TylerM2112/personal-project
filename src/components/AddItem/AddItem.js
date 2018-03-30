@@ -36,7 +36,7 @@ class AddItem extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        if (prevProps.user.isAdmin !== this.props.user.isAdmin) {
+        if (prevProps.state.isAdmin !== this.props.state.isAdmin) {
             return true;
         }
     }
@@ -84,11 +84,11 @@ class AddItem extends Component {
         const { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge } = this.props;
         return (
             <div>
-                {this.props.user.isAdmin &&
-                    <Header />}
+                
+                    <Header />
                 <div className="add-home-container">
 
-                    {this.props.user.isAdmin ?
+                    {this.props.state.isAdmin ?
 
                         <div className="add-item-container">
                             <div className="dropzone-container"> 
@@ -154,10 +154,10 @@ class AddItem extends Component {
 }
 
 function mapStateToProps(state) {
-    const { user, name, description, price, manSmallSize, manMediumSize, manLargeSize, manXLargeSize, womanSmallSize, womanMediumSize, womanLargeSize, womanXLargeSize, image } = state;
+    const { name, description, price, manSmallSize, manMediumSize, manLargeSize, manXLargeSize, womanSmallSize, womanMediumSize, womanLargeSize, womanXLargeSize, image } = state;
 
     return {
-        user,
+        state,
         name,
         description,
         price,

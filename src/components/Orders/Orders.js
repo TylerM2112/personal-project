@@ -62,7 +62,7 @@ class Orders extends Component {
                             <div>{e.products}</div>
                             <div>{e.gender}</div>
                             <div>{e.size}</div>
-                                <div>{e.quantity}</div>
+                            <div>{e.quantity}</div>
                             </div>}
                     </div>
                     
@@ -104,10 +104,9 @@ class Orders extends Component {
 
         return (
             <div>
-                {this.props.user.isAdmin &&
-                    <Header />}
+                    <Header />
                 <div className="orders-landing-container">
-                    {this.props.user.isAdmin ?
+                    {this.props.state.isAdmin ?
                         <div>
                             <h1>ORDERS</h1>
                             {this.state.loaded ?
@@ -149,10 +148,9 @@ class Orders extends Component {
 }
 
 function mapStateToProps(state) {
-    const { user } = state;
 
     return {
-        user
+        state
     };
 }
 

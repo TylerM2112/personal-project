@@ -1,5 +1,11 @@
 
 module.exports = {
+
+    read: (req, res) => { 
+        res.status(200).send(req.session.user.cart)
+    },
+
+
     add: (req, res) => {
         console.log("LOOK AT THIS ONE", req.session.user)
         console.log('req.body', req.body)

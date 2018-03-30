@@ -16,17 +16,21 @@
 }
 
 .cart-item-displayed{
-   
+   display: flex;
+   flex-direction: column;
+   align-content: center;
+   align-items: center;
 }
 
 .cart-image-container{
+
 }
 
 .cart-image{
-
+    width: 100px;
 }
 .customer-form{
-    
+    display: none;
 }
 .customer-form p {
     
@@ -45,8 +49,6 @@
     
 }
 
-.customer-form > *{
-}
 .checkout-containter{
   
 }
