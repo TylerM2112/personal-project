@@ -13,24 +13,16 @@ class Cart extends Component {
         super();
         this.state = {
             ...props,
-            customerName: '',
             customerId: null,
-            address: null,
-            city: null,
-            state: null,
-            zip: null,
             ran: false,
         }
         this.displayCartItems = this.displayCartItems.bind(this);
         this.updateState = this.updateState.bind(this);
-        this.submitForm = this.submitForm.bind(this);
         this.updateQuantity = this.updateQuantity.bind(this);
     }
 
 
     displayCartItems(props) {
-        console.log(this.props.state.cart.length)
-        
         let displayedString = <h4>Your cart is empty, head over to the shop!</h4>;
         return (
             
@@ -120,31 +112,6 @@ class Cart extends Component {
         })
     }
 
-    submitForm() {
-        const { updateSubmitted, updateCustomerID } = this.props;
-        if (this.state.name !== null) {
-            if (this.state.address !== null) {
-                if (this.state.city !== null) {
-                    if (this.state.state !== null) {
-                        if (this.state.zip !== null && this.props.user.cart.length !== 0) {
-                            let submitted = { ...this.state }
-                            submitted.submitted = true;
-                            axios.post('/api/customer', submitted).then(res => {
-                                this.setState({
-                                    customerId: res.data[0].id,
-                                }), updateCustomerID(res.data[0].id)
-                            })
-                            updateSubmitted(true);
-
-                        } else {
-                            alert('Please fill in all the fields.')
-                        }
-                    }
-                }
-            }
-        }
-    }
-
     updateQuantity(e) {
         const { updateQuantity } = this.props;
         updateQuantity({ id: e.target.id, quantity: e.target.value });
@@ -157,39 +124,21 @@ class Cart extends Component {
         
         return (
             <div className="cart-page-container">
-            {console.log("TAKE A LOOK", this.state)}
-                {!this.state.submitted &&
-                    <div className="customer-form">
-                    <h1>Please fill out your shipping information!</h1>    
-                        <label htmlFor="name">Name</label>
-                        <input name="customerName" type="text" onChange={(e) => this.updateState(e)} required />
-                        <label htmlFor="address">Address</label>
-                        <input name="address" type="text" onChange={(e) => this.updateState(e)} required />
-                        <label htmlFor="city">City</label>
-                        <input name="city" type="text" onChange={(e) => this.updateState(e)} required />
-                        <label htmlFor="state">State</label>
-                        <input name="state" type="text" onChange={(e) => this.updateState(e)} required />
-                        <label htmlFor="zip">Zip</label>
-                        <input name="zip" type="number" onChange={(e) => this.updateState(e)} required />
-                        <input type="submit" onClick={this.submitForm} />
-                    </div>
-                }
-
-
-                <div className="cart-content-container">
+                <div>    
+                <div className="cart-content-container">    
                     {this.displayCartItems()}
                 </div>
                 {this.displayCartTotal()}
-                {this.props.submitted && this.props.cart[0] ?
+                {this.props.state.cart[0] && 
                    <div className="checkout-containter">
                     <Checkout
                         name={'GENERIC SHOP TITLE'}
                         description={'100% AWESOME Tshirts!'}
                         amount={this.state.total}
                     />
-                </div>  : <div></div>
-                }
-                
+                </div>
+                    }
+                </div>    
             </div>
         );
     }

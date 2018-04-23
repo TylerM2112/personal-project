@@ -115,7 +115,7 @@ class Header extends Component {
                             <div className="">
                                 <Link to="/admin"><div className="nav-link-text">Admin Dashboard</div></Link>
                                 <Link to="/search"><div className="nav-link-text">Inventory</div></Link>
-                                <Link to="/orders"><div className="nav-link-text">Orders</div></Link>
+                                <Link to="/additem"><div className="nav-link-text">Add Inventory</div></Link>
                                 <Link to="/"><div className="nav-link-text" onClick={this.logout}>Logout</div></Link>
                             </div>
                         }
@@ -126,9 +126,11 @@ class Header extends Component {
                 </div></Link>
                 <div className="cart-menu" onClick={this.cartOpen}>
                     <img src={cartimage} alt="cart" />
-                    {this.updateCartCount()}
+                    <div className="cartCount">
+                        {this.updateCartCount()}
+                    </div>    
                 </div>
-                {this.state.cartOpen ? <div className="cart"><Cart /></div> : "closedCart"}
+                {this.state.cartOpen ? <div className="cart"><Cart /></div> : <div className="closedCart"></div>}
 
 
                 

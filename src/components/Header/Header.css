@@ -4,14 +4,13 @@
     justify-content: space-between;
     background-color: black;
     width: 100vw;
-    position: relative;
-    top: 0px;
 }
 .logo-container{
     background-color: black;
+    margin-left: 20px;
 }
 
-.logo{ 
+.logo{
     width: 60px;
 }
 
@@ -38,14 +37,17 @@
       font-size: 25px;
   }
   .cart-menu {  
-    display: initial;
+    display: flex;
+    flex-direction: row;
     margin-top: 10px;
     margin-right: 10px;
     color: white;
   }
   .cart-menu img{
       height: 40px;
-      width: 40px;
+  }
+
+  .cartCount{
   }
   
   .bin a{

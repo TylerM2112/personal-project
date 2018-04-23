@@ -86,10 +86,10 @@ export default function (state = initialState, action) {
             newState.total = action.payload.total;
             return { ...newState };
         case UPDATE_SUBMITTED:    
-            newState.user.submitted = action.payload;
+            newState.submitted = action.payload;
             return { ...newState }; 
         case UPDATE_CUSTOMERID:
-            newState.user.customerId = action.payload;
+            newState.customerId = action.payload;
             return { ...newState };
         case UPDATE_USER:
             newState.user = action.payload;    

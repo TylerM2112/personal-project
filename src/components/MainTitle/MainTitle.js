@@ -6,7 +6,7 @@ const MainTitle = () => {
     return (
         <div className="title-content-container">
             <div className="storename-content">    
-                <h1>shirtController.js</h1>
+                <h1>.middlewear</h1>
             </div>
             <div className="header-content">
                 <h1>UNIVERSAL DEV</h1>

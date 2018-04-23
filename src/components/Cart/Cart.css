@@ -5,13 +5,13 @@
     background: rgb(255, 255, 255);
     border: 2px black solid;
     right: 0px;
+    height: 75vh;
 }
 .cart-content-container{
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
-    height: 70vh;
     color: rgb(0, 0, 0);
 }
 
@@ -30,16 +30,23 @@
     width: 100px;
 }
 .customer-form{
-    display: none;
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+
 }
 .customer-form p {
     
 }
 .customer-form h1 {
-   
+   padding: 0px;
+   margin: 0px;
+   font-size: 20px;
 }
 .customer-form input{
-  
+  width: 125px;
+  margin-bottom: 10px;
 }
 .customer-form label{
   
