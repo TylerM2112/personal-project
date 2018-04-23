@@ -34,7 +34,6 @@ class Admin extends Component {
                         <div className="admin-options">
                             <Link to="/search"><button className="option-button" >Search Inventory</button></Link>
                             <Link to="/additem"><button className="option-button">Add Inventory</button></Link>
-                            <Link to="/orders"><button className="option-button">Orders</button></Link>
                             <a href="https://dashboard.stripe.com/test/dashboard" target="_"><button className="option-button bottom">Stripe Dashboard</button></a>
                         </div>        
                 </div>
