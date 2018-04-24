@@ -97,16 +97,20 @@ margin-left: 25%;
 
 }
 
-
-
-@media (min-width: 0px){
-    
-}
-
-@media (min-width: 426px){
- 
-}
-
 @media (min-width: 768px){ 
-    
+    .filter-button {
+        margin-left: 38%;
+    }
+    .search-inputs-container {
+        width: 50%;
+    }
+    .search-product-container {
+        width: 33%;
+    }
+}
+
+@media(min-width: 1024px){
+    .filter-button {
+        margin-left: 40%;
+    }
 }

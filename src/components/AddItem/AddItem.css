@@ -14,7 +14,8 @@
     display: flex;
     flex-direction: row;
     padding: 10px;
-    margin: 0px;
+    margin: auto;
+    width: 60%;
 }
 
 .dropzone{
@@ -72,7 +73,8 @@
 .additem-buttons-container{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    margin: auto;
+    margin-top: 20px;
 }
 .additem-button{
     height: 35px;

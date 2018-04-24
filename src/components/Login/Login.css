@@ -11,8 +11,8 @@
     flex-direction: column;
     margin: auto;
     align-items: center;
-    align-content: center;
-    width: 45%;
+    width: 60vw;
+    height: 40vh;
     padding-top: 10px;
     margin-bottom: 40px;
     box-shadow: -3px -3px 15px 1px rgba(0,0,0,0.75);
@@ -22,18 +22,22 @@
 .input-container{
     display: flex;
     flex-direction: column;
-    width: 80%;
     padding-bottom: 10px;
     margin-bottom: 10px;
+    margin-left: 45px;
+}
+
+.input-container label {
+    font-size: 25px;
 }
 
 .login-button-container{
-    padding-bottom: 20px;
+
 }
 
 .login-button{
-    height: 25px;
-    width: 100px;
+    height: 30px;
+    width: 115px;
     border-radius: 25px;
     color: transparent;
     border: 4px solid #0180ff;
@@ -50,9 +54,15 @@
 }
 
 .error-message-container{
-    
+    margin: auto;
+    width: 70%;
+    color: red;
 }
-
+.login-main-container h1{
+    margin: 30px;
+}
 @media(min-width: 768px){
-   
+    .admin-login{
+        width: 50vw;
+    }
 }

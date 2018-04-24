@@ -19,7 +19,9 @@ class Home extends Component {
                 <VideoBanner />
                 <MainTitle />
                 <Featured />
-                <Donation />
+                    <Donation />
+                    <Featured />
+                <Donation />    
                 </div>
             </div>    
         );

@@ -25,27 +25,26 @@ class Cart extends Component {
     displayCartItems(props) {
         let displayedString = <h4>Your cart is empty, head over to the shop!</h4>;
         return (
-            
             this.props.state.cart.length !== 0 ?
                 this.props.state.cart.map((e) => {
                     let productId = e.id
                     let index = this.props.state.cart.findIndex((e) => e.id === productId);
                     return (
                         <div className="cart-item-displayed" id={e.id} key={e.id}>
-                        <div className="cart-image-container">    
-                            <img className="cart-image" src={e.image} alt="item" />
-                        </div>
+                            <div className="cart-image-container">
+                                <img className="cart-image" src={e.image} alt="item" />
+                            </div>
                             <div className="search-product-info">
                                 <p>{e.name}</p>
                                 <p>${e.price.toFixed(2)}</p>
                                 <p>{e.gender === "man" ? "Men's" : "Woman's"} {e.size}</p>
-                                
+
                                 <p>Quantity: {this.props.state.cart[index].quantity}</p>
                             </div>
                             <label htmlFor="quantity" />
                             <input type="number" name="quantity" value={this.props.state.cart[index].quantity} id={e.id} onChange={(e) => this.updateQuantity(e)} />
                             <br />
-                            <button className="remove-button" value={e.id} onClick={(e) => { this.deleteFromCart(e.target.value) }}>REMOVE ITEM</button>
+                            <button className="remove-button" value={e.id} onClick={(e) => { this.deleteFromCart(e.target.value) }}>REMOVE</button>
                         </div>
                     );
                 })
@@ -116,29 +115,31 @@ class Cart extends Component {
         const { updateQuantity } = this.props;
         updateQuantity({ id: e.target.id, quantity: e.target.value });
         this.setState({
-            ran: false 
+            ran: false
         })
     }
 
     render() {
-        
+
         return (
             <div className="cart-page-container">
-                <div>    
-                <div className="cart-content-container">    
-                    {this.displayCartItems()}
+                    <div className="cartTitle">Shopping Cart</div>
+
+                    <div className="cart-content-container">
+                        {this.displayCartItems()}
                 </div>
-                {this.displayCartTotal()}
-                {this.props.state.cart[0] && 
-                   <div className="checkout-containter">
-                    <Checkout
-                        name={'GENERIC SHOP TITLE'}
-                        description={'100% AWESOME Tshirts!'}
-                        amount={this.state.total}
-                    />
-                </div>
+                <div className="total-button-container">
+                    {this.displayCartTotal()}
+                    {this.props.state.cart[0] &&
+                        <div className="checkout-containter">
+                            <Checkout
+                                name={'GENERIC SHOP TITLE'}
+                                description={'100% AWESOME Tshirts!'}
+                                amount={this.state.total}
+                            />
+                        </div>
                     }
-                </div>    
+                    </div>
             </div>
         );
     }

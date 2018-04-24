@@ -18,9 +18,11 @@
 }
 
 .feature-title{
-    width: 35%;
+    width: 80%;
     margin: auto;
     letter-spacing: 1px;
+    background-color: black;
+    color: red;
 }
 
 .featured-logo{

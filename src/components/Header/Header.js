@@ -23,25 +23,14 @@ class Header extends Component {
         this.logout = this.logout.bind(this);
         this.isOpen = this.isOpen.bind(this);
         this.cartOpen = this.cartOpen.bind(this);
-        // this.updateCartCount = this.updateCartCount.bind(this);
     }
-    // cartGrabber = async () => {
-    //     const data = await axios.get('/api/cart');
-    //     this.setState({
-    //         loading: false,
-    //         cart: data.data,
-    //     });
-    // }
-    // componentWillMount() {
-    //     this.cartGrabber();
-    // }
 
     componentDidUpdate(prevProps, prevState) {
         if (prevProps.state.isAdmin !== this.props.state.isAdmin) {
             return true;
         }
     }
-   
+
     componentDidMount() {
         axios.get('/api/session').then(res => {
             if (res.data.isAdmin === true) {
@@ -52,7 +41,6 @@ class Header extends Component {
                 })
             }
         })
-        // this.props.updateCount();
     }
 
 
@@ -65,9 +53,9 @@ class Header extends Component {
         }).catch(error => {
             console.log(error)
         });
-    };  
+    };
 
-   
+
 
     isOpen() {
         this.setState({ isOpen: !this.state.isOpen })
@@ -80,7 +68,7 @@ class Header extends Component {
         // console.log("HERE IS NEXTPROPS", this.props.cart);
         if (this.state.cartCount === this.props.state.cart.length) {
 
-        } else { 
+        } else {
             this.setState({
                 cartCount: this.props.state.cart.length
             })
@@ -93,8 +81,11 @@ class Header extends Component {
         console.log("NEW NEW NEW", this.props)
         return (
             <div className="header-container">
+             <Link to="/"><div className="logo-container-large">
+                        <img className="logo" src={logo} alt="logo" /></div>
+                    </Link>
                 <div className="nav">
-                    <div className="menu" onClick={this.isOpen}><div>☰</div></div>
+                    <div className="menu" onClick={this.isOpen}><div className="hamburger-div">☰</div></div>
                     <div className={this.state.isOpen ? "bin" : "closedBin"}>
                         {!this.props.state.isAdmin &&
                             <div className="">
@@ -107,13 +98,34 @@ class Header extends Component {
                                 <div>
                                     <Link to="/login"><div className="nav-link-text">Admin Login</div></Link>
                                 </div>
-
-
                             </div>
                         }
                         {this.props.state.isAdmin &&
-                            <div className="">
-                                <Link to="/admin"><div className="nav-link-text">Admin Dashboard</div></Link>
+                            <div className="nav-link-container">
+                                <Link to="/admin"><div className="nav-link-text">Dashboard</div></Link>
+                                <Link to="/search"><div className="nav-link-text">Inventory</div></Link>
+                                <Link to="/additem"><div className="nav-link-text">Add Inventory</div></Link>
+                                <Link to="/"><div className="nav-link-text" onClick={this.logout}>Logout</div></Link>
+                            </div>
+                        }
+                    </div>
+                    <div className="nav-bar-large">
+                        {!this.props.state.isAdmin &&
+                            <div className="nav-link-container">
+                                <div>
+                                    <Link to="/"><div className="nav-link-text">Home</div></Link>
+                                </div>
+                                <div>
+                                    <Link to="/search"><div className="nav-link-text">Shop</div></Link>
+                                </div>
+                                <div>
+                                    <Link to="/login"><div className="nav-link-text">Admin Login</div></Link>
+                                </div>
+                            </div>
+                        }
+                        {this.props.state.isAdmin &&
+                            <div className="nav-link-container">
+                                <Link to="/admin"><div className="nav-link-text">Dashboard</div></Link>
                                 <Link to="/search"><div className="nav-link-text">Inventory</div></Link>
                                 <Link to="/additem"><div className="nav-link-text">Add Inventory</div></Link>
                                 <Link to="/"><div className="nav-link-text" onClick={this.logout}>Logout</div></Link>
@@ -128,19 +140,16 @@ class Header extends Component {
                     <img src={cartimage} alt="cart" />
                     <div className="cartCount">
                         {this.updateCartCount()}
-                    </div>    
+                    </div>
                 </div>
                 {this.state.cartOpen ? <div className="cart"><Cart /></div> : <div className="closedCart"></div>}
-
-
-                
             </div>
         );
     };
 }
 
 function mapStateToProps(state) {
-    console.log("MAP PROPS STATE",state)
+    console.log("MAP PROPS STATE", state)
     return {
         state,
     };

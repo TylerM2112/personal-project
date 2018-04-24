@@ -26,20 +26,19 @@
     color: #000000;
     font-size: 20px;
     margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding: 20px;
     text-shadow: -3px 0 white, 0 3px rgb(255, 255, 255), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
 }
 
 .header-content h1{
-    margin-bottom: -10px;
 }
 .storename-content{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     letter-spacing: 2px;
     color: #000000;
     font-size: 20px;
-    margin: auto;
-    margin-top: 20px;
+    margin: 20px auto;
     text-shadow: -2px 0 rgb(255, 255, 255), 0 3px rgb(255, 255, 255), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
 }
 
@@ -47,8 +46,8 @@
     display: flex;
     align-items: center;
     margin: auto;
-    margin-bottom: 20px;
-    font-size: 25px;
+    margin-bottom: 10px;
+    font-size: 20px;
     color: #000000;
     text-shadow: -1px 0 white, 0 3px rgb(255, 255, 255), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
 }

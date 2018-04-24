@@ -93,6 +93,7 @@ class Product extends Component {
                     })
                     setTimeout(() => {
                         this.setState({ added: false })
+                        this.props.history.replace("/search");
                     }, 2000)
                 } 
             }
