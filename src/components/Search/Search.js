@@ -65,7 +65,6 @@ class Search extends Component {
                 if (+products[`${gender}_medium_size`] !== 0) return products;
                 if (+products[`${gender}_large_size`] !== 0) return products;
                 if (+products[`${gender}_xlarge_size`] !== 0) return products;
-
             });
 
         }

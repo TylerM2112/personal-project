@@ -1,0 +1,50 @@
+.landingdivs-container{
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
+.fp{
+  display: flex;
+  flex-direction: row;
+  height: 30vh;
+}
+.fpi{
+  height: 30vh;
+  width: 50vw;
+  background-image: url(../../assets/couple.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.fpt{
+  width: 50vw;
+  background-color: black;
+  color: white;
+}
+.fpt h1{
+  text-align: center;
+  font-size: 1.4rem;
+  margin-top: 20px;
+}
+.fpt p{
+  text-align: center;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.spi{
+  height: 30vh;
+  width: 50vw;
+  background-image: url(../../assets/gifts.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.tpi{
+  height: 30vh;
+  width: 50vw;
+  background-image: url(../../assets/squad.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}

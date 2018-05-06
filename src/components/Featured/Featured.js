@@ -4,8 +4,8 @@ import './Featured.css';
 const Featured = () => {
     return (
         <div className="feature-div">
-        <div className="feature-title">    
-                <p>DISCLAIMER: THIS SITE IS NOT REAL AND IS ONLY BEING USED FOR EDUCATIONAL PURPOSES. NOTHING IS CONSIDERED TO BE TRUTH.</p>
+            <div className="feature-title">
+            <h3>FEATURED IN</h3>        
             </div>    
             <div className="featuredin-container">
                 <div className="featured-logo-container"><img className="featured-logo" src="//cdn.shopify.com/s/files/1/0134/5202/files/inc_300x_300x.png?v=1484154915" alt="featured"/></div>

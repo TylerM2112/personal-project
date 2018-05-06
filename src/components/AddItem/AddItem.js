@@ -84,10 +84,8 @@ class AddItem extends Component {
         const { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge } = this.props;
         return (
             <div>
-                
                     <Header />
                 <div className="add-home-container">
-
                     {this.props.state.isAdmin ?
 
                         <div className="add-item-container">

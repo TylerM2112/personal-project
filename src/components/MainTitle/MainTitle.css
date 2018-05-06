@@ -1,59 +1,29 @@
-
-.title-content-container{  
-  
-    display: flex;
-	flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin: auto;
-    /* background-color: rgba(0, 0, 0, 0.6); */
-    background: url(../../assets/codingwormhole.jpg) no-repeat center;
+.maintitle-div{
+    background: url(../../assets/clothes.jpg) no-repeat center;
     background-size: cover;
+    background-attachment: fixed;
 }
 
-/* .title-content-container:after{
-    content: "";
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 0 160px 20px 160px;
-    border-color: transparent transparent rgb(255, 255, 255) transparent;
-} */
-.header-content{
+.title-content-container{
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: #000000;
-    font-size: 20px;
-    margin: auto;
-    margin-bottom: 20px;
-    padding: 20px;
-    text-shadow: -3px 0 white, 0 3px rgb(255, 255, 255), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
+    height: 85vh; 
+    background-color: rgba(0, 0, 0, 0.452);
 }
 
-.header-content h1{
-}
 .storename-content{
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    letter-spacing: 2px;
-    color: #000000;
-    font-size: 20px;
-    margin: 20px auto;
-    text-shadow: -2px 0 rgb(255, 255, 255), 0 3px rgb(255, 255, 255), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
+    margin-top: 80px;
+    color: white;
+    text-align: center;
 }
 
-.quote-div{
-    display: flex;
-    align-items: center;
-    margin: auto;
-    margin-bottom: 10px;
-    font-size: 20px;
-    color: #000000;
-    text-shadow: -1px 0 white, 0 3px rgb(255, 255, 255), 1px 0 rgb(255, 255, 255), 0 -1px rgb(255, 255, 255);
-}
-
-.button-container{
-    padding-bottom: 30px;
+.header-content{
+    color: white;
+    text-align: center;
+    font-size: 1.7em;
+    width: 80vw;
+    margin: 50px;
 }
 
 .shop-button{
@@ -72,15 +42,24 @@
     cursor: pointer;
 }
 
-.donation-link{
-    text-decoration-line: none;
-}
-
-@media (min-width: 426px){
-   
-
-}
-
 @media (min-width: 768px){
-    
+    .title-content-container{
+        height: 40vh; 
+    }
+    .storename-content{
+        margin-top: 40px;
+    }
+    .header-content{
+        width: 100vw;
+        font-size: 1.5em;
+        
+    }
+}
+@media (min-width: 1024px){
+    .title-content-container{
+        height: 55vh; 
+    }
+    .storename-content{
+        margin-top: 70px;
+    }
 }

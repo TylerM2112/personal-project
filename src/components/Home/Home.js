@@ -8,20 +8,18 @@ import Header from '../Header/Header';
 import VideoBanner from '../VideoBanner/VideoBanner';
 import MainTitle from '../MainTitle/MainTitle';
 import Featured from '../Featured/Featured';
-import Donation from '../Donation/Donation';
+import LandingDivs from '../LandingDivs/LandingDivs';
 
 class Home extends Component {
     render() {
         return (
             <div>
-                    <Header />
-            <div className="home-container">
-                <VideoBanner />
-                <MainTitle />
-                <Featured />
-                    <Donation />
+                <Header />
+                <div className="home-container">
+                    <VideoBanner />
+                    <MainTitle />
                     <Featured />
-                <Donation />    
+                    <LandingDivs />
                 </div>
             </div>    
         );
