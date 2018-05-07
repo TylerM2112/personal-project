@@ -37,7 +37,7 @@ app.use(session({
 
 app.use(checkForSession.checkForSession);
 
-// app.use(express.static(`${__dirname}/../build`));
+app.use(express.static(`${__dirname}/../build`));
 
 //Products Controller
 
@@ -67,6 +67,11 @@ app.post('/api/payment', stripe_ctrl.paymentAPI)
 
 //Session Controller
 app.get('/api/session', custc.getSessions)
+
+const path = require('path')
+app.get('*', (req, res)=>{
+res.sendFile(path.join(__dirname, '../build/index.html'));
+}) 
 
 const port = 4001;
 app.listen(port, () => {
