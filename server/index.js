@@ -68,7 +68,7 @@ app.post('/api/payment', stripe_ctrl.paymentAPI)
 //Session Controller
 app.get('/api/session', custc.getSessions)
 
-const port = 4000;
+const port = 4001;
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
