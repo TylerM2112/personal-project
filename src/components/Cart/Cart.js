@@ -58,7 +58,7 @@ class Cart extends Component {
     displayCartTotal() {
         let updatedTotal = 0;
         this.props.state.cart.map((e) => {
-            updatedTotal += (+e.price * +e.quantity)
+            return updatedTotal += (+e.price * +e.quantity)
         })
         if (this.props.state.cart.length !== 0) {
             if (this.state.ran !== true) {
@@ -85,7 +85,7 @@ class Cart extends Component {
 
         updatedTotal -= (+this.props.state.cart[index].price * this.props.state.cart[index].quantity);
         updatedCart.splice(index, 1);
-        console.log("UPDATED CART", updatedCart)
+        // console.log("UPDATED CART", updatedCart)
         this.setState({
             total: updatedTotal,
             cart: updatedCart,
@@ -98,7 +98,7 @@ class Cart extends Component {
                 total,
             });
         });
-        console.log("HEY ME", this.state)
+        // console.log("HEY ME", this.state)
         axios.post('/api/cartRemove', { state: this.state, total: updatedTotal }).then(res => {
         }).catch(error => {
             console.log("REMOVE FROM SESSION CART", error);

@@ -79,7 +79,6 @@ export default function (state = initialState, action) {
         case UPDATE_NOTADMIN:
             return { ...state, isAdmin: false };
         case UPDATE_CART:
-            console.log("reducer")
             newState.cart.push(action.payload);
             newState.total += (+action.payload.price * +action.payload.quantity);
             return {...newState};

@@ -39,7 +39,7 @@ class Search extends Component {
 
     componentDidMount() {
         axios.get('/api/session').then(res => {
-            console.log("MUBMOMUMBO", res.data)
+            // console.log("MUBMOMUMBO", res.data)
             this.props.setCart(res.data.cart);
             this.props.setTotal(res.data.total);
             if (res.data.isAdmin === true) {
@@ -59,7 +59,7 @@ class Search extends Component {
     filterProducts() {
         const { gender, size, price } = this.state.filter;
         let filterProducts = this.state.products.slice();
-        console.log(filterProducts);
+        // console.log(filterProducts);
         if (gender) {
             // eslint-disable-next-line
             filterProducts = filterProducts.filter(products => {
@@ -97,8 +97,8 @@ class Search extends Component {
             // eslint-disable-next-line
             this.state.filteredProducts.map((e) => {
                 productsToDisplay.push(
-                    <div className="search-product-container">
-                        <div className="search-image-text-container" id={e.id} key={e.id}>
+                    <div className="search-product-container" key={e.id}>
+                        <div className="search-image-text-container" id={e.id}>
                             <Link to={{
                                 pathname: `/product/${e.id}`,
                                 state: e

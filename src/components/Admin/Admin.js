@@ -11,7 +11,7 @@ class Admin extends Component {
 
     componentDidMount() { 
         axios.get('/api/session').then(res => { 
-            console.log("MUBMOMUMBO", res.data)
+            // console.log("MUBMOMUMBO", res.data)
             if (res.data.isAdmin === true) {
                 this.props.updateAdmin();
                 this.setState({

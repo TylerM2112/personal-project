@@ -80,7 +80,7 @@ class Header extends Component {
 
 
     render() {
-        console.log("NEW NEW NEW", this.props)
+        // console.log("NEW NEW NEW", this.props)
         return (
             <div className="header-container">
              <Link to="/"><div className="logo-container-large">
@@ -151,7 +151,7 @@ class Header extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log("MAP PROPS STATE", state)
+    // console.log("MAP PROPS STATE", state)
     return {
         state,
     };

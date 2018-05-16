@@ -25,7 +25,7 @@ class AddItem extends Component {
 
     componentDidMount() {
         axios.get('/api/session').then(res => {
-            console.log("MUBMOMUMBO", res.data)
+            // console.log("MUBMOMUMBO", res.data)
             if (res.data.isAdmin === true) {
                 this.props.updateAdmin();
                 this.setState({
@@ -80,7 +80,7 @@ class AddItem extends Component {
     }
 
     render() {
-        console.log("LOOK", this.props);
+        // console.log("LOOK", this.props);
         const { updateName, updateDescription, updatePrice, updateManSmall, updateManMedium, updateManLarge, updateManXLarge, updateWomanSmall, updateWomanMedium, updateWomanLarge, updateWomanXLarge } = this.props;
         return (
             <div>

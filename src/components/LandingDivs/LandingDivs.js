@@ -1,7 +1,6 @@
 import React from 'react';
 
 import './LandingDivs.css';
-import couple from '../../assets/couple.jpg';
 
 const LandingDivs = () => {
   return (
