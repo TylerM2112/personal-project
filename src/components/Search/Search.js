@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { updateAdmin } from '../../redux/reducer';
+import { updateAdmin, setCart, setTotal } from '../../redux/reducer';
 
 import './Search.css';
 import Header from '../Header/Header';
@@ -40,6 +40,8 @@ class Search extends Component {
     componentDidMount() {
         axios.get('/api/session').then(res => {
             console.log("MUBMOMUMBO", res.data)
+            this.props.setCart(res.data.cart);
+            this.props.setTotal(res.data.total);
             if (res.data.isAdmin === true) {
                 this.props.updateAdmin();
                 this.setState({
@@ -215,4 +217,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default withRouter(connect(mapStateToProps, { updateAdmin })(Search));
+export default withRouter(connect(mapStateToProps, { updateAdmin, setCart, setTotal })(Search));

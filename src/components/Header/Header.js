@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/atom.jpeg';
 import cartimage from '../../assets/cartimage.png';
-import { updateNotAdmin, updateAdmin } from '../../redux/reducer';
+import { updateNotAdmin, updateAdmin, setCart, setTotal } from '../../redux/reducer';
 import axios from 'axios';
 import Cart from '../Cart/Cart';
 
@@ -33,6 +33,8 @@ class Header extends Component {
 
     componentDidMount() {
         axios.get('/api/session').then(res => {
+            this.props.setCart(res.data.cart);
+            this.props.setTotal(res.data.total);
             if (res.data.isAdmin === true) {
                 this.props.updateAdmin();
                 this.setState({
@@ -155,4 +157,4 @@ function mapStateToProps(state) {
     };
 }
 
-export default connect(mapStateToProps, { updateNotAdmin, updateAdmin })(Header);
+export default connect(mapStateToProps, { updateNotAdmin, updateAdmin, setCart, setTotal })(Header);

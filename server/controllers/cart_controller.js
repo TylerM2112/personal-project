@@ -7,9 +7,9 @@ module.exports = {
 
 
     add: (req, res) => {
+        req.session.user.cart = req.body.cart;
         console.log("LOOK AT THIS ONE", req.session.user)
         console.log('req.body', req.body)
-        req.session.user = req.body;
         res.end()
     },
         

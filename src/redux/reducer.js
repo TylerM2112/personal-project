@@ -40,6 +40,8 @@ const UPDATE_SUBMITTED = "UPDATED_SUBMITTED";
 const UPDATE_CUSTOMERID = "UPDATE_CUSTOMERID";
 const UPDATE_QUANTITY = "UPDATE_QUANTITY";
 const UPDATE_USER = "UPDATE_USER";
+const SET_CART = "SET_CART";
+const SET_TOTAL = "SET_TOTAL";
 
 export default function (state = initialState, action) {
     let newState = { ...state }
@@ -91,9 +93,10 @@ export default function (state = initialState, action) {
         case UPDATE_CUSTOMERID:
             newState.customerId = action.payload;
             return { ...newState };
-        case UPDATE_USER:
-            newState.user = action.payload;    
-            return {...newState}    
+        case SET_CART:
+            return { ...state, cart: action.payload };  
+        case SET_TOTAL:
+            return { ...state, total: action.payload };  
         default:
             return state;
     }
@@ -207,6 +210,18 @@ export function updateCustomerID(id) {
     return {
         type: UPDATE_CUSTOMERID,
         payload: id,
+    }
+}
+export function setCart(cart) {
+    return {
+        type: SET_CART,
+        payload: cart,
+    }
+}
+export function setTotal(total) {
+    return {
+        type: SET_TOTAL,
+        payload: total,
     }
 }
  

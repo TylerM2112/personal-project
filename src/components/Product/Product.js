@@ -84,7 +84,7 @@ class Product extends Component {
                         size: size,
                         quantity: quantity,
                     });
-                    axios.post('/api/cart', this.props.user).then(res => {
+                    axios.post('/api/cart', this.props.state).then(res => {
                         this.setState({
                             added: true,
                         })
